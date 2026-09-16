@@ -121,9 +121,10 @@ export default function AProposPage() {
       </section>
 
       <section
-        className={`grid grid-cols-1 items-center gap-10 bg-[#eef0ec] md:grid-cols-[1.1fr_0.9fr] md:gap-16 ${SECTION_PADDING}`}
+        className={`relative grid grid-cols-1 items-center gap-10 overflow-hidden bg-[#eef0ec] md:grid-cols-[1.1fr_0.9fr] md:gap-16 ${SECTION_PADDING}`}
       >
-        <div className="hidden grid-cols-2 gap-x-8 gap-y-6 md:grid">
+        <TopographicContours side="right" />
+        <div className="relative hidden grid-cols-2 gap-x-8 gap-y-6 md:grid">
           {AUDIENCE.map((label, index) => (
             <p
               key={label}
@@ -135,7 +136,7 @@ export default function AProposPage() {
             </p>
           ))}
         </div>
-        <div className="max-w-[560px]">
+        <div className="relative max-w-[560px]">
           <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
             Pour qui
           </h2>
