@@ -46,7 +46,7 @@
 - [x] Validation (Zod, client + serveur)
 - [x] Messages d'erreur (par champ, valeurs saisies conservées après échec)
 - [x] État de succès
-- [x] Envoi email (Resend — nécessite `RESEND_API_KEY`/`RESEND_FROM_EMAIL` réels pour fonctionner en prod, domaine à vérifier auprès de Resend)
+- [x] Envoi email (Brevo — nécessite `BREVO_API_KEY`/`BREVO_FROM_EMAIL` réels pour fonctionner en prod, expéditeur à vérifier auprès de Brevo)
 - [x] Protection anti-spam proportionnée (honeypot)
 
 ## Phase 5 — SEO

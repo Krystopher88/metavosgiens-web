@@ -64,8 +64,8 @@ export default function PolitiqueConfidentialitePage() {
           </h2>
           <p className="mt-2">
             Vos données sont traitées par Bichon Christopher et transitent par nos prestataires
-            techniques : IONOS (hébergement, France) et Resend (envoi de l&apos;email de contact).
-            Aucune donnée n&apos;est vendue ni louée à des tiers commerciaux.
+            techniques : IONOS (hébergement, France) et Brevo (envoi de l&apos;email de contact,
+            société française). Aucune donnée n&apos;est vendue ni louée à des tiers commerciaux.
           </p>
         </section>
 

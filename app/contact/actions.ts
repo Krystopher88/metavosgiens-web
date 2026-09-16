@@ -1,7 +1,18 @@
 "use server";
 
-import { Resend } from "resend";
+import { BrevoClient } from "@getbrevo/brevo";
 import { contactSchema } from "@/lib/contact-schema";
+
+// The message body carries visitor-submitted text into an HTML email — escape it
+// so a submission can't inject markup into the email the recipient opens.
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 type ContactField = "name" | "company" | "email" | "phone" | "website" | "message";
 
@@ -54,33 +65,28 @@ export async function submitContactForm(
 
   const { name, company, email, phone, website, message } = parsed.data;
 
-  try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const { error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL ?? "",
-      to: process.env.CONTACT_TO_EMAIL ?? "",
-      replyTo: email,
-      subject: `Nouvelle demande de contact — ${name}`,
-      text: [
-        `Nom : ${name}`,
-        `Entreprise : ${company}`,
-        `Email : ${email}`,
-        `Téléphone : ${phone}`,
-        website ? `Site web : ${website}` : null,
-        "",
-        message,
-      ]
-        .filter((line) => line !== null)
-        .join("\n"),
-    });
+  const textBody = [
+    `Nom : ${name}`,
+    `Entreprise : ${company}`,
+    `Email : ${email}`,
+    `Téléphone : ${phone}`,
+    website ? `Site web : ${website}` : null,
+    "",
+    message,
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
 
-    if (error) {
-      return {
-        status: "error",
-        values,
-        message: "L'envoi a échoué. Réessayez ou écrivez-nous directement par email.",
-      };
-    }
+  try {
+    const client = new BrevoClient({ apiKey: process.env.BREVO_API_KEY ?? "" });
+    await client.transactionalEmails.sendTransacEmail({
+      sender: { email: process.env.BREVO_FROM_EMAIL ?? "", name: "MetaVosgiens" },
+      to: [{ email: process.env.CONTACT_TO_EMAIL ?? "" }],
+      replyTo: { email, name },
+      subject: `Nouvelle demande de contact — ${name}`,
+      textContent: textBody,
+      htmlContent: `<pre style="font-family: inherit; white-space: pre-wrap;">${escapeHtml(textBody)}</pre>`,
+    });
   } catch {
     return {
       status: "error",
