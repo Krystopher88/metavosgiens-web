@@ -531,10 +531,13 @@ git commit -m "feat(routes): pose l'arborescence des 5 pages prévues par le PRD
 
 - [ ] **Step 1: Activer la sortie standalone dans `next.config.ts`**
 
+> Depuis la Task 1, ce fichier contient déjà `agentRules: false` (ajouté pour empêcher `next dev` de réécrire `CLAUDE.md` à chaque lancement — bug Next.js 16, voir le ledger `Task 1`). Compléter l'objet existant, ne pas l'écraser :
+
 ```ts
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  agentRules: false,
   output: "standalone",
 };
 
