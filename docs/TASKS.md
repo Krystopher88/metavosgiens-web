@@ -2,21 +2,23 @@
 
 ## Phase 0 — Initialisation
 
-- [ ] Créer le projet Next.js TypeScript
-- [ ] Configurer Tailwind
-- [ ] Installer/configurer shadcn/ui
-- [ ] Configurer linting/formatting
-- [ ] Créer l'arborescence de base
-- [ ] Vérifier build de production
+- [x] Créer le projet Next.js TypeScript
+- [x] Configurer Tailwind
+- [x] Installer/configurer shadcn/ui
+- [x] Configurer linting/formatting
+- [x] Créer l'arborescence de base
+- [x] Vérifier build de production
+- [x] Conteneurisation Docker (dev + prod, hors périmètre initial, ajoutée sur demande — voir `docs/superpowers/plans/2026-09-16-bootstrap-nextjs-docker.md`)
 
 ## Phase 1 — Design system
 
-- [ ] Définir tokens couleurs
-- [ ] Charger Plus Jakarta Sans et Inter
-- [ ] Définir styles titres / texte
-- [ ] Définir Button et liens
-- [ ] Définir rayons, espacements et containers
-- [ ] Créer motif topographique réutilisable
+- [x] Définir tokens couleurs
+- [x] Charger Plus Jakarta Sans et Inter
+- [ ] Définir styles titres / texte (exploré dans le canvas Claude Design, pas encore formalisé en code)
+- [ ] Définir Button et liens (Button fait ; style de lien encore à componentiser)
+- [ ] Définir rayons, espacements et containers (rayons faits ; espacements/containers pleine largeur validés visuellement, pas encore formalisés en code)
+- [x] Créer motif topographique réutilisable (`components/topographic-contours.tsx`)
+- [x] Logo (typographique + détail territorial, direction validée au cadrage §36-37 — `components/logo.tsx`)
 
 ## Phase 2 — Homepage
 
