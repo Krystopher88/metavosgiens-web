@@ -231,10 +231,10 @@ git commit -m "feat(design): ajoute les tokens de design system (couleurs, polic
 - [ ] **Step 1: Initialiser shadcn/ui**
 
 ```bash
-npx shadcn@latest init -y --css-variables -b radix
+npx shadcn@latest init -y --css-variables -b radix -p nova
 ```
 
-`-y`/`--yes` évite toute invite interactive — nécessaire puisque cette commande s'exécute sans TTY. `-b radix` fixe explicitement Radix UI comme bibliothèque de primitives sous-jacente (décision de Christopher, 2026-09-16) : c'est le choix historique de shadcn/ui, le plus documenté, celui que la CLI proposait par défaut avant sa dernière version — sans ce flag, la CLI actuelle invite à choisir entre Base UI (nouveau défaut), Radix UI et React Aria, ce qui bloquerait un agent non interactif. La couleur de base choisie automatiquement par la CLI n'a pas d'importance : elle est remplacée au Step 2 quoi qu'il arrive. La CLI va écrire/compléter des blocs `:root { ... }` et `.dark { ... }` dans `app/globals.css` (format exact dépendant de la version de la CLI — vérifier après coup).
+`-y`/`--yes` évite toute invite interactive — nécessaire puisque cette commande s'exécute sans TTY. `-b radix` fixe explicitement Radix UI comme bibliothèque de primitives sous-jacente (décision de Christopher, 2026-09-16) : c'est le choix historique de shadcn/ui, le plus documenté, celui que la CLI proposait par défaut avant sa dernière version — sans ce flag, la CLI actuelle invite à choisir entre Base UI (nouveau défaut), Radix UI et React Aria, ce qui bloquerait un agent non interactif. **`-p nova` découvert à l'exécution** (voir ledger, Task 3) : la CLI pose aussi une invite « preset » que `-y` ne couvre pas ; `nova` est le premier choix par défaut de la CLI, sans conséquence puisque toutes ses valeurs (couleurs/police/radius) sont réécrites au Step 2 quoi qu'il arrive. La couleur de base choisie automatiquement par la CLI n'a pas d'importance : elle est remplacée au Step 2 quoi qu'il arrive. La CLI va écrire/compléter des blocs `:root { ... }` et `.dark { ... }` dans `app/globals.css` (format exact dépendant de la version de la CLI — vérifier après coup).
 
 - [ ] **Step 2: Réconcilier les tokens shadcn avec la palette MetaVosgiens**
 
