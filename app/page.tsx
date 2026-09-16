@@ -1,9 +1,19 @@
-import { SITE } from "@/lib/content";
+import { Hero } from "@/components/hero";
+import { ProblemDoors } from "@/components/problem-doors";
+import { ProofCases } from "@/components/proof-cases";
+import { Method } from "@/components/method";
+import { LocalSection } from "@/components/local-section";
+import { ContactCta } from "@/components/contact-cta";
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24">
-      <h1>{SITE.tagline}</h1>
+    <main>
+      <Hero />
+      <ProblemDoors />
+      <ProofCases />
+      <Method />
+      <LocalSection />
+      <ContactCta />
     </main>
   );
 }
