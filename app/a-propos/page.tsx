@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SITE } from "@/lib/content";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactCtaButton } from "@/components/contact-cta-button";
+import { TopographicContours } from "@/components/topographic-contours";
+import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
 export const metadata: Metadata = {
   title: "À propos",
@@ -10,78 +13,195 @@ export const metadata: Metadata = {
   alternates: { canonical: "/a-propos" },
 };
 
+type CapabilityItem = {
+  number: string;
+  title: string;
+  body: string;
+};
+
+const CAPABILITIES: CapabilityItem[] = [
+  {
+    number: "01",
+    title: "Présence en ligne",
+    body: "Être visible là où vos clients vous cherchent, avec un site ou une présence pensée pour votre activité.",
+  },
+  {
+    number: "02",
+    title: "Diagnostic",
+    body: "Un état des lieux clair de vos outils et de vos processus, avant toute décision.",
+  },
+  {
+    number: "03",
+    title: "Acquisition & marketing",
+    body: "Trouver et convertir davantage de clients grâce à une acquisition mieux structurée.",
+  },
+  {
+    number: "04",
+    title: "Automatisation",
+    body: "Simplifier ce qui peut l'être, pour vous faire gagner du temps au quotidien.",
+  },
+  {
+    number: "05",
+    title: "IA appliquée",
+    body: "Utiliser l'intelligence artificielle quand elle apporte une vraie valeur à votre activité.",
+  },
+  {
+    number: "06",
+    title: "Outils métier",
+    body: "Des outils conçus pour votre façon de travailler, pas l'inverse.",
+  },
+  {
+    number: "07",
+    title: "Conception de projet",
+    body: "De l'idée à un premier prototype testable, pour valider avant d'investir davantage.",
+  },
+  {
+    number: "08",
+    title: "Accompagnement",
+    body: "Un accompagnement dans la durée, qui évolue avec votre entreprise.",
+  },
+];
+
+const PROCESS_STEPS = [
+  { number: "01", title: "Premier échange", body: "Gratuit, sans engagement." },
+  {
+    number: "02",
+    title: "Proposition ou diagnostic",
+    body: "Une proposition si le besoin est clair, un diagnostic si le problème est complexe.",
+  },
+  { number: "03", title: "Réalisation", body: "Mise en place de la solution adaptée." },
+  {
+    number: "04",
+    title: "Accompagnement",
+    body: "Suivi et évolutions selon vos besoins.",
+  },
+] as const;
+
 export default function AProposPage() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16 md:py-24">
-      <Eyebrow>À propos</Eyebrow>
-      <h1 className="mt-4 font-heading text-[34px] leading-[1.1] font-extrabold tracking-[-0.045em] text-text sm:text-[40px]">
-        Des solutions sur mesure pour les entreprises vosgiennes.
-      </h1>
-      <p className="mt-6 text-lg text-[#3c4a54]">{SITE.description}</p>
+    <main>
+      <section className={`relative overflow-hidden ${SECTION_PADDING}`}>
+        <TopographicContours side="right" />
+        <div className="relative max-w-[640px]">
+          <Eyebrow>À propos</Eyebrow>
+          <h1 className={`mt-4 leading-[1.05] text-text ${SECTION_TITLE}`}>
+            Des solutions sur mesure pour les entreprises vosgiennes.
+          </h1>
+          <p className="mt-6 text-lg text-[#3c4a54]">{SITE.description}</p>
+        </div>
+      </section>
 
-      <div className="mt-12">
-        <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-          Pour qui
-        </h2>
-        <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-          Artisans, commerces, indépendants, professions libérales, petites PME, entreprises B2B ou
-          structures industrielles avec des processus plus complexes : chaque entreprise est
-          différente, chaque solution l&apos;est aussi.
-        </p>
-      </div>
+      <section className={`bg-[#eef0ec] ${SECTION_PADDING}`}>
+        <div className="max-w-[640px]">
+          <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
+            Pour qui
+          </h2>
+          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
+            Artisans, commerces, indépendants, professions libérales, petites PME, entreprises B2B
+            ou structures industrielles avec des processus plus complexes : chaque entreprise est
+            différente, chaque solution l&apos;est aussi.
+          </p>
+        </div>
+      </section>
 
-      <div className="mt-12">
-        <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-          Notre méthode
-        </h2>
-        <div className="mt-5 flex flex-col gap-6">
-          <div className="border-t border-[#dde2dd] pt-4">
-            <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">01</p>
-            <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Comprendre</h3>
-            <p className="mt-1 text-[#5a6870]">
-              On commence par comprendre votre entreprise et ce qui vous pose problème.
-            </p>
-          </div>
-          <div className="border-t border-[#dde2dd] pt-4">
-            <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">02</p>
-            <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Trouver</h3>
-            <p className="mt-1 text-[#5a6870]">On cherche ce qui peut réellement vous aider.</p>
-          </div>
-          <div className="border-t border-[#dde2dd] pt-4">
-            <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">03</p>
-            <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Construire</h3>
-            <p className="mt-1 text-[#5a6870]">
-              Nous mettons en place la solution adaptée et nous vous accompagnons ensuite.
-            </p>
+      <section className={SECTION_PADDING}>
+        <div className="max-w-[640px]">
+          <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
+            Notre méthode
+          </h2>
+          <div className="mt-5 flex flex-col gap-6">
+            <div className="border-t border-[#dde2dd] pt-4">
+              <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">01</p>
+              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Comprendre</h3>
+              <p className="mt-1 text-[#5a6870]">
+                On commence par comprendre votre entreprise et ce qui vous pose problème.
+              </p>
+            </div>
+            <div className="border-t border-[#dde2dd] pt-4">
+              <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">02</p>
+              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Trouver</h3>
+              <p className="mt-1 text-[#5a6870]">On cherche ce qui peut réellement vous aider.</p>
+            </div>
+            <div className="border-t border-[#dde2dd] pt-4">
+              <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">03</p>
+              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Construire</h3>
+              <p className="mt-1 text-[#5a6870]">
+                Nous mettons en place la solution adaptée et nous vous accompagnons ensuite.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="mt-12">
+      <section className={`bg-[#eef0ec] ${SECTION_PADDING}`}>
         <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-          Comment ça se passe
+          Ce que nous faisons concrètement
         </h2>
-        <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-          Le premier échange est gratuit. Si votre projet est simple et clair, nous vous faisons une
-          proposition. Si le problème est complexe ou mal défini, nous commençons par un diagnostic.
-          Vient ensuite la réalisation, puis l&apos;accompagnement et les évolutions selon vos
-          besoins.
-        </p>
-      </div>
+        <div className="mt-8 grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-2">
+          {CAPABILITIES.map((item) => (
+            <div key={item.number} className="border-t border-[#cfd5d0] pt-4">
+              <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">
+                {item.number}
+              </p>
+              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">
+                {item.title}
+              </h3>
+              <p className="mt-1 max-w-[440px] text-[#5a6870]">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <div className="mt-12">
-        <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-          Proximité
+      <section className={`bg-navy ${SECTION_PADDING}`}>
+        <Eyebrow variant="onDark">Comment ça se passe</Eyebrow>
+        <h2 className={`mt-4 max-w-[560px] leading-[1.1] text-white ${SECTION_TITLE}`}>
+          Du premier échange à l&apos;accompagnement.
         </h2>
-        <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-          Nous sommes dans les Vosges. Et nous venons chez vous : un interlocuteur, du premier
-          échange au suivi.
-        </p>
-      </div>
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-4">
+          {PROCESS_STEPS.map((step) => (
+            <div key={step.number} className="border-t border-white/[0.22] pt-4">
+              <p className="text-[11px] font-bold tracking-[0.08em] text-[#8e9ca4]">
+                {step.number}
+              </p>
+              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-white">
+                {step.title}
+              </h3>
+              <p className="mt-1 text-[#d5dddf]">{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-      <div className="mt-14">
-        <ContactCtaButton />
-      </div>
+      <section
+        className={`grid grid-cols-1 items-center gap-10 md:grid-cols-[0.95fr_1.05fr] md:gap-20 ${SECTION_PADDING}`}
+      >
+        <div
+          aria-hidden="true"
+          className="relative min-h-[280px] overflow-hidden rounded-[18px] md:min-h-[350px]"
+        >
+          <Image
+            src="/images/about-proximite.jpg"
+            alt=""
+            fill
+            sizes="(min-width: 768px) 45vw, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 [background:linear-gradient(165deg,rgba(23,50,77,0.05)_0%,rgba(23,50,77,0.3)_100%)]" />
+          <TopographicContours side="left" />
+        </div>
+        <div>
+          <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
+            Proximité
+          </h2>
+          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
+            Nous sommes dans les Vosges. Et nous venons chez vous : un interlocuteur, du premier
+            échange au suivi.
+          </p>
+          <div className="mt-8">
+            <ContactCtaButton />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
