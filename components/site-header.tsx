@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui/button";
 
@@ -7,37 +10,114 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ] as const;
 
-export function SiteHeader() {
+function ContactCtaLabel() {
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between bg-[rgba(247,246,242,0.92)] px-7 py-[18px] backdrop-blur-[14px]">
-      <div className="text-[20px]">
-        <Logo variant="onLight" />
-      </div>
-      <nav className="flex items-center gap-7 text-sm" aria-label="Navigation principale">
-        {NAV_LINKS.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className="text-text transition-colors hover:text-green"
-          >
-            {link.label}
-          </a>
-        ))}
-        <Button asChild>
-          <a href="#contact">
-            Parler de mon besoin
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <>
+      Parler de mon besoin
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path
+          d="M3 8H13M13 8L9 4M13 8L9 12"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </>
+  );
+}
+
+const LINK_CLASS =
+  "rounded-sm text-text outline-none transition-colors hover:text-green focus-visible:ring-3 focus-visible:ring-ring/50";
+
+export function SiteHeader() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      setIsMenuOpen(false);
+      menuToggleRef.current?.focus();
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
+  function closeMenu() {
+    setIsMenuOpen(false);
+  }
+
+  return (
+    <header className="sticky top-0 z-30 bg-[rgba(247,246,242,0.92)] backdrop-blur-[14px]">
+      <div className="flex items-center justify-between px-5 py-[15px] md:px-7 md:py-[18px]">
+        <div className="text-[20px]">
+          <Logo variant="onLight" />
+        </div>
+
+        <nav
+          className="hidden items-center gap-7 text-sm md:flex"
+          aria-label="Navigation principale"
+        >
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} className={LINK_CLASS}>
+              {link.label}
+            </a>
+          ))}
+          <Button asChild>
+            <a href="#contact">
+              <ContactCtaLabel />
+            </a>
+          </Button>
+        </nav>
+
+        <button
+          ref={menuToggleRef}
+          type="button"
+          className="grid h-10 w-10 place-items-center rounded-full text-navy outline-none focus-visible:ring-3 focus-visible:ring-ring/50 md:hidden"
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            {isMenuOpen ? (
               <path
-                d="M3 8H13M13 8L9 4M13 8L9 12"
+                d="M4 4L16 16M16 4L4 16"
                 stroke="currentColor"
                 strokeWidth="1.6"
                 strokeLinecap="round"
-                strokeLinejoin="round"
               />
-            </svg>
-          </a>
-        </Button>
-      </nav>
+            ) : (
+              <path
+                d="M2.5 5.5H17.5M2.5 10H17.5M2.5 14.5H17.5"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {isMenuOpen && (
+        <div
+          id="mobile-menu"
+          className="flex flex-col gap-[18px] border-b border-[#dde2dd] bg-[rgba(247,246,242,0.98)] px-5 pt-2 pb-[26px] md:hidden"
+        >
+          {NAV_LINKS.map((link) => (
+            <a key={link.href} href={link.href} onClick={closeMenu} className={LINK_CLASS}>
+              {link.label}
+            </a>
+          ))}
+          <Button asChild className="w-fit">
+            <a href="#contact" onClick={closeMenu}>
+              <ContactCtaLabel />
+            </a>
+          </Button>
+        </div>
+      )}
     </header>
   );
 }

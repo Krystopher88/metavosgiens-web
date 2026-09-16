@@ -23,7 +23,7 @@
 ## Phase 2 — Homepage
 
 - [x] Header desktop
-- [ ] Navigation mobile (desktop uniquement pour l'instant, décision explicite de Christopher)
+- [x] Navigation mobile
 - [x] Hero
 - [x] Quatre portes
 - [x] Overlay des quatre portes

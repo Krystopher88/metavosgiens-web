@@ -26,11 +26,11 @@ function handleContactLinkClick(onNavigate: () => void) {
 
 export function ProblemOverlay({ door, onNavigate }: ProblemOverlayProps) {
   return (
-    <div className="px-[42px] pt-[58px] pb-10">
+    <div className="px-6 pt-[54px] pb-10 sm:px-[42px] sm:pt-[58px]">
       <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
         {door.kicker}
       </p>
-      <SheetTitle className="mt-1 font-heading text-[52px] font-extrabold tracking-[-0.06em]">
+      <SheetTitle className="mt-1 font-heading text-[36px] font-extrabold tracking-[-0.05em] sm:text-[52px] sm:tracking-[-0.06em]">
         {door.panelTitle}
       </SheetTitle>
 

@@ -3,7 +3,7 @@ import { SITE } from "@/lib/content";
 
 export function ContactCta() {
   return (
-    <section id="contact" className="px-7 py-[100px] text-center">
+    <section id="contact" className="px-5 py-16 text-center md:px-7 md:py-[100px]">
       <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
         Premier échange gratuit
       </p>

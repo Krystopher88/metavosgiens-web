@@ -113,16 +113,15 @@ export function ProblemDoors() {
   }
 
   return (
-    <section className="px-7 py-[100px]">
-      <div className="mb-[38px] flex items-end justify-between gap-10">
+    <section className="px-5 py-16 md:px-7 md:py-[100px]">
+      <div className="mb-8 flex flex-col items-start gap-4 sm:mb-[38px] sm:flex-row sm:items-end sm:justify-between sm:gap-10">
         <div>
           <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
             Quatre portes, une même ambition
           </p>
-          <h2 className="font-heading text-[50px] font-extrabold tracking-[-0.055em]">
+          <h2 className="font-heading text-[34px] font-extrabold tracking-[-0.045em] sm:text-[40px] md:text-[50px] md:tracking-[-0.055em]">
             Des solutions concrètes
-            <br />
-            pour votre entreprise
+            <br className="hidden sm:block" /> pour votre entreprise
           </h2>
         </div>
         <p className="max-w-[330px] text-[#64727a]">
@@ -136,7 +135,7 @@ export function ProblemDoors() {
           if (!open) setOpenKey(null);
         }}
       >
-        <div className="grid grid-cols-1 gap-3.5 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 md:grid-cols-4">
           {DOORS.map((door) => (
             <button
               key={door.key}
