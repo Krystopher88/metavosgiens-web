@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      target: runner
+    container_name: metavosgiens_nextjs
+    restart: unless-stopped
+    env_file:
+      - .env.prod.local
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true
