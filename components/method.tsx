@@ -1,29 +1,7 @@
+import { ArrowLink } from "@/components/arrow-link";
 import { Eyebrow } from "@/components/eyebrow";
+import { METHOD_STEPS } from "@/lib/content";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
-
-type MethodStep = {
-  number: string;
-  title: string;
-  body: string;
-};
-
-const METHOD_STEPS: MethodStep[] = [
-  {
-    number: "01",
-    title: "Comprendre",
-    body: "On commence par comprendre votre entreprise et ce qui vous pose problème.",
-  },
-  {
-    number: "02",
-    title: "Trouver",
-    body: "On cherche ce qui peut réellement vous aider.",
-  },
-  {
-    number: "03",
-    title: "Construire",
-    body: "Nous mettons en place la solution adaptée et nous vous accompagnons ensuite.",
-  },
-];
 
 export function Method() {
   return (
@@ -36,17 +14,19 @@ export function Method() {
         <h2 className={`mt-4 leading-[1.05] text-text ${SECTION_TITLE}`}>
           Vous n&apos;avez pas besoin de savoir quoi construire.
         </h2>
+        <div className="mt-6">
+          <ArrowLink href="/a-propos#methode">Voir notre méthode en détail</ArrowLink>
+        </div>
       </div>
-      <div className="flex flex-col gap-7">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-2">
         {METHOD_STEPS.map((step) => (
-          <div key={step.number} className="border-t border-[#cfd5d0] pt-5">
-            <span className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">
+          <div key={step.number} className="flex items-center gap-3">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border-2 border-green text-sm font-bold text-green">
               {step.number}
             </span>
-            <h3 className="mt-3 mb-2 font-heading text-[22px] font-extrabold text-text md:text-[25px]">
+            <span className="font-heading text-[15px] leading-[1.2] font-extrabold text-text">
               {step.title}
-            </h3>
-            <p className="max-w-[470px] text-[#5a6870]">{step.body}</p>
+            </span>
           </div>
         ))}
       </div>

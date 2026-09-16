@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { SITE } from "@/lib/content";
+import { SITE, METHOD_STEPS } from "@/lib/content";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { TopographicContours } from "@/components/topographic-contours";
@@ -80,44 +80,6 @@ const CAPABILITIES: CapabilityItem[] = [
   },
 ];
 
-const METHOD_FLOW_STEPS = [
-  {
-    number: "01",
-    title: "Premier échange",
-    body: "Un contact initial, sans jargon ni engagement. On échange librement pour comprendre le contexte de votre entreprise.",
-  },
-  {
-    number: "02",
-    title: "Comprendre la problématique",
-    body: "On creuse au-delà de la demande initiale pour identifier avec vous ce qui pose vraiment problème.",
-  },
-  {
-    number: "03",
-    title: "Expression du besoin",
-    body: "On formalise ensemble ce qui est attendu : objectifs, contraintes, priorités. Rien n'est figé sans votre accord.",
-  },
-  {
-    number: "04",
-    title: "Cahier des charges & proposition",
-    body: "Un cadrage écrit du périmètre, des délais et du budget. Vous validez avant qu'on démarre quoi que ce soit.",
-  },
-  {
-    number: "05",
-    title: "Réalisation",
-    body: "Construction de la solution — site, automatisation, outil métier ou tout autre besoin — avec des points d'étape réguliers pour vous tenir informé.",
-  },
-  {
-    number: "06",
-    title: "Test & mise en place",
-    body: "Vous testez, on ajuste ensemble ce qui doit l'être, puis on met la solution en place.",
-  },
-  {
-    number: "07",
-    title: "Accompagnement & évolution",
-    body: "Un suivi dans la durée. Si vos besoins évoluent, la solution peut évoluer avec eux.",
-  },
-] as const;
-
 export default function AProposPage() {
   return (
     <main>
@@ -172,7 +134,7 @@ export default function AProposPage() {
         </div>
       </section>
 
-      <section className={`relative overflow-hidden bg-navy ${SECTION_PADDING}`}>
+      <section id="methode" className={`relative overflow-hidden bg-navy ${SECTION_PADDING}`}>
         <TopographicContours side="right" />
         <div className="relative max-w-[640px]">
           <Eyebrow variant="onDark">Notre méthode</Eyebrow>
@@ -185,7 +147,7 @@ export default function AProposPage() {
           </p>
         </div>
         <div className="relative mt-10 md:mt-14">
-          <MethodFlow steps={METHOD_FLOW_STEPS} theme="dark" />
+          <MethodFlow steps={METHOD_STEPS} theme="dark" />
         </div>
       </section>
 
