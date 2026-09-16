@@ -26,7 +26,7 @@ export function ProofCases() {
           </p>
           <h2 className="font-heading text-[34px] font-extrabold tracking-[-0.045em] text-white sm:text-[40px] md:text-[50px] md:tracking-[-0.055em]">
             Trois exemples,
-            <br className="hidden sm:block" /> trois transformations.
+            <br className="hidden md:block" /> trois transformations.
           </h2>
         </div>
       </div>
