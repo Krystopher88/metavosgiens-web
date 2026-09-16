@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   },
 };
 
-// Street address deliberately omitted (it's a home-based micro-entreprise address) —
-// city/postal/region is enough for local-SEO signals without surfacing it more
-// prominently than the legal notice already requires.
+// Full street address, per Christopher's explicit choice to prioritize local
+// visibility (Google Local Pack / Maps / Knowledge Graph) over keeping it less
+// prominent than the legal notice already requires.
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -61,6 +61,7 @@ const organizationJsonLd = {
   email: SITE.contactEmail,
   address: {
     "@type": "PostalAddress",
+    streetAddress: "13 rue du Creux Challot",
     addressLocality: "Bleurville",
     postalCode: "88410",
     addressRegion: "Vosges",
