@@ -24,7 +24,7 @@ export function ProofCases() {
     <section id="proof" className={`bg-navy ${SECTION_PADDING}`}>
       <div className="mb-8 flex items-end justify-between gap-10 md:mb-[38px]">
         <div>
-          <Eyebrow>Des problèmes réels. Des solutions concrètes.</Eyebrow>
+          <Eyebrow variant="onDark">Des problèmes réels. Des solutions concrètes.</Eyebrow>
           <h2 className={`${SECTION_TITLE} text-white`}>
             Trois exemples,
             <br className="hidden md:block" /> trois transformations.
@@ -37,7 +37,7 @@ export function ProofCases() {
             key={proofCase.kicker}
             className="flex min-h-[300px] flex-col rounded-[15px] bg-white p-[27px] text-text"
           >
-            <p className="text-[10px] font-bold uppercase tracking-[0.09em] text-[#6c7b82]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.09em] text-[#69777e]">
               {proofCase.kicker}
             </p>
             <h3 className="my-4 font-heading text-[26px] font-extrabold tracking-[-0.04em]">

@@ -36,19 +36,19 @@ export default function AProposPage() {
         </h2>
         <div className="mt-5 flex flex-col gap-6">
           <div className="border-t border-[#dde2dd] pt-4">
-            <p className="text-[11px] font-bold tracking-[0.08em] text-[#82918a]">01</p>
+            <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">01</p>
             <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Comprendre</h3>
             <p className="mt-1 text-[#5a6870]">
               On commence par comprendre votre entreprise et ce qui vous pose problème.
             </p>
           </div>
           <div className="border-t border-[#dde2dd] pt-4">
-            <p className="text-[11px] font-bold tracking-[0.08em] text-[#82918a]">02</p>
+            <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">02</p>
             <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Trouver</h3>
             <p className="mt-1 text-[#5a6870]">On cherche ce qui peut réellement vous aider.</p>
           </div>
           <div className="border-t border-[#dde2dd] pt-4">
-            <p className="text-[11px] font-bold tracking-[0.08em] text-[#82918a]">03</p>
+            <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">03</p>
             <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Construire</h3>
             <p className="mt-1 text-[#5a6870]">
               Nous mettons en place la solution adaptée et nous vous accompagnons ensuite.

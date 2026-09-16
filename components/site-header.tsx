@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 
@@ -35,9 +36,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-30 bg-[rgba(247,246,242,0.92)] backdrop-blur-[14px]">
       <div className="flex items-center justify-between px-5 py-[15px] md:px-7 md:py-[18px]">
-        <div className="text-[20px]">
+        <Link
+          href="/"
+          aria-label="MetaVosgiens, retour à l'accueil"
+          className="rounded-sm text-[20px] outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+        >
           <Logo variant="onLight" />
-        </div>
+        </Link>
 
         <nav
           className="hidden items-center gap-7 text-sm md:flex"

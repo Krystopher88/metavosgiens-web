@@ -39,7 +39,7 @@ export function Method() {
       <div className="flex flex-col gap-7">
         {METHOD_STEPS.map((step) => (
           <div key={step.number} className="border-t border-[#cfd5d0] pt-5">
-            <span className="text-[11px] font-bold tracking-[0.08em] text-[#82918a]">
+            <span className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">
               {step.number}
             </span>
             <h3 className="mt-3 mb-2 font-heading text-[22px] font-extrabold text-text md:text-[25px]">

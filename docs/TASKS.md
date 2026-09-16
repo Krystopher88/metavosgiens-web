@@ -61,16 +61,16 @@
 
 ## Phase 6 — Qualité
 
-- [ ] Responsive mobile
-- [ ] Navigation clavier
-- [ ] Focus visibles
-- [ ] Contrastes
-- [ ] prefers-reduced-motion
-- [ ] alt text
-- [ ] tests des overlays
-- [ ] test formulaire
-- [ ] build production
-- [ ] audit performance
+- [x] Responsive mobile (vérifié en navigateur réel pour la homepage et le header ; les 4 pages secondaires vérifiées par revue de code — outils de redimensionnement du navigateur en panne pour cette session, voir journal de décisions)
+- [x] Navigation clavier (parcours Tab complet vérifié, logo désormais un vrai lien vers l'accueil — trouvé manquant pendant l'audit)
+- [x] Focus visibles (anneau de focus corrigé sur le footer, invisible sur fond navy avec la couleur par défaut)
+- [x] Contrastes (audit WCAG AA complet, 5 couleurs texte sous le seuil 4.5:1 trouvées et corrigées — voir journal de décisions)
+- [x] prefers-reduced-motion (glissement de l'overlay des portes ne respectait pas la préférence, corrigé dans `components/ui/sheet.tsx`)
+- [x] alt text (images décoratives correctement `alt=""` + `aria-hidden`, tous les SVG audités)
+- [x] tests des overlays (régression testée après tous les changements de la Phase 6)
+- [x] test formulaire (validation email/URL invalides testée, en plus de l'envoi réel déjà vérifié en Phase 4)
+- [x] build production (vérifié)
+- [x] audit performance (Lighthouse : Accessibilité/Bonnes pratiques/SEO 100/100, CLS 0.00, aucun problème LCP signalé — mesuré en local sans throttling réseau, à revérifier une fois déployé en conditions réelles)
 
 ## Règle de travail
 
