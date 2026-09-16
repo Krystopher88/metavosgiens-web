@@ -1,5 +1,7 @@
+name: metavosgiens
+
 services:
-  app:
+  nextjs:
     build:
       context: .
       target: runner

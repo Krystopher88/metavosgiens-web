@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+cd "$(dirname "$0")"
+
 ENVIRONMENT="${1:-}"
 shift || true
 
@@ -11,9 +13,15 @@ fi
 
 BUILD_FLAG=""
 for arg in "$@"; do
-  if [[ "$arg" == "--build" ]]; then
-    BUILD_FLAG="--build"
-  fi
+  case "$arg" in
+    --build)
+      BUILD_FLAG="--build"
+      ;;
+    *)
+      echo "Argument inconnu : $arg" >&2
+      exit 1
+      ;;
+  esac
 done
 
 COMPOSE_FILE="docker-compose.${ENVIRONMENT}.yml"

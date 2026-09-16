@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MetaVosgiens by KRYST
 
-## Getting Started
+Site institutionnel MetaVosgiens. Next.js (App Router) + TypeScript + Tailwind CSS v4 + shadcn/ui (Radix UI).
 
-First, run the development server:
+## Prérequis
+
+- Docker et Docker Compose
+- Node.js 24+ (uniquement si vous développez hors conteneur)
+
+## Développement
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
+./deploy.sh dev --build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site est servi sur http://localhost:3000 par défaut (un port différent est utilisé automatiquement s'il est déjà occupé — le log du conteneur indique lequel).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Déploiement conteneurisé, prévu pour rejoindre le réseau Docker externe `proxy_network` d'un reverse proxy Caddy déjà en place sur le VPS cible.
 
-## Learn More
+```bash
+cp .env.example .env.prod.local   # puis renseigner les vraies valeurs (RESEND_API_KEY, CONTACT_TO_EMAIL)
+./deploy.sh prod --build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Avant tout premier déploiement réel : le `Caddyfile` du proxy VPS doit être mis à jour pour pointer le domaine vers le conteneur `metavosgiens_nextjs` (dépôt `vps-proxy`, à modifier séparément, avec accord explicite — il route encore vers l'ancien projet).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next.js · TypeScript · Tailwind CSS v4 · shadcn/ui (Radix UI) · Docker

@@ -1,3 +1,7 @@
 .next
 node_modules
 public
+docs
+.superpowers
+CLAUDE.md
+next-env.d.ts

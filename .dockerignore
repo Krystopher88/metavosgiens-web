@@ -2,5 +2,7 @@ node_modules
 .next
 .git
 docs
-*.md
+**/*.md
 .env*.local
+.superpowers
+tsconfig.tsbuildinfo
