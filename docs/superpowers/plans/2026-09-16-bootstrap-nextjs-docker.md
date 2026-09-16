@@ -20,6 +20,7 @@
 - Mobile-first, accessibilité clavier, `prefers-reduced-motion`, performance (`CLAUDE.md` racine projet, règle 8 ; `ARCHITECTURE.md` §Performance).
 - Le build de production doit passer avant de considérer une phase terminée (`TASKS.md`, « Règle de travail »).
 - Docker : **un seul Dockerfile multi-stage** sert le dev ET la prod (décision validée avec Christopher).
+- shadcn/ui : bibliothèque de primitives **Radix UI** (`-b radix` à l'init, décision de Christopher, 2026-09-16) — s'applique à tout composant shadcn ajouté dans ce projet, pas seulement au Button de la Task 3.
 - Déploiement cible : VPS existant, proxy Caddy déjà en place, réseau Docker externe `proxy_network` (observé dans `vps-proxy/docker-compose.yml`). Convention de fichiers d'env observée : `.env.prod.local` sur le VPS (`vps-proxy/DEPLOY.md`).
 - **Ne jamais modifier `~/Bureau/KrystdevCom/Krytdev/Projects/vps-proxy` (Caddyfile compris) sans l'accord explicite de Christopher.** Ce plan ne touche pas à ce dépôt.
 - Les dossiers `Projects/MetaVosgiens/` et `Projects/metavosgiens-sites/` sont abandonnés ; ne pas s'y référer, ne pas y toucher.
@@ -230,10 +231,10 @@ git commit -m "feat(design): ajoute les tokens de design system (couleurs, polic
 - [ ] **Step 1: Initialiser shadcn/ui**
 
 ```bash
-npx shadcn@latest init -y --css-variables
+npx shadcn@latest init -y --css-variables -b radix
 ```
 
-`-y`/`--yes` (déjà la valeur par défaut de la CLI actuelle, passé explicitement pour ne pas dépendre d'un défaut implicite) évite toute invite interactive — nécessaire puisque cette commande s'exécute sans TTY. La couleur de base choisie automatiquement par la CLI n'a pas d'importance : elle est remplacée au Step 2 quoi qu'il arrive. La CLI va écrire/compléter des blocs `:root { ... }` et `.dark { ... }` dans `app/globals.css` (format exact dépendant de la version de la CLI — vérifier après coup).
+`-y`/`--yes` évite toute invite interactive — nécessaire puisque cette commande s'exécute sans TTY. `-b radix` fixe explicitement Radix UI comme bibliothèque de primitives sous-jacente (décision de Christopher, 2026-09-16) : c'est le choix historique de shadcn/ui, le plus documenté, celui que la CLI proposait par défaut avant sa dernière version — sans ce flag, la CLI actuelle invite à choisir entre Base UI (nouveau défaut), Radix UI et React Aria, ce qui bloquerait un agent non interactif. La couleur de base choisie automatiquement par la CLI n'a pas d'importance : elle est remplacée au Step 2 quoi qu'il arrive. La CLI va écrire/compléter des blocs `:root { ... }` et `.dark { ... }` dans `app/globals.css` (format exact dépendant de la version de la CLI — vérifier après coup).
 
 - [ ] **Step 2: Réconcilier les tokens shadcn avec la palette MetaVosgiens**
 
