@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 
+// "/#..." (not "#..."): the footer renders on every page — a bare hash only
+// scrolls within the current page and does nothing on pages other than the
+// homepage, since these sections only exist there.
 const FOOTER_LINKS = [
-  { label: "Accueil", href: "#top" },
-  { label: "À propos", href: "#about" },
-  { label: "Réalisations", href: "#proof" },
-  { label: "Contact", href: "#contact" },
+  { label: "Accueil", href: "/#top" },
+  { label: "À propos", href: "/#about" },
+  { label: "Réalisations", href: "/#proof" },
+  { label: "Contact", href: "/#contact" },
   { label: "Mentions légales", href: "/mentions-legales" },
   { label: "Politique de confidentialité", href: "/politique-confidentialite" },
 ] as const;
@@ -21,25 +24,15 @@ export function SiteFooter() {
         className="mt-8 flex flex-wrap gap-5 text-xs text-[#d5dddf]"
         aria-label="Navigation du pied de page"
       >
-        {FOOTER_LINKS.map((link) =>
-          link.href.startsWith("/") ? (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="rounded-sm outline-none transition-colors hover:text-white focus-visible:ring-3 focus-visible:ring-white/50"
-            >
-              {link.label}
-            </Link>
-          ) : (
-            <a
-              key={link.href}
-              href={link.href}
-              className="rounded-sm outline-none transition-colors hover:text-white focus-visible:ring-3 focus-visible:ring-white/50"
-            >
-              {link.label}
-            </a>
-          ),
-        )}
+        {FOOTER_LINKS.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="rounded-sm outline-none transition-colors hover:text-white focus-visible:ring-3 focus-visible:ring-white/50"
+          >
+            {link.label}
+          </Link>
+        ))}
       </nav>
       <div className="mt-9 border-b border-white/[0.22]" />
     </footer>
