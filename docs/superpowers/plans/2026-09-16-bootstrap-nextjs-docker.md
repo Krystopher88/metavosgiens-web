@@ -230,10 +230,10 @@ git commit -m "feat(design): ajoute les tokens de design system (couleurs, polic
 - [ ] **Step 1: Initialiser shadcn/ui**
 
 ```bash
-npx shadcn@latest init
+npx shadcn@latest init -y --css-variables
 ```
 
-Répondre aux prompts : style par défaut, couleur de base neutre, variables CSS activées (`yes`). La CLI va écrire/compléter des blocs `:root { ... }` et `.dark { ... }` dans `app/globals.css` (format exact dépendant de la version de la CLI — vérifier après coup).
+`-y`/`--yes` (déjà la valeur par défaut de la CLI actuelle, passé explicitement pour ne pas dépendre d'un défaut implicite) évite toute invite interactive — nécessaire puisque cette commande s'exécute sans TTY. La couleur de base choisie automatiquement par la CLI n'a pas d'importance : elle est remplacée au Step 2 quoi qu'il arrive. La CLI va écrire/compléter des blocs `:root { ... }` et `.dark { ... }` dans `app/globals.css` (format exact dépendant de la version de la CLI — vérifier après coup).
 
 - [ ] **Step 2: Réconcilier les tokens shadcn avec la palette MetaVosgiens**
 
