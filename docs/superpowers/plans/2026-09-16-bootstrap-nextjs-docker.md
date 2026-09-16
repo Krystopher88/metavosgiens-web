@@ -318,29 +318,36 @@ public
 
 - [ ] **Step 4: Étendre `eslint.config.mjs` avec `eslint-config-prettier`**
 
-Le scaffold `create-next-app` génère la configuration flat ESLint suivante par défaut :
+Le contenu réel de `eslint.config.mjs` après la Task 1 (Next.js 16.3.5 — inclut `eslint-config-next/typescript`, en plus de `core-web-vitals`, que la documentation consultée avant dispatch ne montrait pas) :
 
 ```js
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
 ]);
 
 export default eslintConfig;
 ```
 
-Ajouter `eslint-config-prettier` pour désactiver les règles de style qui entreraient en conflit avec Prettier :
+Lire le fichier réel avant d'éditer plutôt que de supposer ce contenu exact (il peut avoir légèrement
+changé). Ajouter `eslint-config-prettier` pour désactiver les règles de style en conflit avec Prettier, en
+conservant tout le reste tel quel :
 
 ```js
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 import prettierConfig from "eslint-config-prettier";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
+  ...nextTs,
   prettierConfig,
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
 ]);
