@@ -4,7 +4,6 @@ import { SITE } from "@/lib/content";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { TopographicContours } from "@/components/topographic-contours";
-import { IntroPromises } from "@/components/intro-promises";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
 export const metadata: Metadata = {
@@ -13,6 +12,13 @@ export const metadata: Metadata = {
     "Notre méthode, notre positionnement et notre façon d'accompagner les entreprises vosgiennes, du premier échange à l'évolution de vos outils.",
   alternates: { canonical: "/a-propos" },
 };
+
+const PROMISES = [
+  "Être visible",
+  "Gagner du temps",
+  "Développer votre activité",
+  "Faire évoluer votre façon de travailler",
+] as const;
 
 type CapabilityItem = {
   number: string;
@@ -81,15 +87,27 @@ const PROCESS_STEPS = [
 export default function AProposPage() {
   return (
     <main>
-      <section className={`relative overflow-hidden ${SECTION_PADDING}`}>
-        <div className="relative max-w-[640px]">
+      <section
+        className={`grid grid-cols-1 gap-10 md:grid-cols-[1fr_0.9fr] md:gap-16 ${SECTION_PADDING}`}
+      >
+        <div className="max-w-[640px]">
           <Eyebrow>À propos</Eyebrow>
           <h1 className={`mt-4 leading-[1.05] text-text ${SECTION_TITLE}`}>
             Des solutions sur mesure pour les entreprises vosgiennes.
           </h1>
           <p className="mt-6 text-lg text-[#3c4a54]">{SITE.description}</p>
         </div>
-        <IntroPromises />
+        <div className="relative flex flex-col justify-center gap-5 overflow-hidden py-4">
+          <TopographicContours side="right" />
+          {PROMISES.map((promise) => (
+            <p
+              key={promise}
+              className="relative border-l-[3px] border-green pl-5 font-heading text-[26px] leading-[1.15] font-extrabold text-text md:text-[30px]"
+            >
+              {promise}
+            </p>
+          ))}
+        </div>
       </section>
 
       <section className={`relative overflow-hidden bg-[#eef0ec] ${SECTION_PADDING}`}>
