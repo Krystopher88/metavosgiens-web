@@ -14,7 +14,7 @@ cp .env.example .env.local
 ./deploy.sh dev --build
 ```
 
-Le site est servi sur http://localhost:3000 par défaut (un port différent est utilisé automatiquement s'il est déjà occupé — le log du conteneur indique lequel).
+Le site est servi sur http://localhost:3000. Ce port est fixé dans `docker-compose.dev.yml` : s'il est déjà occupé par un autre programme, `docker compose up` échoue avec une erreur claire plutôt que de basculer sur un autre port automatiquement — dans ce cas, libérer le port 3000 ou modifier temporairement le mapping `"3000:3000"` du fichier compose.
 
 ## Production
 
