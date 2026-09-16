@@ -35,10 +35,10 @@
 
 ## Phase 3 — Pages
 
-- [ ] À propos
-- [ ] Contact
-- [ ] Mentions légales
-- [ ] Politique de confidentialité
+- [x] À propos
+- [x] Contact (coquille statique — le vrai formulaire est en Phase 4)
+- [ ] Mentions légales (bloqué : en attente des infos légales réelles — raison sociale/SIRET, adresse, responsable de publication, hébergeur)
+- [ ] Politique de confidentialité (bloqué : en attente de confirmation du périmètre — données collectées via le futur formulaire, contact RGPD, outils tiers)
 
 ## Phase 4 — Formulaire
 
