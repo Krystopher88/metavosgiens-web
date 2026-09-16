@@ -46,7 +46,7 @@
 - [x] Validation (Zod, client + serveur)
 - [x] Messages d'erreur (par champ, valeurs saisies conservées après échec)
 - [x] État de succès
-- [x] Envoi email (Brevo — nécessite `BREVO_API_KEY`/`BREVO_FROM_EMAIL` réels pour fonctionner en prod, expéditeur à vérifier auprès de Brevo)
+- [x] Envoi email (Brevo, expéditeur `contact@krystdev.com` vérifié, testé en conditions réelles — email reçu en boîte de réception. En prod, l'IP du serveur de déploiement devra être autorisée dans Brevo, sécurité → IPs autorisées)
 - [x] Protection anti-spam proportionnée (honeypot)
 
 ## Phase 5 — SEO

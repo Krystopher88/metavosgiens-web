@@ -87,7 +87,8 @@ export async function submitContactForm(
       textContent: textBody,
       htmlContent: `<pre style="font-family: inherit; white-space: pre-wrap;">${escapeHtml(textBody)}</pre>`,
     });
-  } catch {
+  } catch (error) {
+    console.error("Brevo send failed:", error);
     return {
       status: "error",
       values,
