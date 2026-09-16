@@ -4,6 +4,7 @@ import { SITE } from "@/lib/content";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { TopographicContours } from "@/components/topographic-contours";
+import { IntroPromises } from "@/components/intro-promises";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
 export const metadata: Metadata = {
@@ -12,13 +13,6 @@ export const metadata: Metadata = {
     "Notre méthode, notre positionnement et notre façon d'accompagner les entreprises vosgiennes, du premier échange à l'évolution de vos outils.",
   alternates: { canonical: "/a-propos" },
 };
-
-const PROMISES = [
-  "Être visible",
-  "Gagner du temps",
-  "Développer votre activité",
-  "Faire évoluer votre façon de travailler",
-] as const;
 
 type CapabilityItem = {
   number: string;
@@ -88,24 +82,14 @@ export default function AProposPage() {
   return (
     <main>
       <section className={`relative overflow-hidden ${SECTION_PADDING}`}>
-        <TopographicContours side="right" />
         <div className="relative max-w-[640px]">
           <Eyebrow>À propos</Eyebrow>
           <h1 className={`mt-4 leading-[1.05] text-text ${SECTION_TITLE}`}>
             Des solutions sur mesure pour les entreprises vosgiennes.
           </h1>
           <p className="mt-6 text-lg text-[#3c4a54]">{SITE.description}</p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            {PROMISES.map((promise) => (
-              <span
-                key={promise}
-                className="rounded-[14px] border border-[#c9d1cb] bg-white px-4 py-2 text-sm font-bold text-text"
-              >
-                {promise}
-              </span>
-            ))}
-          </div>
         </div>
+        <IntroPromises />
       </section>
 
       <section className={`relative overflow-hidden bg-[#eef0ec] ${SECTION_PADDING}`}>
