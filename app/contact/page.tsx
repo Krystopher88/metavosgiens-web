@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { SITE } from "@/lib/content";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
-  title: `Contact — ${SITE.name}`,
-  description: SITE.description,
+  title: "Contact",
+  description:
+    "Parlez-nous de votre projet. Premier échange gratuit, sans engagement, sans cahier des charges.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

@@ -51,12 +51,13 @@
 
 ## Phase 5 — SEO
 
-- [ ] metadata
-- [ ] Open Graph
-- [ ] sitemap.xml
-- [ ] robots.txt
-- [ ] données structurées pertinentes
-- [ ] vérification canonical
+- [x] metadata (title template + description par page, plus génériques dupliquées)
+- [x] Open Graph (image générée dynamiquement via `app/opengraph-image.tsx`, Twitter card)
+- [x] sitemap.xml (`app/sitemap.ts`)
+- [x] robots.txt (`app/robots.ts` — bots IA explicitement autorisés : GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.)
+- [x] données structurées pertinentes (`ProfessionalService` dans le layout, `FAQPage` sur la section des 4 portes — 12 questions/réponses)
+- [x] vérification canonical (chaque page déclare son URL canonique)
+- [x] `llms.txt` ajouté (hors périmètre initial — données 2026 montrent qu'il n'a quasiment aucun effet réel sur les crawlers IA majeurs, ajouté sans coût ni fausse promesse)
 
 ## Phase 6 — Qualité
 

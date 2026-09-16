@@ -1,0 +1,18 @@
+# MetaVosgiens by KRYST
+
+> Solutions sur mesure pour aider les entreprises vosgiennes à être visibles, gagner du temps, développer leur activité et faire évoluer leur façon de travailler.
+
+MetaVosgiens conçoit des solutions numériques sur mesure pour les artisans, commerces, indépendants, professions libérales, petites PME, entreprises B2B et structures industrielles des Vosges (France). Premier échange gratuit, sans engagement.
+
+## Pages
+
+- [Accueil](https://metavosgiens.com/): positionnement, quatre domaines d'intervention (visibilité, gain de temps, développement, évolution des outils), méthode (comprendre, trouver, construire), exemples de projets.
+- [À propos](https://metavosgiens.com/a-propos): méthode, public visé, déroulé d'une collaboration.
+- [Contact](https://metavosgiens.com/contact): formulaire de premier contact.
+- [Mentions légales](https://metavosgiens.com/mentions-legales)
+- [Politique de confidentialité](https://metavosgiens.com/politique-confidentialite)
+
+## Notes
+
+- Structure statique, aucune base de données, aucun compte utilisateur.
+- Zone d'intervention : département des Vosges, France.

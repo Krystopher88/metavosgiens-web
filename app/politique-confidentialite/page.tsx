@@ -3,8 +3,9 @@ import { SITE } from "@/lib/content";
 import { Eyebrow } from "@/components/eyebrow";
 
 export const metadata: Metadata = {
-  title: `Politique de confidentialité — ${SITE.name}`,
-  description: SITE.description,
+  title: "Politique de confidentialité",
+  description: `Politique de confidentialité et protection des données du site ${SITE.name} by KRYST.`,
+  alternates: { canonical: "/politique-confidentialite" },
 };
 
 export default function PolitiqueConfidentialitePage() {

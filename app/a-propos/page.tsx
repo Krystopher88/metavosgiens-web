@@ -4,8 +4,10 @@ import { Eyebrow } from "@/components/eyebrow";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 
 export const metadata: Metadata = {
-  title: `À propos — ${SITE.name}`,
-  description: SITE.description,
+  title: "À propos",
+  description:
+    "Notre méthode, notre positionnement et notre façon d'accompagner les entreprises vosgiennes, du premier échange à l'évolution de vos outils.",
+  alternates: { canonical: "/a-propos" },
 };
 
 export default function AProposPage() {

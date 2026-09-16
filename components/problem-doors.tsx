@@ -83,6 +83,24 @@ const DOORS: readonly Door[] = [
   },
 ];
 
+// The 4 doors are already written as qualifying questions + one answer each — a
+// natural, non-invented source for FAQPage structured data (each question in a
+// door shares that door's answer, since it genuinely answers all three).
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: DOORS.flatMap((door) =>
+    door.questions.map((question) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: door.description,
+      },
+    })),
+  ),
+};
+
 export function ProblemDoors() {
   const [openKey, setOpenKey] = useState<Door["key"] | null>(null);
   const activeDoor = DOORS.find((door) => door.key === openKey) ?? null;
@@ -103,6 +121,10 @@ export function ProblemDoors() {
 
   return (
     <section className={SECTION_PADDING}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="mb-8 flex flex-col items-start gap-4 md:mb-[38px] md:flex-row md:items-end md:justify-between md:gap-10">
         <div>
           <Eyebrow>Quatre portes, une même ambition</Eyebrow>

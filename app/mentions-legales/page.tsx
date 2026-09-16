@@ -3,8 +3,9 @@ import { SITE } from "@/lib/content";
 import { Eyebrow } from "@/components/eyebrow";
 
 export const metadata: Metadata = {
-  title: `Mentions légales — ${SITE.name}`,
-  description: SITE.description,
+  title: "Mentions légales",
+  description: `Mentions légales du site ${SITE.name} by KRYST.`,
+  alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegalesPage() {

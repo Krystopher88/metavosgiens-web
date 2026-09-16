@@ -18,15 +18,68 @@ const headingFont = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const defaultTitle = `${SITE.name} by KRYST — ${SITE.tagline}`;
+
 export const metadata: Metadata = {
-  title: `${SITE.name} by KRYST — ${SITE.tagline}`,
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: defaultTitle,
+    template: `%s — ${SITE.name}`,
+  },
   description: SITE.description,
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: SITE.url,
+    siteName: SITE.name,
+    title: defaultTitle,
+    description: SITE.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: SITE.description,
+  },
+};
+
+// Street address deliberately omitted (it's a home-based micro-entreprise address) —
+// city/postal/region is enough for local-SEO signals without surfacing it more
+// prominently than the legal notice already requires.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: `${SITE.name} by KRYST`,
+  description: SITE.description,
+  url: SITE.url,
+  email: SITE.contactEmail,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bleurville",
+    postalCode: "88410",
+    addressRegion: "Vosges",
+    addressCountry: "FR",
+  },
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Vosges",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr" className={`${bodyFont.variable} ${headingFont.variable}`}>
       <body id="top">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <SiteHeader />
         {children}
         <SiteFooter />
