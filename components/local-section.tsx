@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { TopographicContours } from "@/components/topographic-contours";
 
 export function LocalSection() {
@@ -8,9 +9,16 @@ export function LocalSection() {
     >
       <div
         aria-hidden="true"
-        className="relative min-h-[280px] overflow-hidden rounded-[18px] bg-[#dfe5df] md:min-h-[350px]"
+        className="relative min-h-[280px] overflow-hidden rounded-[18px] md:min-h-[350px]"
       >
-        <div className="absolute inset-[35%_-10%_-12%_-10%] [background:linear-gradient(165deg,#a9b8ad,#466b52)] [clip-path:polygon(0_65%,10%_48%,20%_59%,37%_35%,53%_60%,68%_30%,83%_52%,100%_40%,100%_100%,0_100%)]" />
+        <Image
+          src="/images/local-vosges.jpg"
+          alt=""
+          fill
+          sizes="(min-width: 768px) 45vw, 100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 [background:linear-gradient(165deg,rgba(23,50,77,0.05)_0%,rgba(23,50,77,0.3)_100%)]" />
         <TopographicContours side="left" />
       </div>
       <div>
