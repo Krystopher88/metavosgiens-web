@@ -22,16 +22,16 @@
 
 ## Phase 2 — Homepage
 
-- [ ] Header desktop
-- [ ] Navigation mobile
-- [ ] Hero
-- [ ] Quatre portes
-- [ ] Overlay des quatre portes
-- [ ] Section preuves
-- [ ] Méthode
-- [ ] Proximité
-- [ ] Contact CTA
-- [ ] Footer
+- [x] Header desktop
+- [ ] Navigation mobile (desktop uniquement pour l'instant, décision explicite de Christopher)
+- [x] Hero
+- [x] Quatre portes
+- [x] Overlay des quatre portes
+- [x] Section preuves
+- [x] Méthode
+- [x] Proximité
+- [x] Contact CTA
+- [x] Footer
 
 ## Phase 3 — Pages
 
