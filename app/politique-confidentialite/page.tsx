@@ -76,8 +76,8 @@ export default function PolitiqueConfidentialitePage() {
           <p className="mt-2">
             Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification,
             d&apos;effacement, d&apos;opposition, de limitation et de portabilité sur vos données.
-            Pour les exercer, contactez-nous à {SITE.contactEmail}. Vous pouvez également
-            introduire une réclamation auprès de la CNIL.
+            Pour les exercer, contactez-nous à {SITE.contactEmail}. Vous pouvez également introduire
+            une réclamation auprès de la CNIL.
           </p>
         </section>
 
