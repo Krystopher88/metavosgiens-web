@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { SITE } from "@/lib/content";
 
 export default function Home() {
   return (
-    <main className="flex min-h-svh items-center justify-center">
-      <Button>Parler de mon besoin</Button>
+    <main className="mx-auto max-w-3xl px-6 py-24">
+      <h1>{SITE.tagline}</h1>
     </main>
   );
 }
