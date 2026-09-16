@@ -4,6 +4,7 @@ import { SITE } from "@/lib/content";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { TopographicContours } from "@/components/topographic-contours";
+import { MethodFlow } from "@/components/method-flow";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
 export const metadata: Metadata = {
@@ -79,6 +80,44 @@ const CAPABILITIES: CapabilityItem[] = [
   },
 ];
 
+const METHOD_FLOW_STEPS = [
+  {
+    number: "01",
+    title: "Premier échange",
+    body: "Un contact initial, sans jargon ni engagement. On échange librement pour comprendre le contexte de votre entreprise.",
+  },
+  {
+    number: "02",
+    title: "Comprendre la problématique",
+    body: "On creuse au-delà de la demande initiale pour identifier avec vous ce qui pose vraiment problème.",
+  },
+  {
+    number: "03",
+    title: "Expression du besoin",
+    body: "On formalise ensemble ce qui est attendu : objectifs, contraintes, priorités. Rien n'est figé sans votre accord.",
+  },
+  {
+    number: "04",
+    title: "Cahier des charges & proposition",
+    body: "Un cadrage écrit du périmètre, des délais et du budget. Vous validez avant qu'on démarre quoi que ce soit.",
+  },
+  {
+    number: "05",
+    title: "Réalisation",
+    body: "Construction de la solution — site, automatisation, outil métier ou tout autre besoin — avec des points d'étape réguliers pour vous tenir informé.",
+  },
+  {
+    number: "06",
+    title: "Test & mise en place",
+    body: "Vous testez, on ajuste ensemble ce qui doit l'être, puis on met la solution en place.",
+  },
+  {
+    number: "07",
+    title: "Accompagnement & évolution",
+    body: "Un suivi dans la durée. Si vos besoins évoluent, la solution peut évoluer avec eux.",
+  },
+] as const;
+
 const PROCESS_STEPS = [
   { number: "01", title: "Premier échange", body: "Gratuit, sans engagement." },
   {
@@ -148,32 +187,19 @@ export default function AProposPage() {
         </div>
       </section>
 
-      <section className={SECTION_PADDING}>
-        <div className="mx-auto max-w-[640px]">
+      <section className={`relative overflow-hidden ${SECTION_PADDING}`}>
+        <TopographicContours side="right" />
+        <div className="relative max-w-[640px]">
           <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
             Notre méthode
           </h2>
-          <div className="mt-5 flex flex-col gap-6">
-            <div className="border-t border-[#dde2dd] pt-4">
-              <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">01</p>
-              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Comprendre</h3>
-              <p className="mt-1 text-[#5a6870]">
-                On commence par comprendre votre entreprise et ce qui vous pose problème.
-              </p>
-            </div>
-            <div className="border-t border-[#dde2dd] pt-4">
-              <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">02</p>
-              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Trouver</h3>
-              <p className="mt-1 text-[#5a6870]">On cherche ce qui peut réellement vous aider.</p>
-            </div>
-            <div className="border-t border-[#dde2dd] pt-4">
-              <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">03</p>
-              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">Construire</h3>
-              <p className="mt-1 text-[#5a6870]">
-                Nous mettons en place la solution adaptée et nous vous accompagnons ensuite.
-              </p>
-            </div>
-          </div>
+          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
+            Que ce soit pour un site, une automatisation ou un outil métier, la démarche reste la
+            même : on comprend, on cadre ensemble, on construit, on accompagne.
+          </p>
+        </div>
+        <div className="relative mt-10 md:mt-14">
+          <MethodFlow steps={METHOD_FLOW_STEPS} />
         </div>
       </section>
 
