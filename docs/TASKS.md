@@ -37,8 +37,8 @@
 
 - [x] À propos
 - [x] Contact (coquille statique — le vrai formulaire est en Phase 4)
-- [ ] Mentions légales (bloqué : en attente des infos légales réelles — raison sociale/SIRET, adresse, responsable de publication, hébergeur)
-- [ ] Politique de confidentialité (bloqué : en attente de confirmation du périmètre — données collectées via le futur formulaire, contact RGPD, outils tiers)
+- [x] Mentions légales (infos réelles reprises du site en production actuel)
+- [x] Politique de confidentialité (réécrite pour ce site — la version en ligne décrit l'ancienne plateforme Symfony avec comptes clients, paiements, chatbot IA, intégrations Meta ; non applicable ici)
 
 ## Phase 4 — Formulaire
 
