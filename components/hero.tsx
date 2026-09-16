@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { TopographicContours } from "@/components/topographic-contours";
 
@@ -51,9 +52,17 @@ export function Hero() {
       </div>
       <div
         aria-hidden="true"
-        className="relative min-h-[320px] overflow-hidden rounded-bl-[26px] bg-[linear-gradient(135deg,#e8ebe7_0%,#d8dfda_44%,#97aa9e_100%)] md:min-h-[590px]"
+        className="relative min-h-[320px] overflow-hidden rounded-bl-[26px] md:min-h-[590px]"
       >
-        <div className="absolute inset-[20%_-5%_-8%_5%] saturate-[.7] [clip-path:polygon(0_55%,9%_48%,18%_60%,32%_36%,48%_55%,61%_24%,77%_49%,90%_34%,100%_58%,100%_100%,0_100%)] [background:linear-gradient(160deg,#cfd8d1_2%,#708477_40%,#294839_75%)]" />
+        <Image
+          src="/images/hero-vosges.jpg"
+          alt=""
+          fill
+          priority
+          sizes="(min-width: 768px) 55vw, 100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 [background:linear-gradient(160deg,rgba(23,50,77,0.05)_0%,rgba(23,50,77,0.15)_55%,rgba(23,50,77,0.55)_100%)]" />
         <TopographicContours side="right" />
         <div className="absolute right-7 bottom-7 text-[10px] tracking-[0.12em] text-white">
           VOSGES
