@@ -24,8 +24,8 @@ const METHOD_STEPS: MethodStep[] = [
 
 export function Method() {
   return (
-    <section className="grid grid-cols-1 gap-10 px-5 py-16 md:grid-cols-[0.95fr_1.05fr] md:gap-20 md:px-7 md:py-[100px]">
-      <div>
+    <section className="grid grid-cols-1 gap-10 px-5 py-16 md:grid-cols-[0.95fr_1.05fr] md:items-center md:gap-20 md:px-7 md:py-[100px]">
+      <div className="md:sticky md:top-[110px]">
         <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
           Une approche simple
         </p>
