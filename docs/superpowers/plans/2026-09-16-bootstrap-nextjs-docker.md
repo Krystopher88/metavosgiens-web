@@ -535,7 +535,7 @@ git commit -m "feat(routes): pose l'arborescence des 5 pages prévues par le PRD
 - Create: `.dockerignore`
 
 **Interfaces:**
-- Produces: image Docker avec 4 stages (`base`, `dev`, `builder`, `runner`), sélectionnables via `--target`.
+- Produces: image Docker avec 5 stages (`base`, `dev`, `deps`, `builder`, `runner`), sélectionnables via `--target`.
 
 - [ ] **Step 1: Activer la sortie standalone dans `next.config.ts`**
 
