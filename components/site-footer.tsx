@@ -3,10 +3,11 @@ import { Logo } from "@/components/logo";
 
 // "/#..." (not "#..."): the footer renders on every page — a bare hash only
 // scrolls within the current page and does nothing on pages other than the
-// homepage, since these sections only exist there.
+// homepage, since these sections only exist there. "À propos" is the real
+// /a-propos page, not a homepage anchor.
 const FOOTER_LINKS = [
   { label: "Accueil", href: "/#top" },
-  { label: "À propos", href: "/#about" },
+  { label: "À propos", href: "/a-propos" },
   { label: "Réalisations", href: "/#proof" },
   { label: "Contact", href: "/#contact" },
   { label: "Mentions légales", href: "/mentions-legales" },

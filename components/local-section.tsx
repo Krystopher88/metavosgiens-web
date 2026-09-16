@@ -7,7 +7,7 @@ import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 export function LocalSection() {
   return (
     <section
-      id="about"
+      id="proximite"
       className={`relative grid grid-cols-1 items-center gap-10 overflow-hidden bg-[#eef0ec] md:grid-cols-[0.95fr_1.05fr] md:gap-20 ${SECTION_PADDING}`}
     >
       <div

@@ -20,7 +20,7 @@ export function Hero() {
         </p>
         <div className="mt-7 flex flex-wrap items-center gap-[22px]">
           <ContactCtaButton />
-          <ArrowLink href="#about">Découvrir notre approche</ArrowLink>
+          <ArrowLink href="#method">Découvrir notre approche</ArrowLink>
         </div>
       </div>
       <div

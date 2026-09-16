@@ -28,6 +28,7 @@ const METHOD_STEPS: MethodStep[] = [
 export function Method() {
   return (
     <section
+      id="method"
       className={`grid grid-cols-1 gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center md:gap-20 ${SECTION_PADDING}`}
     >
       <div className="md:sticky md:top-[110px]">

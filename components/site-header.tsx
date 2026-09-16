@@ -7,9 +7,12 @@ import { ContactCtaButton } from "@/components/contact-cta-button";
 
 // "/#..." (not "#..."): the header renders on every page — a bare hash only
 // scrolls within the current page and does nothing on pages other than the
-// homepage, since these sections only exist there.
+// homepage, since these sections only exist there. "À propos" is the real
+// /a-propos page, not a homepage anchor — it was wrongly wired to the
+// homepage's "Proximité" section (id="about" was a leftover anchor name from
+// before /a-propos existed as its own page).
 const NAV_LINKS = [
-  { label: "À propos", href: "/#about" },
+  { label: "À propos", href: "/a-propos" },
   { label: "Réalisations", href: "/#proof" },
   { label: "Contact", href: "/#contact" },
 ] as const;
