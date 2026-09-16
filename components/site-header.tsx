@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { ContactCtaButton } from "@/components/contact-cta-button";
+import { handleInPageNavClick } from "@/lib/nav-scroll";
 
 // "/#..." (not "#..."): the header renders on every page — a bare hash only
 // scrolls within the current page and does nothing on pages other than the
@@ -44,6 +45,7 @@ export function SiteHeader() {
       <div className="flex items-center justify-between px-5 py-[15px] md:px-7 md:py-[18px]">
         <Link
           href="/#top"
+          onClick={(event) => handleInPageNavClick(event, "/#top")}
           aria-label="MetaVosgiens, retour à l'accueil"
           className="rounded-sm text-[20px] outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
@@ -55,7 +57,12 @@ export function SiteHeader() {
           aria-label="Navigation principale"
         >
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className={LINK_CLASS}>
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={(event) => handleInPageNavClick(event, link.href)}
+              className={LINK_CLASS}
+            >
               {link.label}
             </Link>
           ))}
@@ -97,7 +104,15 @@ export function SiteHeader() {
           className="flex flex-col gap-[18px] border-b border-[#dde2dd] bg-[rgba(247,246,242,0.98)] px-5 pt-2 pb-[26px] md:hidden"
         >
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} onClick={closeMenu} className={LINK_CLASS}>
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={(event) => {
+                handleInPageNavClick(event, link.href);
+                closeMenu();
+              }}
+              className={LINK_CLASS}
+            >
               {link.label}
             </Link>
           ))}

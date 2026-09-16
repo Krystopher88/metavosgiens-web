@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowIcon } from "@/components/arrow-icon";
+import { handleInPageNavClick } from "@/lib/nav-scroll";
 
 type ContactCtaButtonProps = {
   href?: string;
@@ -26,7 +29,13 @@ export function ContactCtaButton({
   return (
     <Button asChild className={className}>
       {href.startsWith("/") ? (
-        <Link href={href} onClick={onClick}>
+        <Link
+          href={href}
+          onClick={(event) => {
+            handleInPageNavClick(event, href);
+            onClick?.();
+          }}
+        >
           {label}
         </Link>
       ) : (

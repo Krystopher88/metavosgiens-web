@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { SITE } from "@/lib/content";
+import { handleInPageNavClick } from "@/lib/nav-scroll";
 
 // "/#..." (not "#..."): the footer renders on every page — a bare hash only
 // scrolls within the current page and does nothing on pages other than the
@@ -47,7 +50,12 @@ export function SiteFooter() {
         >
           <p className={LABEL_CLASS}>Navigation</p>
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className={LINK_CLASS}>
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={(event) => handleInPageNavClick(event, link.href)}
+              className={LINK_CLASS}
+            >
               {link.label}
             </Link>
           ))}
@@ -73,7 +81,12 @@ export function SiteFooter() {
           </p>
           <nav className="flex flex-wrap gap-5" aria-label="Navigation légale">
             {LEGAL_LINKS.map((link) => (
-              <Link key={link.href} href={link.href} className={LINK_CLASS}>
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={(event) => handleInPageNavClick(event, link.href)}
+                className={LINK_CLASS}
+              >
                 {link.label}
               </Link>
             ))}
