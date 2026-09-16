@@ -70,7 +70,7 @@
 - [x] tests des overlays (régression testée après tous les changements de la Phase 6)
 - [x] test formulaire (validation email/URL invalides testée, en plus de l'envoi réel déjà vérifié en Phase 4)
 - [x] build production (vérifié)
-- [x] audit performance (Lighthouse : Accessibilité/Bonnes pratiques/SEO 100/100, CLS 0.00, aucun problème LCP signalé — mesuré en local sans throttling réseau, à revérifier une fois déployé en conditions réelles)
+- [x] audit performance (Lighthouse réel de Christopher sur le build de production : desktop 100/100/100/100, mobile 100/100/100 + Performances 81 — investigué, pas de goulot d'étranglement trouvé (LCP ~850ms, CLS 0, DOM léger à 199 éléments, JS non gonflé) ; le score mobile reflète le coût d'hydratation React sous le ralentissement CPU ×4 synthétique de Lighthouse, inhérent à une app interactive, pas un bug corrigeable sans sacrifier de l'interactivité réelle)
 
 ## Règle de travail
 
