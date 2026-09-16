@@ -13,6 +13,13 @@ export const metadata: Metadata = {
   alternates: { canonical: "/a-propos" },
 };
 
+const PROMISES = [
+  "Être visible",
+  "Gagner du temps",
+  "Développer votre activité",
+  "Faire évoluer votre façon de travailler",
+] as const;
+
 type CapabilityItem = {
   number: string;
   title: string;
@@ -88,11 +95,22 @@ export default function AProposPage() {
             Des solutions sur mesure pour les entreprises vosgiennes.
           </h1>
           <p className="mt-6 text-lg text-[#3c4a54]">{SITE.description}</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            {PROMISES.map((promise) => (
+              <span
+                key={promise}
+                className="rounded-[14px] border border-[#c9d1cb] bg-white px-4 py-2 text-sm font-bold text-text"
+              >
+                {promise}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className={`bg-[#eef0ec] ${SECTION_PADDING}`}>
-        <div className="max-w-[640px]">
+      <section className={`relative overflow-hidden bg-[#eef0ec] ${SECTION_PADDING}`}>
+        <TopographicContours side="left" />
+        <div className="relative mx-auto max-w-[640px]">
           <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
             Pour qui
           </h2>
@@ -105,7 +123,7 @@ export default function AProposPage() {
       </section>
 
       <section className={SECTION_PADDING}>
-        <div className="max-w-[640px]">
+        <div className="mx-auto max-w-[640px]">
           <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
             Notre méthode
           </h2>
