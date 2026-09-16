@@ -118,21 +118,6 @@ const METHOD_FLOW_STEPS = [
   },
 ] as const;
 
-const PROCESS_STEPS = [
-  { number: "01", title: "Premier échange", body: "Gratuit, sans engagement." },
-  {
-    number: "02",
-    title: "Proposition ou diagnostic",
-    body: "Une proposition si le besoin est clair, un diagnostic si le problème est complexe.",
-  },
-  { number: "03", title: "Réalisation", body: "Mise en place de la solution adaptée." },
-  {
-    number: "04",
-    title: "Accompagnement",
-    body: "Suivi et évolutions selon vos besoins.",
-  },
-] as const;
-
 export default function AProposPage() {
   return (
     <main>
@@ -187,19 +172,20 @@ export default function AProposPage() {
         </div>
       </section>
 
-      <section className={`relative overflow-hidden ${SECTION_PADDING}`}>
+      <section className={`relative overflow-hidden bg-navy ${SECTION_PADDING}`}>
         <TopographicContours side="right" />
         <div className="relative max-w-[640px]">
-          <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-            Notre méthode
+          <Eyebrow variant="onDark">Notre méthode</Eyebrow>
+          <h2 className={`mt-4 leading-[1.1] text-white ${SECTION_TITLE}`}>
+            Du premier échange à l&apos;accompagnement.
           </h2>
-          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
+          <p className="mt-3 text-base text-[#d5dddf] md:text-lg">
             Que ce soit pour un site, une automatisation ou un outil métier, la démarche reste la
             même : on comprend, on cadre ensemble, on construit, on accompagne.
           </p>
         </div>
         <div className="relative mt-10 md:mt-14">
-          <MethodFlow steps={METHOD_FLOW_STEPS} />
+          <MethodFlow steps={METHOD_FLOW_STEPS} theme="dark" />
         </div>
       </section>
 
@@ -217,26 +203,6 @@ export default function AProposPage() {
                 {item.title}
               </h3>
               <p className="mt-1 max-w-[440px] text-[#5a6870]">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className={`bg-navy ${SECTION_PADDING}`}>
-        <Eyebrow variant="onDark">Comment ça se passe</Eyebrow>
-        <h2 className={`mt-4 max-w-[560px] leading-[1.1] text-white ${SECTION_TITLE}`}>
-          Du premier échange à l&apos;accompagnement.
-        </h2>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-4">
-          {PROCESS_STEPS.map((step) => (
-            <div key={step.number} className="border-t border-white/[0.22] pt-4">
-              <p className="text-[11px] font-bold tracking-[0.08em] text-[#8e9ca4]">
-                {step.number}
-              </p>
-              <h3 className="mt-1 font-heading text-[18px] font-extrabold text-white">
-                {step.title}
-              </h3>
-              <p className="mt-1 text-[#d5dddf]">{step.body}</p>
             </div>
           ))}
         </div>

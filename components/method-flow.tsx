@@ -10,11 +10,12 @@ type FlowStep = {
 
 type MethodFlowProps = {
   steps: readonly FlowStep[];
+  theme?: "light" | "dark";
 };
 
 const ROW_SIZE = 4;
 
-export function MethodFlow({ steps }: MethodFlowProps) {
+export function MethodFlow({ steps, theme = "light" }: MethodFlowProps) {
   const [visible, setVisible] = useState<boolean[]>(() => steps.map(() => false));
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -38,11 +39,22 @@ export function MethodFlow({ steps }: MethodFlowProps) {
     return () => observer.disconnect();
   }, []);
 
+  const isDark = theme === "dark";
+  const lineColor = isDark ? "bg-white/[0.22]" : "bg-[#cfd5d0]";
+  const nodeBorder = isDark ? "border-[#6fa87d]" : "border-green";
+  const nodeText = isDark ? "text-[#6fa87d]" : "text-green";
+  const nodeBg = isDark ? "bg-navy" : "bg-[#f7f6f2]";
+  const titleColor = isDark ? "text-white" : "text-text";
+  const bodyColor = isDark ? "text-[#d5dddf]" : "text-[#5a6870]";
+
   return (
     <div>
       {/* Mobile: vertical timeline, scrollable, revealed as it enters view */}
       <div className="relative md:hidden">
-        <div aria-hidden="true" className="absolute top-2 bottom-2 left-[19px] w-px bg-[#cfd5d0]" />
+        <div
+          aria-hidden="true"
+          className={`absolute top-2 bottom-2 left-[19px] w-px ${lineColor}`}
+        />
         <div className="flex flex-col gap-10">
           {steps.map((step, index) => (
             <div
@@ -55,12 +67,16 @@ export function MethodFlow({ steps }: MethodFlowProps) {
                 visible[index] ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
               }`}
             >
-              <span className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-green bg-[#f7f6f2] text-sm font-bold text-green">
+              <span
+                className={`relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 ${nodeBorder} ${nodeBg} text-sm font-bold ${nodeText}`}
+              >
                 {step.number}
               </span>
               <div className="pt-1">
-                <h3 className="font-heading text-[19px] font-extrabold text-text">{step.title}</h3>
-                <p className="mt-2 text-[#5a6870]">{step.body}</p>
+                <h3 className={`font-heading text-[19px] font-extrabold ${titleColor}`}>
+                  {step.title}
+                </h3>
+                <p className={`mt-2 ${bodyColor}`}>{step.body}</p>
               </div>
             </div>
           ))}
@@ -76,16 +92,20 @@ export function MethodFlow({ steps }: MethodFlowProps) {
               {!isFirstInRow && (
                 <div
                   aria-hidden="true"
-                  className="absolute top-[22px] right-1/2 h-px w-[calc(100%+24px)] bg-[#cfd5d0]"
+                  className={`absolute top-[22px] right-1/2 h-px w-[calc(100%+24px)] ${lineColor}`}
                 />
               )}
-              <span className="relative z-10 grid h-11 w-11 place-items-center rounded-full border-2 border-green bg-[#f7f6f2] text-sm font-bold text-green">
+              <span
+                className={`relative z-10 grid h-11 w-11 place-items-center rounded-full border-2 ${nodeBorder} ${nodeBg} text-sm font-bold ${nodeText}`}
+              >
                 {step.number}
               </span>
-              <h3 className="mt-4 font-heading text-[17px] leading-[1.2] font-extrabold text-text">
+              <h3
+                className={`mt-4 font-heading text-[17px] leading-[1.2] font-extrabold ${titleColor}`}
+              >
                 {step.title}
               </h3>
-              <p className="mt-2 max-w-[260px] text-sm text-[#5a6870]">{step.body}</p>
+              <p className={`mt-2 max-w-[260px] text-sm ${bodyColor}`}>{step.body}</p>
             </div>
           );
         })}
