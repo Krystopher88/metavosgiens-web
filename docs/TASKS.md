@@ -42,12 +42,12 @@
 
 ## Phase 4 — Formulaire
 
-- [ ] Formulaire simple
-- [ ] Validation
-- [ ] Messages d'erreur
-- [ ] État de succès
-- [ ] Envoi email
-- [ ] Protection anti-spam proportionnée
+- [x] Formulaire simple (nom, entreprise, email, téléphone, site web facultatif, message)
+- [x] Validation (Zod, client + serveur)
+- [x] Messages d'erreur (par champ, valeurs saisies conservées après échec)
+- [x] État de succès
+- [x] Envoi email (Resend — nécessite `RESEND_API_KEY`/`RESEND_FROM_EMAIL` réels pour fonctionner en prod, domaine à vérifier auprès de Resend)
+- [x] Protection anti-spam proportionnée (honeypot)
 
 ## Phase 5 — SEO
 

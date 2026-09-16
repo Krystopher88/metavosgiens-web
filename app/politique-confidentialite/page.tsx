@@ -22,7 +22,7 @@ export default function PolitiqueConfidentialitePage() {
           </h2>
           <p className="mt-2">
             Bichon Christopher, micro-entreprise (SIRET 933 529 794 00010), 13 rue du Creux Challot,
-            88410 Bleurville, France. Contact : contact@krystdev.com
+            88410 Bleurville, France. Contact : {SITE.contactEmail}
           </p>
         </section>
 
@@ -76,7 +76,7 @@ export default function PolitiqueConfidentialitePage() {
           <p className="mt-2">
             Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification,
             d&apos;effacement, d&apos;opposition, de limitation et de portabilité sur vos données.
-            Pour les exercer, contactez-nous à contact@krystdev.com. Vous pouvez également
+            Pour les exercer, contactez-nous à {SITE.contactEmail}. Vous pouvez également
             introduire une réclamation auprès de la CNIL.
           </p>
         </section>

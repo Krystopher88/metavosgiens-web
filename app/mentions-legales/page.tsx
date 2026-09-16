@@ -28,7 +28,7 @@ export default function MentionsLegalesPage() {
             <br />
             Adresse : 13 rue du Creux Challot, 88410 Bleurville, France
             <br />
-            Contact : contact@krystdev.com
+            Contact : {SITE.contactEmail}
           </p>
         </section>
 
