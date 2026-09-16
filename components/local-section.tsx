@@ -34,7 +34,7 @@ export function LocalSection() {
           Un interlocuteur, du premier échange au suivi. Une approche qui part de votre réalité, pas
           d&apos;un catalogue de solutions.
         </p>
-        <ArrowLink href="#contact">En savoir plus sur MetaVosgiens</ArrowLink>
+        <ArrowLink href="/a-propos">En savoir plus sur MetaVosgiens</ArrowLink>
       </div>
     </section>
   );
