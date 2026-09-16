@@ -20,6 +20,16 @@ const PROMISES = [
   "Faire évoluer votre façon de travailler",
 ] as const;
 
+const AUDIENCE = [
+  "Indépendants",
+  "Artisans",
+  "Commerces",
+  "Professions libérales",
+  "Petites PME",
+  "Entreprises B2B",
+  "Structures industrielles",
+] as const;
+
 type CapabilityItem = {
   number: string;
   title: string;
@@ -97,7 +107,7 @@ export default function AProposPage() {
           </h1>
           <p className="mt-6 text-lg text-[#3c4a54]">{SITE.description}</p>
         </div>
-        <div className="relative flex flex-col justify-center gap-5 overflow-hidden py-4">
+        <div className="relative hidden flex-col justify-center gap-5 overflow-hidden py-4 md:flex">
           <TopographicContours side="right" />
           {PROMISES.map((promise) => (
             <p
@@ -110,9 +120,22 @@ export default function AProposPage() {
         </div>
       </section>
 
-      <section className={`relative overflow-hidden bg-[#eef0ec] ${SECTION_PADDING}`}>
-        <TopographicContours side="left" />
-        <div className="relative mx-auto max-w-[640px]">
+      <section
+        className={`grid grid-cols-1 items-center gap-10 bg-[#eef0ec] md:grid-cols-[1.1fr_0.9fr] md:gap-16 ${SECTION_PADDING}`}
+      >
+        <div className="hidden grid-cols-2 gap-x-8 gap-y-6 md:grid">
+          {AUDIENCE.map((label, index) => (
+            <p
+              key={label}
+              className={`border-l-[3px] pl-4 font-heading text-[19px] leading-[1.2] font-extrabold ${
+                index % 2 === 0 ? "border-text text-text" : "border-green text-green"
+              }`}
+            >
+              {label}
+            </p>
+          ))}
+        </div>
+        <div className="max-w-[560px]">
           <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
             Pour qui
           </h2>
