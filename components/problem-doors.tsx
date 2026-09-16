@@ -102,6 +102,15 @@ export function ProblemDoors() {
   // SheetTrigger mounted last, not the door that was actually clicked.
   // We manage focus-return ourselves instead.
   const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
+  // Closing via a CTA link inside the overlay (ProblemOverlay's onNavigate) must
+  // skip focus-return: focusing the door card would scroll the page back to it,
+  // fighting the navigation to #contact the user just asked for.
+  const suppressFocusRestoreRef = useRef(false);
+
+  function handleOverlayNavigate() {
+    suppressFocusRestoreRef.current = true;
+    setOpenKey(null);
+  }
 
   return (
     <section className="px-7 py-[100px]">
@@ -156,10 +165,14 @@ export function ProblemDoors() {
           className="gap-0 overflow-y-auto border-l-[#dde1dc] bg-background p-0 data-[side=right]:w-[min(520px,calc(100vw-44px))] data-[side=right]:sm:max-w-[520px]"
           onCloseAutoFocus={(event) => {
             event.preventDefault();
+            if (suppressFocusRestoreRef.current) {
+              suppressFocusRestoreRef.current = false;
+              return;
+            }
             lastTriggerRef.current?.focus();
           }}
         >
-          {activeDoor && <ProblemOverlay door={activeDoor} />}
+          {activeDoor && <ProblemOverlay door={activeDoor} onNavigate={handleOverlayNavigate} />}
         </SheetContent>
       </Sheet>
 

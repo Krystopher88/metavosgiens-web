@@ -6,9 +6,25 @@ import { ArrowIcon, type Door } from "@/components/problem-doors";
 
 type ProblemOverlayProps = {
   door: Door;
+  onNavigate: () => void;
 };
 
-export function ProblemOverlay({ door }: ProblemOverlayProps) {
+// The Sheet locks body scroll while open, so a scroll attempted before the
+// close's exit transition (and Radix's scroll-lock release) finishes gets cut
+// short. onNavigate closes the Sheet without restoring focus to the door card
+// (see problem-doors.tsx) — restoring it would re-scroll the page back there,
+// fighting this scroll to #contact.
+function handleContactLinkClick(onNavigate: () => void) {
+  return () => {
+    onNavigate();
+    window.setTimeout(() => {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+      history.replaceState(null, "", "#contact");
+    }, 250);
+  };
+}
+
+export function ProblemOverlay({ door, onNavigate }: ProblemOverlayProps) {
   return (
     <div className="px-[42px] pt-[58px] pb-10">
       <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
@@ -48,7 +64,7 @@ export function ProblemOverlay({ door }: ProblemOverlayProps) {
       </div>
 
       <Button asChild className="mb-4">
-        <a href="#contact">
+        <a href="#contact" onClick={handleContactLinkClick(onNavigate)}>
           {door.cta}
           <ArrowIcon />
         </a>
@@ -57,6 +73,7 @@ export function ProblemOverlay({ door }: ProblemOverlayProps) {
       <div>
         <a
           href="#contact"
+          onClick={handleContactLinkClick(onNavigate)}
           className="text-sm text-[#5d6a62] underline underline-offset-4 transition-colors motion-reduce:transition-none hover:text-green"
         >
           Je ne sais pas encore de quoi j&apos;ai besoin
