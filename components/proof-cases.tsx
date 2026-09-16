@@ -1,3 +1,6 @@
+import { Eyebrow } from "@/components/eyebrow";
+import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
+
 const PROOF_CASES = [
   {
     kicker: "Processus complexe",
@@ -18,13 +21,11 @@ const PROOF_CASES = [
 
 export function ProofCases() {
   return (
-    <section id="proof" className="bg-navy px-5 py-16 md:px-7 md:py-[100px]">
+    <section id="proof" className={`bg-navy ${SECTION_PADDING}`}>
       <div className="mb-8 flex items-end justify-between gap-10 md:mb-[38px]">
         <div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.13em] text-[#6a7a84]">
-            Des problèmes réels. Des solutions concrètes.
-          </p>
-          <h2 className="font-heading text-[34px] font-extrabold tracking-[-0.045em] text-white sm:text-[40px] md:text-[50px] md:tracking-[-0.055em]">
+          <Eyebrow>Des problèmes réels. Des solutions concrètes.</Eyebrow>
+          <h2 className={`${SECTION_TITLE} text-white`}>
             Trois exemples,
             <br className="hidden md:block" /> trois transformations.
           </h2>

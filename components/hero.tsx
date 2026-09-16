@@ -1,14 +1,14 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { TopographicContours } from "@/components/topographic-contours";
+import { ContactCtaButton } from "@/components/contact-cta-button";
+import { ArrowLink } from "@/components/arrow-link";
+import { Eyebrow } from "@/components/eyebrow";
 
 export function Hero() {
   return (
     <section className="grid grid-cols-1 gap-8 px-5 py-10 md:min-h-[650px] md:grid-cols-[1fr_1.15fr] md:gap-10 md:px-7 md:pt-[42px] md:pb-5">
       <div className="flex flex-col justify-center md:py-[50px] md:pb-20">
-        <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
-          Des idées d&apos;aujourd&apos;hui pour les entreprises de demain
-        </p>
+        <Eyebrow>Des idées d&apos;aujourd&apos;hui pour les entreprises de demain</Eyebrow>
         <h1 className="mt-4 font-heading text-[40px] leading-[1.05] font-extrabold tracking-[-0.03em] text-text sm:text-[56px] md:text-[72px] md:tracking-[-0.065em]">
           Votre entreprise a un problème ?
           <br />
@@ -19,35 +19,8 @@ export function Hero() {
           a réellement besoin.
         </p>
         <div className="mt-7 flex flex-wrap items-center gap-[22px]">
-          <Button asChild>
-            <a href="#contact">
-              Parler de mon besoin
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path
-                  d="M3 8H13M13 8L9 4M13 8L9 12"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-          </Button>
-          <a
-            href="#about"
-            className="flex items-center gap-1.5 text-sm underline decoration-[#9aa59e] underline-offset-4 transition-colors motion-reduce:transition-none hover:text-green"
-          >
-            Découvrir notre approche
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path
-                d="M3 8H13M13 8L9 4M13 8L9 12"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
+          <ContactCtaButton />
+          <ArrowLink href="#about">Découvrir notre approche</ArrowLink>
         </div>
       </div>
       <div

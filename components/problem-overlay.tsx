@@ -2,7 +2,9 @@
 
 import { SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { ArrowIcon, type Door } from "@/components/problem-doors";
+import type { Door } from "@/components/problem-doors";
+import { ArrowIcon } from "@/components/arrow-icon";
+import { Eyebrow } from "@/components/eyebrow";
 
 type ProblemOverlayProps = {
   door: Door;
@@ -27,9 +29,7 @@ function handleContactLinkClick(onNavigate: () => void) {
 export function ProblemOverlay({ door, onNavigate }: ProblemOverlayProps) {
   return (
     <div className="px-6 pt-[54px] pb-10 sm:px-[42px] sm:pt-[58px]">
-      <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
-        {door.kicker}
-      </p>
+      <Eyebrow>{door.kicker}</Eyebrow>
       <SheetTitle className="mt-1 font-heading text-[36px] font-extrabold tracking-[-0.05em] sm:text-[52px] sm:tracking-[-0.06em]">
         {door.panelTitle}
       </SheetTitle>
@@ -66,7 +66,7 @@ export function ProblemOverlay({ door, onNavigate }: ProblemOverlayProps) {
       <Button asChild className="mb-4">
         <a href="#contact" onClick={handleContactLinkClick(onNavigate)}>
           {door.cta}
-          <ArrowIcon />
+          <ArrowIcon size={18} />
         </a>
       </Button>
 

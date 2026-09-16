@@ -2,30 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/logo";
-import { Button } from "@/components/ui/button";
+import { ContactCtaButton } from "@/components/contact-cta-button";
 
 const NAV_LINKS = [
   { label: "À propos", href: "#about" },
   { label: "Réalisations", href: "#proof" },
   { label: "Contact", href: "#contact" },
 ] as const;
-
-function ContactCtaLabel() {
-  return (
-    <>
-      Parler de mon besoin
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path
-          d="M3 8H13M13 8L9 4M13 8L9 12"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </>
-  );
-}
 
 const LINK_CLASS =
   "rounded-sm text-text outline-none transition-colors hover:text-green focus-visible:ring-3 focus-visible:ring-ring/50";
@@ -65,11 +48,7 @@ export function SiteHeader() {
               {link.label}
             </a>
           ))}
-          <Button asChild>
-            <a href="#contact">
-              <ContactCtaLabel />
-            </a>
-          </Button>
+          <ContactCtaButton />
         </nav>
 
         <button
@@ -111,11 +90,7 @@ export function SiteHeader() {
               {link.label}
             </a>
           ))}
-          <Button asChild className="w-fit">
-            <a href="#contact" onClick={closeMenu}>
-              <ContactCtaLabel />
-            </a>
-          </Button>
+          <ContactCtaButton className="w-fit" onClick={closeMenu} />
         </div>
       )}
     </header>

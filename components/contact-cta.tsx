@@ -1,12 +1,12 @@
-import { Button } from "@/components/ui/button";
+import { ContactCtaButton } from "@/components/contact-cta-button";
+import { Eyebrow } from "@/components/eyebrow";
+import { SECTION_PADDING } from "@/lib/design";
 import { SITE } from "@/lib/content";
 
 export function ContactCta() {
   return (
-    <section id="contact" className="px-5 py-16 text-center md:px-7 md:py-[100px]">
-      <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
-        Premier échange gratuit
-      </p>
+    <section id="contact" className={`text-center ${SECTION_PADDING}`}>
+      <Eyebrow>Premier échange gratuit</Eyebrow>
       <h2 className="mt-4 font-heading text-[40px] leading-[1.05] font-extrabold tracking-[-0.055em] text-text sm:text-[50px]">
         On commence
         <br />
@@ -16,20 +16,7 @@ export function ContactCta() {
         Expliquez-nous votre situation avec vos mots. Vous n&apos;avez pas besoin d&apos;avoir un
         cahier des charges.
       </p>
-      <Button asChild>
-        <a href={`mailto:${SITE.contactEmail}?subject=Parler%20de%20mon%20besoin`}>
-          Parler de mon besoin
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path
-              d="M3 8H13M13 8L9 4M13 8L9 12"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </a>
-      </Button>
+      <ContactCtaButton href={`mailto:${SITE.contactEmail}?subject=Parler%20de%20mon%20besoin`} />
     </section>
   );
 }

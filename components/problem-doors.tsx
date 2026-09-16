@@ -3,6 +3,9 @@
 import { useRef, useState } from "react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { ProblemOverlay } from "@/components/problem-overlay";
+import { ArrowIcon } from "@/components/arrow-icon";
+import { Eyebrow } from "@/components/eyebrow";
+import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
 export type Door = {
   key: "visible" | "time" | "grow" | "evolve";
@@ -80,20 +83,6 @@ const DOORS: readonly Door[] = [
   },
 ];
 
-export function ArrowIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path
-        d="M3 8H13M13 8L9 4M13 8L9 12"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export function ProblemDoors() {
   const [openKey, setOpenKey] = useState<Door["key"] | null>(null);
   const activeDoor = DOORS.find((door) => door.key === openKey) ?? null;
@@ -113,13 +102,11 @@ export function ProblemDoors() {
   }
 
   return (
-    <section className="px-5 py-16 md:px-7 md:py-[100px]">
+    <section className={SECTION_PADDING}>
       <div className="mb-8 flex flex-col items-start gap-4 md:mb-[38px] md:flex-row md:items-end md:justify-between md:gap-10">
         <div>
-          <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
-            Quatre portes, une même ambition
-          </p>
-          <h2 className="font-heading text-[34px] font-extrabold tracking-[-0.045em] sm:text-[40px] md:text-[50px] md:tracking-[-0.055em]">
+          <Eyebrow>Quatre portes, une même ambition</Eyebrow>
+          <h2 className={SECTION_TITLE}>
             Des solutions concrètes
             <br className="hidden md:block" /> pour votre entreprise
           </h2>
@@ -153,7 +140,7 @@ export function ProblemDoors() {
                 {door.cardText}
               </span>
               <span className="absolute bottom-[22px] left-6 grid h-[42px] w-[42px] place-items-center rounded-full bg-green text-white">
-                <ArrowIcon />
+                <ArrowIcon size={18} />
               </span>
             </button>
           ))}

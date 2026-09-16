@@ -14,9 +14,9 @@
 
 - [x] Définir tokens couleurs
 - [x] Charger Plus Jakarta Sans et Inter
-- [ ] Définir styles titres / texte (exploré dans le canvas Claude Design, pas encore formalisé en code)
-- [ ] Définir Button et liens (Button fait ; style de lien encore à componentiser)
-- [ ] Définir rayons, espacements et containers (rayons faits ; espacements/containers pleine largeur validés visuellement, pas encore formalisés en code)
+- [x] Définir styles titres / texte (`lib/design.ts` — `SECTION_TITLE`, échelle 34/40/50 unifiée sur toutes les sections)
+- [x] Définir Button et liens (`components/arrow-icon.tsx`, `components/arrow-link.tsx`, `components/contact-cta-button.tsx`, `components/eyebrow.tsx`)
+- [x] Définir rayons, espacements et containers (rayons déjà cohérents avec DESIGN.md, 12-18px ; espacements formalisés dans `lib/design.ts` — `SECTION_PADDING`)
 - [x] Créer motif topographique réutilisable (`components/topographic-contours.tsx`)
 - [x] Logo (typographique + détail territorial, direction validée au cadrage §36-37 — `components/logo.tsx`)
 

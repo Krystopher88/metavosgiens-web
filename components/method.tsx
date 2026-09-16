@@ -1,3 +1,6 @@
+import { Eyebrow } from "@/components/eyebrow";
+import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
+
 type MethodStep = {
   number: string;
   title: string;
@@ -24,12 +27,12 @@ const METHOD_STEPS: MethodStep[] = [
 
 export function Method() {
   return (
-    <section className="grid grid-cols-1 gap-10 px-5 py-16 md:grid-cols-[0.95fr_1.05fr] md:items-center md:gap-20 md:px-7 md:py-[100px]">
+    <section
+      className={`grid grid-cols-1 gap-10 md:grid-cols-[0.95fr_1.05fr] md:items-center md:gap-20 ${SECTION_PADDING}`}
+    >
       <div className="md:sticky md:top-[110px]">
-        <p className="text-[11px] font-bold tracking-[0.13em] text-[#6a7a84] uppercase">
-          Une approche simple
-        </p>
-        <h2 className="mt-4 font-heading text-[32px] leading-[1.05] font-extrabold tracking-[-0.03em] text-text md:text-[42px] md:tracking-[-0.05em]">
+        <Eyebrow>Une approche simple</Eyebrow>
+        <h2 className={`mt-4 leading-[1.05] text-text ${SECTION_TITLE}`}>
           Vous n&apos;avez pas besoin de savoir quoi construire.
         </h2>
       </div>
