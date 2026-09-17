@@ -13,7 +13,7 @@ import { handleInPageNavClick } from "@/lib/nav-scroll";
 const NAV_LINKS = [
   { label: "Accueil", href: "/#top" },
   { label: "À propos", href: "/a-propos" },
-  { label: "Réalisations", href: "/#proof" },
+  { label: "Exemples", href: "/#proof" },
   { label: "Contact", href: "/#contact" },
 ] as const;
 

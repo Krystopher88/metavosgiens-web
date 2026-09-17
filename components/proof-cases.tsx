@@ -1,3 +1,4 @@
+import { ArrowLink } from "@/components/arrow-link";
 import { Eyebrow } from "@/components/eyebrow";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
@@ -44,7 +45,9 @@ export function ProofCases() {
               {proofCase.headline}
             </h3>
             <p className="max-w-[410px] text-[#56656d]">{proofCase.body}</p>
-            <span className="mt-auto text-[13px] font-bold text-green">Voir le cas</span>
+            <div className="mt-auto pt-4">
+              <ArrowLink href="/#contact">Un besoin similaire ? Parlons-en</ArrowLink>
+            </div>
           </article>
         ))}
       </div>

@@ -14,7 +14,7 @@ import { handleInPageNavClick } from "@/lib/nav-scroll";
 // before /a-propos existed as its own page).
 const NAV_LINKS = [
   { label: "À propos", href: "/a-propos" },
-  { label: "Réalisations", href: "/#proof" },
+  { label: "Exemples", href: "/#proof" },
   { label: "Contact", href: "/#contact" },
 ] as const;
 
