@@ -18,6 +18,10 @@ RUN npm ci
 
 FROM base AS builder
 ENV NODE_ENV=production
+# NEXT_PUBLIC_* vars are inlined by `next build` itself — must be present as a
+# build ARG, since .dockerignore excludes .env*.local from the build context.
+ARG NEXT_PUBLIC_GA_ID
+ENV NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
