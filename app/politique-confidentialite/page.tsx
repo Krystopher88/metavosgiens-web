@@ -32,10 +32,26 @@ export default function PolitiqueConfidentialitePage() {
             Données collectées
           </h2>
           <p className="mt-2">
-            La seule donnée que nous collectons délibérément est celle que vous nous transmettez via
-            le formulaire de contact : prénom, nom, entreprise, email, téléphone, site web
-            (facultatif) et le message que vous rédigez. Aucun compte, aucun paiement en ligne et
-            aucun suivi publicitaire ne sont utilisés sur ce site.
+            La donnée que vous nous transmettez délibérément est celle du formulaire de contact :
+            prénom, nom, entreprise, email, téléphone, site web (facultatif) et le message que vous
+            rédigez. Aucun compte ni aucun paiement en ligne ne sont utilisés sur ce site. Avec votre
+            accord, des cookies de mesure d&apos;audience peuvent également être déposés — voir la
+            section « Cookies et mesure d&apos;audience » ci-dessous.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-heading text-[20px] font-extrabold tracking-[-0.03em] text-text">
+            Cookies et mesure d&apos;audience
+          </h2>
+          <p className="mt-2">
+            Avec votre consentement, ce site utilise Google Analytics pour mesurer sa fréquentation
+            (pages consultées, provenance du trafic, type d&apos;appareil). Aucune donnée permettant
+            de vous identifier personnellement n&apos;est transmise à ce service. Ces cookies ne sont
+            déposés qu&apos;après avoir cliqué sur « Accepter » dans le bandeau affiché lors de votre
+            première visite ; en cliquant sur « Refuser », aucun cookie de mesure d&apos;audience
+            n&apos;est déposé. Vous pouvez revenir sur votre choix à tout moment en effaçant les
+            données de navigation de ce site dans votre navigateur.
           </p>
         </section>
 
@@ -65,8 +81,10 @@ export default function PolitiqueConfidentialitePage() {
           </h2>
           <p className="mt-2">
             Vos données sont traitées par Bichon Christopher et transitent par nos prestataires
-            techniques : IONOS (hébergement, France) et Brevo (envoi de l&apos;email de contact,
-            société française). Aucune donnée n&apos;est vendue ni louée à des tiers commerciaux.
+            techniques : IONOS (hébergement, France), Brevo (envoi de l&apos;email de contact,
+            société française) et, uniquement si vous y consentez, Google Ireland Limited (Google
+            Analytics, mesure d&apos;audience). Aucune donnée n&apos;est vendue ni louée à des tiers
+            commerciaux.
           </p>
         </section>
 
