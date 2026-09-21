@@ -55,23 +55,52 @@ export const metadata: Metadata = {
 // prominent than the legal notice already requires.
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: `${SITE.name} by KRYST`,
-  description: SITE.description,
-  url: SITE.url,
-  email: SITE.contactEmail,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "13 rue du Creux Challot",
-    addressLocality: "Bleurville",
-    postalCode: "88410",
-    addressRegion: "Vosges",
-    addressCountry: "FR",
-  },
-  areaServed: {
-    "@type": "AdministrativeArea",
-    name: "Vosges",
-  },
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://metavosgiens.com/#organization",
+      name: `${SITE.name} by KRYST`,
+      description: SITE.description,
+      url: SITE.url,
+      telephone: SITE.contactPhone.replace(/\s+/g, '').replace(/^0/, '+33'),
+      email: SITE.contactEmail,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "13 rue du Creux Challot",
+        addressLocality: "Bleurville",
+        postalCode: "88410",
+        addressRegion: "Grand Est",
+        addressCountry: "FR",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 48.063214034846254,
+        longitude: 5.964191810994792,
+      },
+      openingHours: "Mo,Tu,We,Th,Fr 09:00-18:00",
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Vosges" },
+        { "@type": "AdministrativeArea", name: "Meuse" },
+        { "@type": "AdministrativeArea", name: "Meurthe-et-Moselle" },
+        { "@type": "AdministrativeArea", name: "Haute-Marne" },
+      ],
+      founder: {
+        "@id": "https://metavosgiens.com/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://metavosgiens.com/#person",
+      name: "Christopher Bichon",
+      url: "https://www.linkedin.com/in/christopher-bichon-b95a3916a/",
+      sameAs: [
+        "https://www.linkedin.com/in/christopher-bichon-b95a3916a/"
+      ],
+      worksFor: {
+        "@id": "https://metavosgiens.com/#organization"
+      }
+    }
+  ]
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

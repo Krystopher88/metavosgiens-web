@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactForm } from "@/components/contact-form";
+import { SITE } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,6 +22,7 @@ export default function ContactPage() {
           Expliquez-nous votre situation avec vos mots. Vous n&apos;avez pas besoin d&apos;avoir un
           cahier des charges.
         </p>
+        <p className="mt-4 text-lg text-[#596870]">📞 {SITE.contactPhone}</p>
       </div>
       <div className="mx-auto mt-10 max-w-[560px]">
         <ContactForm />

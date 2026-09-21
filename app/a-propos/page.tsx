@@ -195,6 +195,7 @@ export default function AProposPage() {
             Nous sommes dans les Vosges. Et nous venons chez vous : un interlocuteur, du premier
             échange au suivi.
           </p>
+          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">📞 {SITE.contactPhone}</p>
           <div className="mt-8">
             <ContactCtaButton />
           </div>
