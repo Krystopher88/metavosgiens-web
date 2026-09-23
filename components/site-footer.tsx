@@ -5,6 +5,7 @@ import { Logo } from "@/components/logo";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { SITE } from "@/lib/content";
 import { handleInPageNavClick } from "@/lib/nav-scroll";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 // "/#..." (not "#..."): the footer renders on every page — a bare hash only
 // scrolls within the current page and does nothing on pages other than the
@@ -64,17 +65,17 @@ export function SiteFooter() {
         <div className="flex flex-col gap-3 text-sm text-[#d5dddf]">
           <p className={LABEL_CLASS}>Contact</p>
           <div className="flex items-center gap-2">
-            <span className="w-5">✉️</span>
+            <Mail size={20} />
             <a href={`mailto:${SITE.contactEmail}`} className={LINK_CLASS}>
               {SITE.contactEmail}
             </a>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-5">📞</span>
+            <Phone size={20} />
             <span>{SITE.contactPhone}</span>
           </div>
           <div className="flex items-start gap-2">
-            <span className="w-5">📍</span>
+            <MapPin size={20} />
             <span>13 rue du Creux Challot<br />88410 Bleurville</span>
           </div>
           <a href={SITE.contactLinkedIn} target="_blank" rel="noopener noreferrer" className={`${LINK_CLASS} flex items-center gap-2`}>
