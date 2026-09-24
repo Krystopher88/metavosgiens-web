@@ -108,23 +108,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="fr" className={`${bodyFont.variable} ${headingFont.variable}`}>
       <head>
-        {/* PostHog snippet - Tracking complet avec toutes les features */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              !function(t,e){var o,n,p,r;t.username!==e&&(o=t[e]=t[e]||{},o._i=[],o.init=function(i,s,a){o._i.push([i,s,a])},o.loaded=!0,p=e+"_k",r=t[p];r&&r.split(",").forEach(function(i){o.init(i.split(":")[0],i.split(":")[1])}),t[p]=o)(window,"posthog");
-              posthog.init("${process.env.NEXT_PUBLIC_POSTHOG_API_KEY || ""}", {
-                api_host: "${process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://app.posthog.com"}",
-                capture_pageview: true,
-                capture_pageleave: true,
-                autocapture: true,
-                disable_session_recording: false,
-                persistence: "localStorage",
-                persistence_name: "ph_metavosgiens"
-              });
-            `,
-          }}
-        />
+        {/* PostHog : initialisation gérée par PostHogClientProvider */}
       </head>
       <body id="top">
         <script
