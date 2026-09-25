@@ -7,6 +7,7 @@ services:
       target: runner
       args:
         NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID:-G-8FQSPEB2ZC}
+        NEXT_PUBLIC_POSTHOG_API_KEY: ${NEXT_PUBLIC_POSTHOG_API_KEY}
     container_name: metavosgiens_nextjs
     restart: unless-stopped
     env_file:

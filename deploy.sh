@@ -26,5 +26,9 @@ done
 
 COMPOSE_FILE="docker-compose.${ENVIRONMENT}.yml"
 
-docker compose -f "$COMPOSE_FILE" up -d $BUILD_FLAG
+if [[ "$ENVIRONMENT" == "prod" ]]; then
+  docker compose --env-file .env.prod.local -f "$COMPOSE_FILE" up -d $BUILD_FLAG
+else
+  docker compose -f "$COMPOSE_FILE" up -d $BUILD_FLAG
+fi
 docker compose -f "$COMPOSE_FILE" ps

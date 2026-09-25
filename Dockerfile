@@ -22,6 +22,8 @@ ENV NODE_ENV=production
 # build ARG, since .dockerignore excludes .env*.local from the build context.
 ARG NEXT_PUBLIC_GA_ID
 ENV NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID
+ARG NEXT_PUBLIC_POSTHOG_API_KEY
+ENV NEXT_PUBLIC_POSTHOG_API_KEY=$NEXT_PUBLIC_POSTHOG_API_KEY
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
