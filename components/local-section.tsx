@@ -31,10 +31,12 @@ export function LocalSection() {
           <br className="hidden md:block" /> Et nous venons chez vous.
         </h2>
         <p className="my-[18px] max-w-[590px] text-base text-[#3c4a54] md:text-lg">
-          Un interlocuteur, du premier échange au suivi. Une approche qui part de votre réalité, pas
-          d&apos;un catalogue de solutions.
+          Basé à Bleurville, MetaVosgiens travaille avec les entreprises du département et se
+          déplace chez vous pour comprendre votre activité sur le terrain. Un seul interlocuteur,
+          Christopher Bichon, du premier échange au suivi. Pas de catalogue de solutions : on part
+          de votre réalité.
         </p>
-        <ArrowLink href="/a-propos">En savoir plus sur MetaVosgiens</ArrowLink>
+        <ArrowLink href="/a-propos">Qui nous sommes et comment nous travaillons</ArrowLink>
       </div>
     </section>
   );
