@@ -57,12 +57,12 @@ const CAPABILITIES: CapabilityItem[] = [
   {
     number: "04",
     title: "Automatisation",
-    body: "Automatiser les tâches répétitives pour vous faire gagner du temps chaque semaine.",
+    body: "Automatiser les tâches répétitives pour vous faire gagner du temps au quotidien.",
   },
   {
     number: "05",
     title: "Intelligence artificielle",
-    body: "L'utiliser seulement quand elle vous fait vraiment gagner du temps ou de la qualité.",
+    body: "L'utiliser seulement quand elle vous fait vraiment gagner du temps ou améliorer la qualité de votre travail.",
   },
   {
     number: "06",
