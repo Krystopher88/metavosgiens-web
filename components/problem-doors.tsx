@@ -11,6 +11,7 @@ export type Door = {
   key: "visible" | "time" | "grow" | "evolve";
   cardTitle: string;
   cardText: string;
+  cardExamples: string;
   kicker: string;
   panelTitle: string;
   questions: readonly string[];
@@ -24,6 +25,7 @@ const DOORS: readonly Door[] = [
     key: "visible",
     cardTitle: "Être visible",
     cardText: "Vous faire connaître et donner envie de vous contacter.",
+    cardExamples: "Site internet, fiche Google, être trouvé près de chez vous.",
     kicker: "Être visible",
     panelTitle: "Être visible",
     questions: [
@@ -39,6 +41,7 @@ const DOORS: readonly Door[] = [
     key: "time",
     cardTitle: "Gagner du temps",
     cardText: "Automatiser, centraliser, simplifier.",
+    cardExamples: "Moins de saisies en double, moins de tâches répétitives.",
     kicker: "Gagner du temps",
     panelTitle: "Gagner du temps",
     questions: [
@@ -54,6 +57,7 @@ const DOORS: readonly Door[] = [
     key: "grow",
     cardTitle: "Développer",
     cardText: "Attirer plus de clients et saisir de nouvelles opportunités.",
+    cardExamples: "Plus de demandes de contact, de nouveaux clients.",
     kicker: "Développer",
     panelTitle: "Développer",
     questions: [
@@ -70,6 +74,7 @@ const DOORS: readonly Door[] = [
     key: "evolve",
     cardTitle: "Faire évoluer",
     cardText: "Adapter, optimiser et préparer demain.",
+    cardExamples: "Logiciel sur mesure, intelligence artificielle utile.",
     kicker: "Faire évoluer",
     panelTitle: "Faire évoluer",
     questions: [
@@ -153,13 +158,16 @@ export function ProblemDoors() {
                 lastTriggerRef.current = event.currentTarget;
                 setOpenKey(door.key);
               }}
-              className="relative min-h-[300px] overflow-hidden rounded-[15px] border border-[#dde1dc] bg-surface p-[26px] text-left outline-none transition-transform duration-200 hover:-translate-y-1 focus-visible:ring-3 focus-visible:ring-ring/50 motion-reduce:transition-none"
+              className="relative min-h-[300px] overflow-hidden rounded-[15px] border border-[#dde1dc] bg-surface px-[26px] pt-[26px] pb-[84px] text-left outline-none transition-transform duration-200 hover:-translate-y-1 focus-visible:ring-3 focus-visible:ring-ring/50 motion-reduce:transition-none"
             >
               <span className="block text-[28px] font-extrabold tracking-[-0.045em] text-text">
                 {door.cardTitle}
               </span>
               <span className="mt-[25px] block max-w-[190px] text-[15px] text-[#4b5b64]">
                 {door.cardText}
+              </span>
+              <span className="mt-3 block max-w-[190px] text-[13px] text-[#4b5b64]">
+                {door.cardExamples}
               </span>
               <span className="absolute bottom-[22px] left-6 grid h-[42px] w-[42px] place-items-center rounded-full bg-green text-white">
                 <ArrowIcon size={18} />
