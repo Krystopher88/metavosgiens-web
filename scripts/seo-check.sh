@@ -88,6 +88,7 @@ c03() {
     html="$(fetch "${path:-/}")"
     [ "$(meta "$html" "og:url")" = "$PROD$path" ] || return 1
     [ -n "$(meta "$html" "og:image")" ] || return 1
+    [ "$(meta "$html" "og:image:type")" = "image/png" ] || return 1
     if [ -n "$path" ]; then
       [ "$(meta "$html" "og:title")" != "$home_og" ] || return 1
       [ "$(meta "$html" "twitter:title")" != "$home_tw" ] || return 1
@@ -222,7 +223,9 @@ c13() {
 }
 
 c14() {
-  fetch "/a-propos" | main_text | grep -q 'Christopher Bichon'
+  local text
+  text="$(fetch "/a-propos" | main_text)"
+  printf '%s' "$text" | grep -q 'Qui est derrière MetaVosgiens' && printf '%s' "$text" | grep -q 'Christopher Bichon'
 }
 
 c15() {
@@ -231,7 +234,13 @@ c15() {
   ! printf '%s' "$txt" | grep -qi 'numérique' || return 1
   printf '%s' "$txt" | grep -q 'Bleurville' || return 1
   printf '%s' "$txt" | grep -q 'Christopher Bichon' || return 1
-  printf '%s' "$txt" | grep -qi 'diagnostic'
+  printf '%s' "$txt" | grep -qi 'diagnostic' || return 1
+  ! printf '%s' "$txt" | grep -q 'Meuse' || return 1
+  [ "$(printf '%s' "$txt" | head -1)" = "# MetaVosgiens" ] || return 1
+  # Ce que llms.txt annonce comme payant doit être dit sur le site.
+  if printf '%s' "$txt" | grep -qi 'payant'; then
+    fetch "/" | main_text | grep -qi 'payant' || return 1
+  fi
 }
 
 c16() {
@@ -239,12 +248,14 @@ c16() {
 import os, re, sys, urllib.request
 
 base = os.environ["BASE"]
-banned = re.compile(r"numérique|digital|SaaS|workflow|middleware|framework|\bAPI\b", re.I)
+banned = re.compile(r"numérique|digital|SaaS|workflow|middleware|framework|\bAPI\b|\bagents?\b|architecture", re.I)
+strict = re.compile(r"\bRAG\b")
 for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite"]:
     page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
+    attrs = " ".join(re.findall(r'(?:content|alt|aria-label|title)="([^"]*)"', page))
     page = re.sub(r"<script\b.*?</script>|<style\b.*?</style>", " ", page, flags=re.S)
-    text = re.sub(r"<[^>]*>", " ", page)
-    if banned.search(text):
+    text = re.sub(r"<[^>]*>", " ", page) + " " + attrs
+    if banned.search(text) or strict.search(text):
         sys.exit(1)
 PY
 }
@@ -256,9 +267,10 @@ import json, os, re, sys, urllib.request
 base, prod = os.environ["BASE"], os.environ["PROD"]
 page = urllib.request.urlopen(base + "/", timeout=20).read().decode("utf-8")
 blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S)
-raw = " ".join(blocks)
-if "instagram.com" in raw or "facebook.com" in raw:
-    sys.exit(1)
+for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite"]:
+    html_page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
+    if re.search(r"instagram\.com|facebook\.com|fb\.com", html_page):
+        sys.exit(1)
 nodes = []
 for block in blocks:
     data = json.loads(block)
@@ -282,7 +294,7 @@ c18() {
   local contact
   contact="$(fetch "/contact")"
   printf '%s' "$contact" | main_text | grep -q '13 rue du Creux Challot' || return 1
-  printf '%s' "$contact" | grep -q 'href="/a-propos' || return 1
+  printf '%s' "$contact" | grep -q 'href="/a-propos#methode"' || return 1
   fetch "/mentions-legales" | main_text | grep -q '07 49 25 83 41'
 }
 
