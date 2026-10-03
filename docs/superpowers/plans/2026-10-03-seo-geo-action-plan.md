@@ -28,6 +28,21 @@
 | Revue (générale et sécurité) | faite, D4 appliquée (retrait de `geo` et `openingHours`) | `d1f4def` |
 | 9 Déploiement | **en attente de l'accord de Christopher** | — |
 
+## Avancement de la phase 2 (branche `seo/phase-2-contenu`, non fusionnée)
+
+| Tâche | État | Reste |
+|---|---|---|
+| 10 Titles et descriptions | fait | — |
+| 11 Exemples visibles sous les portes | fait | — |
+| 12 Proximité | fait (zone « Vosges ») | liste de communes (F4) |
+| 13 À propos | en partie : intro, vocabulaire, titres en questions, bloc fondateur minimal | parcours, année, photo (F1 à F3), statut juridique |
+| 14 Cas clients | non fait | faits réels (F6) |
+| 15 Contact et mentions légales | fait | délai de réponse (F5) |
+| 16 `llms.txt` + paragraphe « diagnostic payant » de la Méthode | fait | e-mail et téléphone à mettre à jour à la main avec D7 |
+| 17 JSON-LD de l'entité | en partie : nom, nom alternatif, zone, `Person.url` | `sameAs` et `hasMap` (fiche Google, comptes à refaire) |
+| 18 E-mail de marque | non fait | boîte à créer (D7) |
+| Validation des textes par Christopher (D8) | **à faire sur captures** | accord avant fusion |
+
 ## État de départ (mesuré — base de comparaison)
 
 | Indicateur | Valeur de départ | Source |
