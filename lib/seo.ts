@@ -6,7 +6,12 @@ export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 
 // The root `app/opengraph-image.tsx` is only attached to metadata that does not
 // define its own `images`: a page-level `openGraph` drops it, so pages reference it.
-const OG_IMAGE = { url: "/opengraph-image", ...OG_IMAGE_SIZE, alt: OG_IMAGE_ALT };
+const OG_IMAGE = {
+  url: "/opengraph-image",
+  type: "image/png",
+  ...OG_IMAGE_SIZE,
+  alt: OG_IMAGE_ALT,
+};
 
 type PageMetadataInput = {
   title: string;
