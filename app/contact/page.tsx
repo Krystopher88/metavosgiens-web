@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Phone } from "lucide-react";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactForm } from "@/components/contact-form";
@@ -30,6 +31,18 @@ export default function ContactPage() {
           >
             {SITE.contactPhone}
           </a>
+        </p>
+        <p className="mt-2 text-base text-[#596870]">
+          {SITE.name}, 13 rue du Creux Challot, 88410 Bleurville.
+        </p>
+        <p className="mt-6 text-base text-[#596870]">
+          Vous voulez savoir comment se passe un premier échange ?{" "}
+          <Link
+            href="/a-propos#methode"
+            className="rounded-sm underline underline-offset-2 outline-none hover:text-green focus-visible:ring-3 focus-visible:ring-ring/50"
+          >
+            Découvrir notre méthode
+          </Link>
         </p>
       </div>
       <div className="mx-auto mt-10 max-w-[560px]">

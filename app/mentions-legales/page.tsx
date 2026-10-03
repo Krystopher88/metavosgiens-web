@@ -29,6 +29,8 @@ export default function MentionsLegalesPage() {
             <br />
             Adresse : 13 rue du Creux Challot, 88410 Bleurville, France
             <br />
+            Téléphone : {SITE.contactPhone}
+            <br />
             Contact : {SITE.contactEmail}
           </p>
         </section>
