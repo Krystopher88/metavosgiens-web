@@ -1,18 +1,22 @@
 # MetaVosgiens by KRYST
 
-> Solutions sur mesure pour aider les entreprises vosgiennes à être visibles, gagner du temps, développer leur activité et faire évoluer leur façon de travailler.
+> MetaVosgiens conçoit des solutions sur mesure pour aider les entreprises vosgiennes à être visibles, gagner du temps, développer leur activité et faire évoluer leur façon de travailler.
 
-MetaVosgiens conçoit des solutions numériques sur mesure pour les artisans, commerces, indépendants, professions libérales, petites PME, entreprises B2B et structures industrielles des Vosges (France). Premier échange gratuit, sans engagement.
+MetaVosgiens by KRYST est l'activité de Christopher Bichon, entrepreneur installé à Bleurville (88410, Vosges, France). Un seul interlocuteur, du premier échange au suivi, qui se déplace chez ses clients.
+
+- Pour qui : artisans, commerces, indépendants, professions libérales, petites PME, entreprises B2B et structures industrielles.
+- Où : Vosges.
+- Ce que nous faisons : présence en ligne et visibilité sur Google, diagnostic, recherche de nouveaux clients, automatisation des tâches répétitives, intelligence artificielle quand elle apporte une vraie valeur, outils métier sur mesure, conception de projet jusqu'à un premier prototype, accompagnement dans la durée.
+- Comment : premier échange gratuit et sans engagement, sans cahier des charges. Ensuite, proposition écrite (périmètre, délais, budget) validée avant tout démarrage ; diagnostic payant si le besoin est complexe ou encore flou.
+- Contact : contact@krystdev.com · 07 49 25 83 41 · formulaire sur https://metavosgiens.com/contact
 
 ## Pages
 
-- [Accueil](https://metavosgiens.com/): positionnement, quatre domaines d'intervention (visibilité, gain de temps, développement, évolution des outils), méthode (comprendre, trouver, construire), exemples de projets.
-- [À propos](https://metavosgiens.com/a-propos): méthode, public visé, déroulé d'une collaboration.
-- [Contact](https://metavosgiens.com/contact): formulaire de premier contact.
-- [Mentions légales](https://metavosgiens.com/mentions-legales)
+- [Accueil](https://metavosgiens.com/): les quatre portes d'entrée (être visible, gagner du temps, développer, faire évoluer), trois exemples de projets anonymisés, méthode, proximité.
+- [À propos](https://metavosgiens.com/a-propos): qui est derrière MetaVosgiens, pour quelles entreprises, déroulé détaillé d'une collaboration, ce que nous faisons concrètement.
+- [Contact](https://metavosgiens.com/contact): formulaire de premier contact (nom, entreprise, e-mail, téléphone, site facultatif, message libre).
+
+## Optional
+
+- [Mentions légales](https://metavosgiens.com/mentions-legales): éditeur (micro-entreprise de Christopher Bichon, SIRET 933 529 794 00010), hébergeur.
 - [Politique de confidentialité](https://metavosgiens.com/politique-confidentialite)
-
-## Notes
-
-- Structure statique, aucune base de données, aucun compte utilisateur.
-- Zone d'intervention : département des Vosges, France.
