@@ -58,7 +58,8 @@ const organizationJsonLd = {
     {
       "@type": "ProfessionalService",
       "@id": "https://metavosgiens.com/#organization",
-      name: `${SITE.name} by KRYST`,
+      name: SITE.name,
+      alternateName: `${SITE.name} by KRYST`,
       description: SITE.description,
       url: SITE.url,
       logo: {
@@ -78,12 +79,7 @@ const organizationJsonLd = {
         addressRegion: "Grand Est",
         addressCountry: "FR",
       },
-      areaServed: [
-        { "@type": "AdministrativeArea", name: "Vosges" },
-        { "@type": "AdministrativeArea", name: "Meuse" },
-        { "@type": "AdministrativeArea", name: "Meurthe-et-Moselle" },
-        { "@type": "AdministrativeArea", name: "Haute-Marne" },
-      ],
+      areaServed: [{ "@type": "AdministrativeArea", name: "Vosges" }],
       founder: {
         "@id": "https://metavosgiens.com/#person"
       }
@@ -91,7 +87,7 @@ const organizationJsonLd = {
     {
       "@type": "WebSite",
       "@id": "https://metavosgiens.com/#website",
-      name: `${SITE.name} by KRYST`,
+      name: SITE.name,
       url: SITE.url,
       inLanguage: "fr-FR",
       publisher: {
@@ -103,7 +99,7 @@ const organizationJsonLd = {
       "@id": "https://metavosgiens.com/#person",
       name: "Christopher Bichon",
       jobTitle: "Fondateur",
-      url: "https://www.linkedin.com/in/christopher-bichon-b95a3916a/",
+      url: `${SITE.url}/a-propos`,
       sameAs: [
         "https://www.linkedin.com/in/christopher-bichon-b95a3916a/"
       ],
