@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { SITE, METHOD_STEPS } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { TopographicContours } from "@/components/topographic-contours";
 import { MethodFlow } from "@/components/method-flow";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "À propos",
   description:
     "Notre méthode, notre positionnement et notre façon d'accompagner les entreprises vosgiennes, du premier échange à l'évolution de vos outils.",
-  alternates: { canonical: "/a-propos" },
-};
+  path: "/a-propos",
+});
 
 const PROMISES = [
   "Être visible",

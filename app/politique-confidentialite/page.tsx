@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import { SITE } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 import { Eyebrow } from "@/components/eyebrow";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Politique de confidentialité",
   description: `Politique de confidentialité et protection des données du site ${SITE.name} by KRYST.`,
-  alternates: { canonical: "/politique-confidentialite" },
-};
+  path: "/politique-confidentialite",
+});
 
 export default function PolitiqueConfidentialitePage() {
   return (

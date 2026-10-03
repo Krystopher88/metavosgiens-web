@@ -29,13 +29,6 @@ export const metadata: Metadata = {
     template: `%s — ${SITE.name}`,
   },
   description: SITE.description,
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
   openGraph: {
     type: "website",
     locale: "fr_FR",

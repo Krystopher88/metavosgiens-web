@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactForm } from "@/components/contact-form";
 import { SITE } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description:
     "Parlez-nous de votre projet. Premier échange gratuit, sans engagement, sans cahier des charges.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import { SITE } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 import { Eyebrow } from "@/components/eyebrow";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Mentions légales",
   description: `Mentions légales du site ${SITE.name} by KRYST.`,
-  alternates: { canonical: "/mentions-legales" },
-};
+  path: "/mentions-legales",
+});
 
 export default function MentionsLegalesPage() {
   return (
