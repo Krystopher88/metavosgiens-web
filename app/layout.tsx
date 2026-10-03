@@ -56,6 +56,13 @@ const organizationJsonLd = {
       name: `${SITE.name} by KRYST`,
       description: SITE.description,
       url: SITE.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE.url}/apple-icon`,
+        width: 180,
+        height: 180,
+      },
+      image: `${SITE.url}/opengraph-image`,
       telephone: SITE.contactPhoneHref,
       email: SITE.contactEmail,
       address: {
@@ -83,9 +90,20 @@ const organizationJsonLd = {
       }
     },
     {
+      "@type": "WebSite",
+      "@id": "https://metavosgiens.com/#website",
+      name: `${SITE.name} by KRYST`,
+      url: SITE.url,
+      inLanguage: "fr-FR",
+      publisher: {
+        "@id": "https://metavosgiens.com/#organization"
+      }
+    },
+    {
       "@type": "Person",
       "@id": "https://metavosgiens.com/#person",
       name: "Christopher Bichon",
+      jobTitle: "Fondateur",
       url: "https://www.linkedin.com/in/christopher-bichon-b95a3916a/",
       sameAs: [
         "https://www.linkedin.com/in/christopher-bichon-b95a3916a/"
@@ -106,7 +124,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body id="top">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
+          }}
         />
         <PostHogClientProvider>
           <SiteHeader />
