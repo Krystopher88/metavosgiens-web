@@ -166,6 +166,9 @@ if not (org and site and person):
     sys.exit(1)
 if "logo" not in org or "image" not in org or "jobTitle" not in person:
     sys.exit(1)
+# Horaires et coordonnées précises : retirés (D4), le site n'affiche aucun horaire.
+if "geo" in org or "openingHours" in org:
+    sys.exit(1)
 logo = org["logo"]["url"] if isinstance(org["logo"], dict) else org["logo"]
 for url in (logo, org["image"]):
     res = urllib.request.urlopen(url.replace(prod, base), timeout=20)
@@ -193,7 +196,7 @@ check C06 "en-têtes de sécurité présents, X-Powered-By absent" c06
 check C07 "/favicon.ico répond 200 en image" c07
 check C08 "sitemap : 5 URLs, sans changefreq, priority ni lastmod" c08
 check C09 "téléphone cliquable (tel:) sur /, /a-propos, /contact, sans emoji" c09
-check C10 "JSON-LD valide : ProfessionalService (logo, image), WebSite, Person (jobTitle)" c10
+check C10 "JSON-LD valide et cohérent : ProfessionalService (logo, image, sans geo ni horaires), WebSite, Person (jobTitle)" c10
 check C11 "non-régression : robots.txt, sitemap déclaré, robots IA, llms.txt" c11
 
 exit "$FAILED"

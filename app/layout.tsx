@@ -73,12 +73,6 @@ const organizationJsonLd = {
         addressRegion: "Grand Est",
         addressCountry: "FR",
       },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 48.063214034846254,
-        longitude: 5.964191810994792,
-      },
-      openingHours: "Mo,Tu,We,Th,Fr 09:00-18:00",
       areaServed: [
         { "@type": "AdministrativeArea", name: "Vosges" },
         { "@type": "AdministrativeArea", name: "Meuse" },
