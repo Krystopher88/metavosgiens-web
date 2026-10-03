@@ -1,23 +1,10 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/content";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const routes: {
-    path: string;
-    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
-    priority: number;
-  }[] = [
-    { path: "", changeFrequency: "monthly", priority: 1 },
-    { path: "/a-propos", changeFrequency: "yearly", priority: 0.7 },
-    { path: "/contact", changeFrequency: "yearly", priority: 0.8 },
-    { path: "/mentions-legales", changeFrequency: "yearly", priority: 0.2 },
-    { path: "/politique-confidentialite", changeFrequency: "yearly", priority: 0.2 },
-  ];
+// No lastmod, changefreq or priority: Google ignores the last two, and a lastmod that
+// is just the build date is worse than none.
+const PATHS = ["", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite"];
 
-  return routes.map((route) => ({
-    url: `${SITE.url}${route.path}`,
-    lastModified: new Date(),
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+export default function sitemap(): MetadataRoute.Sitemap {
+  return PATHS.map((path) => ({ url: `${SITE.url}${path}` }));
 }

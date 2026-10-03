@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Phone } from "lucide-react";
 import { SITE, METHOD_STEPS } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 import { Eyebrow } from "@/components/eyebrow";
@@ -195,7 +196,15 @@ export default function AProposPage() {
             Nous sommes dans les Vosges. Et nous venons chez vous : un interlocuteur, du premier
             échange au suivi.
           </p>
-          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">📞 {SITE.contactPhone}</p>
+          <p className="mt-3 flex items-center gap-2 text-base text-[#3c4a54] md:text-lg">
+            <Phone size={20} aria-hidden="true" />
+            <a
+              href={`tel:${SITE.contactPhoneHref}`}
+              className="rounded-sm underline underline-offset-2 outline-none hover:text-green focus-visible:ring-3 focus-visible:ring-ring/50"
+            >
+              {SITE.contactPhone}
+            </a>
+          </p>
           <div className="mt-8">
             <ContactCtaButton />
           </div>

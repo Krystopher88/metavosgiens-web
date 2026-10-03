@@ -72,7 +72,9 @@ export function SiteFooter() {
           </div>
           <div className="flex items-center gap-2">
             <Phone size={20} />
-            <span>{SITE.contactPhone}</span>
+            <a href={`tel:${SITE.contactPhoneHref}`} className={LINK_CLASS}>
+              {SITE.contactPhone}
+            </a>
           </div>
           <div className="flex items-start gap-2">
             <MapPin size={20} />

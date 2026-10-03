@@ -56,7 +56,7 @@ const organizationJsonLd = {
       name: `${SITE.name} by KRYST`,
       description: SITE.description,
       url: SITE.url,
-      telephone: SITE.contactPhone.replace(/\s+/g, '').replace(/^0/, '+33'),
+      telephone: SITE.contactPhoneHref,
       email: SITE.contactEmail,
       address: {
         "@type": "PostalAddress",

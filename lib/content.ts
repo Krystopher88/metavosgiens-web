@@ -5,6 +5,7 @@ export const SITE = {
     "MetaVosgiens conçoit des solutions sur mesure pour aider les entreprises vosgiennes à être visibles, gagner du temps, développer leur activité et faire évoluer leur façon de travailler.",
   contactEmail: "contact@krystdev.com",
   contactPhone: "07 49 25 83 41",
+  contactPhoneHref: "+33749258341",
   contactLinkedIn: "https://www.linkedin.com/in/christopher-bichon-b95a3916a/",
   url: "https://metavosgiens.com",
 } as const;
