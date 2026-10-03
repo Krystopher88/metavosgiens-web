@@ -14,6 +14,13 @@ export function Method() {
         <h2 className={`mt-4 leading-[1.05] text-text ${SECTION_TITLE}`}>
           Vous n&apos;avez pas besoin de savoir quoi construire.
         </h2>
+        <p className="mt-5 max-w-[590px] text-base text-[#3c4a54] md:text-lg">
+          Le premier échange est gratuit et sans engagement : vous expliquez votre situation avec
+          vos mots, nous posons les questions. Si le besoin est clair, vous recevez une proposition
+          écrite (périmètre, délais, budget). S&apos;il est complexe ou encore flou, nous
+          proposons d&apos;abord un diagnostic payant pour y voir clair. Rien ne démarre sans votre
+          validation.
+        </p>
         <div className="mt-6">
           <ArrowLink href="/a-propos#methode">Voir notre méthode en détail</ArrowLink>
         </div>
