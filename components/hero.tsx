@@ -10,7 +10,7 @@ export function Hero() {
       <div className="flex flex-col justify-center md:py-[50px] md:pb-20">
         <Eyebrow>Des idées d&apos;aujourd&apos;hui pour les entreprises de demain</Eyebrow>
         <h1 className="mt-4 font-heading text-[40px] leading-[1.05] font-extrabold tracking-[-0.03em] text-text sm:text-[56px] md:text-[72px] md:tracking-[-0.065em]">
-          Votre entreprise a un problème ?
+          Votre entreprise a un problème ?{" "}
           <br />
           <span className="text-green">Construisons la solution.</span>
         </h1>
@@ -31,7 +31,8 @@ export function Hero() {
           src="/images/hero-vosges.jpg"
           alt=""
           fill
-          priority
+          loading="eager"
+          fetchPriority="high"
           sizes="(min-width: 768px) 55vw, 100vw"
           className="object-cover"
         />
