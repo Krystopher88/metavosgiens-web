@@ -22,8 +22,8 @@ const headingFont = Plus_Jakarta_Sans({
 
 const defaultTitle = `Site internet et outils sur mesure, Vosges — ${SITE.name}`;
 
-// SITE.description is the brand promise (also shown on the About page and in the
-// JSON-LD); the meta description is written around what visitors actually search for.
+// SITE.description is the brand promise, kept for the JSON-LD; the meta description is
+// written around what visitors actually search for.
 const metaDescription =
   "Création de site internet, visibilité sur Google, automatisation et logiciels sur mesure pour les entreprises des Vosges. Premier échange gratuit.";
 
