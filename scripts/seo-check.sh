@@ -2,6 +2,7 @@
 # Contrôles SEO / GEO par curl (aucune dépendance : bash, curl, perl, python3).
 #
 # Usage : scripts/seo-check.sh [BASE_URL]      défaut : https://metavosgiens.com
+# C01 à C11 : correctifs techniques (phase 1) ; C12 à C18 : contenu et entité (phase 2).
 # Sortie : une ligne PASS|FAIL par contrôle ; code de sortie 1 si au moins un FAIL.
 #
 # Serveur local de vérification (réplique du stage `runner` du Dockerfile) :
@@ -43,6 +44,11 @@ meta() {
     my $n = quotemeta($ENV{NAME});
     if (/<meta\s[^>]*?(?:property|name)="$n"[^>]*?content="([^"]*)"/s
         || /<meta\s[^>]*?content="([^"]*)"[^>]*?(?:property|name)="$n"/s) { print $1; exit }'
+}
+
+# Texte visible du seul <main> (hors en-tête, pied de page, scripts).
+main_text() {
+  perl -0777 -ne 'if (/<main\b[^>]*>(.*?)<\/main>/s) { my $t = $1; $t =~ s/<script\b.*?<\/script>//gs; $t =~ s/<[^>]*>/ /g; $t =~ s/\s+/ /g; print $t; exit }'
 }
 
 canonical() {
@@ -187,6 +193,99 @@ c11() {
   [ "$(status "/llms.txt")" = "200" ]
 }
 
+c12() {
+  BASE="$BASE" python3 - <<'PY'
+import html, os, re, sys, urllib.request
+
+base = os.environ["BASE"]
+paths = ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite"]
+titles = []
+for path in paths:
+    page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
+    title = html.unescape(re.search(r"<title>(.*?)</title>", page, re.S).group(1))
+    desc = re.search(r'<meta name="description" content="([^"]*)"', page)
+    desc = html.unescape(desc.group(1)) if desc else ""
+    if path == "/" and len(title) > 60:
+        sys.exit(1)
+    if len(desc) > 155 or not desc:
+        sys.exit(1)
+    titles.append(title)
+if len(set(titles)) != len(titles):
+    sys.exit(1)
+PY
+}
+
+c13() {
+  local text
+  text="$(fetch "/" | main_text)"
+  printf '%s' "$text" | grep -qi 'site internet' && printf '%s' "$text" | grep -q 'fiche Google'
+}
+
+c14() {
+  fetch "/a-propos" | main_text | grep -q 'Christopher Bichon'
+}
+
+c15() {
+  local txt
+  txt="$(fetch "/llms.txt")"
+  ! printf '%s' "$txt" | grep -qi 'numérique' || return 1
+  printf '%s' "$txt" | grep -q 'Bleurville' || return 1
+  printf '%s' "$txt" | grep -q 'Christopher Bichon' || return 1
+  printf '%s' "$txt" | grep -qi 'diagnostic'
+}
+
+c16() {
+  BASE="$BASE" python3 - <<'PY'
+import os, re, sys, urllib.request
+
+base = os.environ["BASE"]
+banned = re.compile(r"numérique|digital|SaaS|workflow|middleware|framework|\bAPI\b", re.I)
+for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite"]:
+    page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
+    page = re.sub(r"<script\b.*?</script>|<style\b.*?</style>", " ", page, flags=re.S)
+    text = re.sub(r"<[^>]*>", " ", page)
+    if banned.search(text):
+        sys.exit(1)
+PY
+}
+
+c17() {
+  BASE="$BASE" PROD="$PROD" python3 - <<'PY'
+import json, os, re, sys, urllib.request
+
+base, prod = os.environ["BASE"], os.environ["PROD"]
+page = urllib.request.urlopen(base + "/", timeout=20).read().decode("utf-8")
+blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S)
+raw = " ".join(blocks)
+if "instagram.com" in raw or "facebook.com" in raw:
+    sys.exit(1)
+nodes = []
+for block in blocks:
+    data = json.loads(block)
+    nodes += data.get("@graph", [data])
+org = next((n for n in nodes if n.get("@type") == "ProfessionalService"), None)
+person = next((n for n in nodes if n.get("@type") == "Person"), None)
+if not org or not person:
+    sys.exit(1)
+if org.get("name") != "MetaVosgiens" or org.get("alternateName") != "MetaVosgiens by KRYST":
+    sys.exit(1)
+if [a.get("name") for a in org.get("areaServed", [])] != ["Vosges"]:
+    sys.exit(1)
+if person.get("url") != prod + "/a-propos":
+    sys.exit(1)
+if not any("linkedin.com/in/" in u for u in person.get("sameAs", [])):
+    sys.exit(1)
+PY
+}
+
+c18() {
+  local contact
+  contact="$(fetch "/contact")"
+  printf '%s' "$contact" | main_text | grep -q '13 rue du Creux Challot' || return 1
+  printf '%s' "$contact" | grep -q 'href="/a-propos' || return 1
+  fetch "/mentions-legales" | main_text | grep -q '07 49 25 83 41'
+}
+
 check C01 "image du hero en chargement immédiat et priorité haute" c01
 check C02 "H1 de la home : texte exact, espace avant le saut de ligne" c02
 check C03 "Open Graph et Twitter propres à chaque page (og:url, og:image, titres distincts)" c03
@@ -198,5 +297,12 @@ check C08 "sitemap : 5 URLs, sans changefreq, priority ni lastmod" c08
 check C09 "téléphone cliquable (tel:) sur /, /a-propos, /contact, sans emoji" c09
 check C10 "JSON-LD valide et cohérent : ProfessionalService (logo, image, sans geo ni horaires), WebSite, Person (jobTitle)" c10
 check C11 "non-régression : robots.txt, sitemap déclaré, robots IA, llms.txt" c11
+check C12 "titles distincts (home ≤ 60 caractères) et descriptions ≤ 155 caractères" c12
+check C13 "la home montre « site internet » et « fiche Google » dans son texte visible" c13
+check C14 "le nom du fondateur est visible sur /a-propos" c14
+check C15 "llms.txt : sans « numérique », avec Bleurville, le fondateur et le diagnostic" c15
+check C16 "aucun terme proscrit (numérique, digital, SaaS, API, workflow, framework) dans le texte visible" c16
+check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone Vosges, fondateur, aucun Instagram ni Facebook" c17
+check C18 "contact : adresse et lien vers /a-propos ; mentions légales : téléphone" c18
 
 exit "$FAILED"
