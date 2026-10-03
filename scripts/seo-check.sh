@@ -65,7 +65,7 @@ c01() {
     while (/(<img\b[^>]*>)/gs) {
       my $img = $1;
       next unless $img =~ /hero-vosges/;
-      $ok = 1 if $img =~ /fetchpriority="high"/ && $img =~ /loading="eager"/;
+      $ok = 1 if $img =~ /fetchpriority="high"/i && $img =~ /loading="eager"/;
     }
     exit($ok ? 0 : 1)'
 }
