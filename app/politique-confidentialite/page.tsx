@@ -4,7 +4,8 @@ import { Eyebrow } from "@/components/eyebrow";
 
 export const metadata = pageMetadata({
   title: "Politique de confidentialité",
-  description: `Politique de confidentialité et protection des données du site ${SITE.name} by KRYST.`,
+  description:
+    "Quelles données le formulaire de contact et la mesure d'audience collectent, pourquoi, combien de temps, et comment exercer vos droits.",
   path: "/politique-confidentialite",
 });
 

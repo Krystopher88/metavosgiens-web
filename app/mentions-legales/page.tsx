@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/eyebrow";
 
 export const metadata = pageMetadata({
   title: "Mentions légales",
-  description: `Mentions légales du site ${SITE.name} by KRYST.`,
+  description: "Éditeur, SIRET, adresse à Bleurville (88410) et hébergeur du site metavosgiens.com.",
   path: "/mentions-legales",
 });
 

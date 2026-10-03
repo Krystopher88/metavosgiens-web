@@ -9,9 +9,9 @@ import { MethodFlow } from "@/components/method-flow";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
 export const metadata = pageMetadata({
-  title: "À propos",
+  title: "Christopher Bichon, interlocuteur vosgien",
   description:
-    "Notre méthode, notre positionnement et notre façon d'accompagner les entreprises vosgiennes, du premier échange à l'évolution de vos outils.",
+    "Basé à Bleurville, MetaVosgiens est votre interlocuteur unique pour votre site internet, vos tâches à automatiser et vos outils métier.",
   path: "/a-propos",
 });
 

@@ -5,9 +5,8 @@ import { SITE } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Contact",
-  description:
-    "Parlez-nous de votre projet. Premier échange gratuit, sans engagement, sans cahier des charges.",
+  title: "Contact, premier échange gratuit (Vosges)",
+  description: `Expliquez votre besoin avec vos mots : site internet, gain de temps, outil sur mesure. Premier échange gratuit et sans engagement. ${SITE.contactPhone}.`,
   path: "/contact",
 });
 
