@@ -149,7 +149,7 @@ export function ProblemDoors() {
           if (!open) setOpenKey(null);
         }}
       >
-        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
           {DOORS.map((door) => (
             <button
               key={door.key}
@@ -158,7 +158,7 @@ export function ProblemDoors() {
                 lastTriggerRef.current = event.currentTarget;
                 setOpenKey(door.key);
               }}
-              className="relative min-h-[300px] overflow-hidden rounded-[15px] border border-[#dde1dc] bg-surface px-[26px] pt-[26px] pb-[84px] text-left outline-none transition-transform duration-200 hover:-translate-y-1 focus-visible:ring-3 focus-visible:ring-ring/50 motion-reduce:transition-none"
+              className="relative flex min-h-[300px] flex-col items-start overflow-hidden rounded-[15px] border border-[#dde1dc] bg-surface px-[26px] pt-[26px] pb-[84px] text-left outline-none transition-transform duration-200 hover:-translate-y-1 focus-visible:ring-3 focus-visible:ring-ring/50 motion-reduce:transition-none"
             >
               <span className="block text-[28px] font-extrabold tracking-[-0.045em] text-text">
                 {door.cardTitle}
