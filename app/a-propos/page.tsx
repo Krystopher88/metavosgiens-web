@@ -42,7 +42,7 @@ const CAPABILITIES: CapabilityItem[] = [
   {
     number: "01",
     title: "Présence en ligne",
-    body: "Être visible là où vos clients vous cherchent, avec un site ou une présence pensée pour votre activité.",
+    body: "Création de site internet ou de site vitrine, fiche Google, référencement local : être visible là où vos clients vous cherchent.",
   },
   {
     number: "02",
@@ -51,23 +51,23 @@ const CAPABILITIES: CapabilityItem[] = [
   },
   {
     number: "03",
-    title: "Acquisition & marketing",
-    body: "Trouver et convertir davantage de clients grâce à une acquisition mieux structurée.",
+    title: "Trouver de nouveaux clients",
+    body: "Savoir d'où viennent vos clients, et en attirer davantage, sans dépendre uniquement du bouche-à-oreille.",
   },
   {
     number: "04",
     title: "Automatisation",
-    body: "Simplifier ce qui peut l'être, pour vous faire gagner du temps au quotidien.",
+    body: "Automatiser les tâches répétitives pour vous faire gagner du temps chaque semaine.",
   },
   {
     number: "05",
-    title: "IA appliquée",
-    body: "Utiliser l'intelligence artificielle quand elle apporte une vraie valeur à votre activité.",
+    title: "Intelligence artificielle",
+    body: "L'utiliser seulement quand elle vous fait vraiment gagner du temps ou de la qualité.",
   },
   {
     number: "06",
     title: "Outils métier",
-    body: "Des outils conçus pour votre façon de travailler, pas l'inverse.",
+    body: "Un logiciel sur mesure quand aucun logiciel du marché ne colle à votre façon de travailler.",
   },
   {
     number: "07",
@@ -92,7 +92,11 @@ export default function AProposPage() {
           <h1 className={`mt-4 leading-[1.05] text-text ${SECTION_TITLE}`}>
             Des solutions sur mesure pour les entreprises vosgiennes.
           </h1>
-          <p className="mt-6 text-lg text-[#3c4a54]">{SITE.description}</p>
+          <p className="mt-6 text-lg text-[#3c4a54]">
+            Site internet, gain de temps, nouveaux clients, logiciel adapté à votre métier :
+            MetaVosgiens construit avec les entreprises vosgiennes la solution dont elles ont
+            réellement besoin, depuis Bleurville.
+          </p>
         </div>
         <div className="relative hidden flex-col justify-center gap-5 overflow-hidden py-4 md:flex">
           <TopographicContours side="right" />
@@ -125,12 +129,37 @@ export default function AProposPage() {
         </div>
         <div className="relative max-w-[560px]">
           <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-            Pour qui
+            Pour quelles entreprises ?
           </h2>
           <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
             Artisans, commerces, indépendants, professions libérales, petites PME, entreprises B2B
             ou structures industrielles avec des processus plus complexes : chaque entreprise est
             différente, chaque solution l&apos;est aussi.
+          </p>
+        </div>
+      </section>
+
+      <section className={SECTION_PADDING}>
+        <div className="max-w-[640px]">
+          <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
+            Qui est derrière MetaVosgiens ?
+          </h2>
+          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
+            MetaVosgiens by KRYST est l&apos;activité de Christopher Bichon, entrepreneur installé
+            à Bleurville, dans les Vosges (88410). Il est votre seul interlocuteur : il vous
+            écoute, conçoit la solution, la construit et assure le suivi.
+          </p>
+          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
+            Vous pouvez aussi retrouver{" "}
+            <a
+              href={SITE.contactLinkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm underline underline-offset-2 outline-none hover:text-green focus-visible:ring-3 focus-visible:ring-ring/50"
+            >
+              son profil LinkedIn
+            </a>
+            .
           </p>
         </div>
       </section>
@@ -154,12 +183,12 @@ export default function AProposPage() {
 
       <section className={`bg-[#eef0ec] ${SECTION_PADDING}`}>
         <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-          Ce que nous faisons concrètement
+          Que fait MetaVosgiens, concrètement ?
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-2">
           {CAPABILITIES.map((item) => (
             <div key={item.number} className="border-t border-[#cfd5d0] pt-4">
-              <p className="text-[11px] font-bold tracking-[0.08em] text-[#64726c]">
+              <p className="text-[11px] font-bold tracking-[0.08em] text-[#5f6d67]">
                 {item.number}
               </p>
               <h3 className="mt-1 font-heading text-[18px] font-extrabold text-text">
@@ -190,11 +219,11 @@ export default function AProposPage() {
         </div>
         <div>
           <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-            Proximité
+            Où intervenez-vous ?
           </h2>
           <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-            Nous sommes dans les Vosges. Et nous venons chez vous : un interlocuteur, du premier
-            échange au suivi.
+            Dans les Vosges, depuis Bleurville. Nous venons chez vous : un interlocuteur, du
+            premier échange au suivi.
           </p>
           <p className="mt-3 flex items-center gap-2 text-base text-[#3c4a54] md:text-lg">
             <Phone size={20} aria-hidden="true" />
