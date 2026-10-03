@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { ArrowIcon } from "@/components/arrow-icon";
+import { ContactSuccess } from "@/components/contact-success";
 
 const INITIAL_STATE: ContactFormState = { status: "idle" };
 
@@ -26,9 +27,12 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <p role="status" className="text-lg text-text">
-        Merci, votre message a bien été envoyé. Nous revenons vers vous rapidement.
-      </p>
+      <>
+        <ContactSuccess />
+        <p role="status" className="text-lg text-text">
+          Merci, votre message a bien été envoyé. Nous revenons vers vous rapidement.
+        </p>
+      </>
     );
   }
 
