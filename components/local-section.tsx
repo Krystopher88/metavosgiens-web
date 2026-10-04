@@ -27,16 +27,16 @@ export function LocalSection() {
       <div>
         <Eyebrow>Proximité</Eyebrow>
         <h2 className={`mt-4 leading-[1.1] text-text ${SECTION_TITLE}`}>
-          Nous sommes dans les Vosges.
-          <br className="hidden md:block" /> Et nous venons chez vous.
+          Je suis dans les Vosges.
+          <br className="hidden md:block" /> Et je viens chez vous.
         </h2>
         <p className="my-[18px] max-w-[590px] text-base text-[#3c4a54] md:text-lg">
-          Basé à Bleurville, MetaVosgiens travaille avec les entreprises du département et se
-          déplace chez vous pour comprendre votre activité sur le terrain. Un seul interlocuteur,
-          Christopher Bichon, du premier échange au suivi. Pas de catalogue de solutions : on part
-          de votre réalité.
+          Basé à Bleurville, je travaille avec les entreprises du département et je viens chez vous
+          pour comprendre votre activité sur le terrain. Je suis Christopher Bichon, votre seul
+          interlocuteur, du premier échange au suivi. Pas de catalogue de solutions : je pars de
+          votre réalité.
         </p>
-        <ArrowLink href="/a-propos">Qui nous sommes et comment nous travaillons</ArrowLink>
+        <ArrowLink href="/a-propos">Qui je suis et comment je travaille</ArrowLink>
       </div>
     </section>
   );

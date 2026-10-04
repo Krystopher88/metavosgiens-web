@@ -92,7 +92,7 @@ export async function submitContactForm(
     return {
       status: "error",
       values,
-      message: "L'envoi a échoué. Réessayez ou écrivez-nous directement par email.",
+      message: "L'envoi a échoué. Réessayez ou écrivez-moi directement par email.",
     };
   }
 

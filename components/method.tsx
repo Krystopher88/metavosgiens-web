@@ -16,11 +16,11 @@ export function Method() {
         </h2>
         <p className="mt-5 max-w-[590px] text-base text-[#3c4a54] md:text-lg">
           Le premier échange est gratuit et sans engagement : vous expliquez votre situation avec
-          vos mots, nous posons les questions. Ensuite, nous cadrons ensemble la suite par écrit
+          vos mots, je pose les questions. Ensuite, je cadre avec vous la suite par écrit
           (périmètre, délais, budget). Rien ne démarre sans votre validation.
         </p>
         <div className="mt-6">
-          <ArrowLink href="/a-propos#methode">Voir notre méthode en détail</ArrowLink>
+          <ArrowLink href="/a-propos#methode">Voir ma méthode en détail</ArrowLink>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-2">

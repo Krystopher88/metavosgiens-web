@@ -8,12 +8,12 @@ export function ContactCta() {
       <div className="text-center">
         <Eyebrow>Premier échange gratuit</Eyebrow>
         <h2 className="mt-4 font-heading text-[40px] leading-[1.05] font-extrabold tracking-[-0.055em] text-text sm:text-[50px]">
-          On commence
+          Commençons
           <br />
           simplement.
         </h2>
         <p className="mx-auto mt-[22px] mb-7 max-w-[650px] text-lg text-[#596870]">
-          Expliquez-nous votre situation avec vos mots. Vous n&apos;avez pas besoin d&apos;avoir un
+          Expliquez-moi votre situation avec vos mots. Vous n&apos;avez pas besoin d&apos;avoir un
           cahier des charges.
         </p>
       </div>

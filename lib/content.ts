@@ -14,22 +14,22 @@ export const METHOD_STEPS = [
   {
     number: "01",
     title: "Premier échange",
-    body: "Un contact initial, sans jargon ni engagement. On échange librement pour comprendre le contexte de votre entreprise.",
+    body: "Un contact initial, sans jargon ni engagement. J'échange librement avec vous pour comprendre le contexte de votre entreprise.",
   },
   {
     number: "02",
     title: "Comprendre la problématique",
-    body: "On creuse au-delà de la demande initiale pour identifier avec vous ce qui pose vraiment problème.",
+    body: "Je creuse au-delà de la demande initiale pour identifier avec vous ce qui pose vraiment problème.",
   },
   {
     number: "03",
     title: "Expression du besoin",
-    body: "On formalise ensemble ce qui est attendu : objectifs, contraintes, priorités. Rien n'est figé sans votre accord.",
+    body: "Je formalise avec vous ce qui est attendu : objectifs, contraintes, priorités. Rien n'est figé sans votre accord.",
   },
   {
     number: "04",
     title: "Cahier des charges & proposition",
-    body: "Un cadrage écrit du périmètre, des délais et du budget. Vous validez avant qu'on démarre quoi que ce soit.",
+    body: "Un cadrage écrit du périmètre, des délais et du budget. Vous validez avant que je démarre quoi que ce soit.",
   },
   {
     number: "05",
@@ -39,7 +39,7 @@ export const METHOD_STEPS = [
   {
     number: "06",
     title: "Test & mise en place",
-    body: "Vous testez, on ajuste ensemble ce qui doit l'être, puis on met la solution en place.",
+    body: "Vous testez, j'ajuste avec vous ce qui doit l'être, puis je mets la solution en place.",
   },
   {
     number: "07",

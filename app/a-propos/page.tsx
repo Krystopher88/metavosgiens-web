@@ -11,7 +11,7 @@ import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 export const metadata = pageMetadata({
   title: "Christopher Bichon, interlocuteur vosgien",
   description:
-    "Basé à Bleurville, MetaVosgiens est votre interlocuteur unique pour votre site internet, vos tâches à automatiser et vos outils métier.",
+    "Basé à Bleurville, je suis votre interlocuteur unique pour votre site internet, vos tâches à automatiser et vos outils métier.",
   path: "/a-propos",
 });
 
@@ -94,8 +94,8 @@ export default function AProposPage() {
           </h1>
           <p className="mt-6 text-lg text-[#3c4a54]">
             Site internet, gain de temps, nouveaux clients, logiciel adapté à votre métier :
-            MetaVosgiens construit avec les entreprises vosgiennes la solution dont elles ont
-            réellement besoin, depuis Bleurville.
+            je construis avec les entreprises vosgiennes la solution dont elles ont réellement
+            besoin, depuis Bleurville.
           </p>
         </div>
         <div className="relative hidden flex-col justify-center gap-5 overflow-hidden py-4 md:flex">
@@ -145,19 +145,19 @@ export default function AProposPage() {
             Qui est derrière MetaVosgiens ?
           </h2>
           <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-            MetaVosgiens by KRYST est l&apos;activité de Christopher Bichon, entrepreneur installé
-            à Bleurville, dans les Vosges (88410). Il est votre seul interlocuteur : il vous
-            écoute, conçoit la solution, la construit et assure le suivi.
+            Je m&apos;appelle Christopher Bichon. MetaVosgiens est mon activité, à Bleurville
+            (88410), dans les Vosges. Je vous écoute, je conçois la solution, je la construis et
+            j&apos;assure le suivi.
           </p>
           <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-            Vous pouvez aussi retrouver{" "}
+            Vous pouvez aussi me retrouver sur{" "}
             <a
               href={SITE.contactLinkedIn}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-sm underline underline-offset-2 outline-none hover:text-green focus-visible:ring-3 focus-visible:ring-ring/50"
             >
-              son profil LinkedIn
+              LinkedIn
             </a>
             .
           </p>
@@ -167,13 +167,13 @@ export default function AProposPage() {
       <section id="methode" className={`relative overflow-hidden bg-navy ${SECTION_PADDING}`}>
         <TopographicContours side="right" />
         <div className="relative max-w-[640px]">
-          <Eyebrow variant="onDark">Notre méthode</Eyebrow>
+          <Eyebrow variant="onDark">Ma méthode</Eyebrow>
           <h2 className={`mt-4 leading-[1.1] text-white ${SECTION_TITLE}`}>
             Du premier échange à l&apos;accompagnement.
           </h2>
           <p className="mt-3 text-base text-[#d5dddf] md:text-lg">
             Que ce soit pour un site, une automatisation ou un outil métier, la démarche reste la
-            même : on comprend, on cadre ensemble, on construit, on accompagne.
+            même : je comprends, je cadre avec vous, je construis, j&apos;accompagne.
           </p>
         </div>
         <div className="relative mt-10 md:mt-14">
@@ -183,7 +183,7 @@ export default function AProposPage() {
 
       <section className={`bg-[#eef0ec] ${SECTION_PADDING}`}>
         <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-          Que fait MetaVosgiens, concrètement ?
+          Que puis-je faire pour vous, concrètement ?
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-x-10 gap-y-6 md:grid-cols-2">
           {CAPABILITIES.map((item) => (
@@ -219,10 +219,10 @@ export default function AProposPage() {
         </div>
         <div>
           <h2 className="font-heading text-[24px] font-extrabold tracking-[-0.03em] text-text">
-            Où intervenez-vous ?
+            Où est-ce que j&apos;interviens ?
           </h2>
           <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-            Dans les Vosges, depuis Bleurville. Nous venons chez vous : un interlocuteur, du
+            Dans les Vosges, depuis Bleurville. Je viens chez vous : un seul interlocuteur, du
             premier échange au suivi.
           </p>
           <p className="mt-3 flex items-center gap-2 text-base text-[#3c4a54] md:text-lg">

@@ -33,7 +33,7 @@ export default function PolitiqueConfidentialitePage() {
             Données collectées
           </h2>
           <p className="mt-2">
-            La donnée que vous nous transmettez délibérément est celle du formulaire de contact :
+            La donnée que vous transmettez délibérément est celle du formulaire de contact :
             prénom, nom, entreprise, email, téléphone, site web (facultatif) et le message que vous
             rédigez. Aucun compte ni aucun paiement en ligne ne sont utilisés sur ce site. Avec votre
             accord, des cookies de mesure d&apos;audience peuvent également être déposés — voir la
@@ -81,7 +81,7 @@ export default function PolitiqueConfidentialitePage() {
             Destinataires
           </h2>
           <p className="mt-2">
-            Vos données sont traitées par Bichon Christopher et transitent par nos prestataires
+            Vos données sont traitées par Bichon Christopher et transitent par des prestataires
             techniques : IONOS (hébergement, France), Brevo (envoi de l&apos;email de contact,
             société française) et, uniquement si vous y consentez, Google Ireland Limited (Google
             Analytics, mesure d&apos;audience). Aucune donnée n&apos;est vendue ni louée à des tiers
@@ -96,7 +96,7 @@ export default function PolitiqueConfidentialitePage() {
           <p className="mt-2">
             Conformément au RGPD, vous disposez d&apos;un droit d&apos;accès, de rectification,
             d&apos;effacement, d&apos;opposition, de limitation et de portabilité sur vos données.
-            Pour les exercer, contactez-nous à {SITE.contactEmail}. Vous pouvez également introduire
+            Pour les exercer, écrivez à {SITE.contactEmail}. Vous pouvez également introduire
             une réclamation auprès de la CNIL.
           </p>
         </section>

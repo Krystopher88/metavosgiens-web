@@ -15,12 +15,12 @@ export function Hero() {
           <span className="text-green">Construisons la solution.</span>
         </h1>
         <p className="mt-5 max-w-[590px] text-base text-[#3c4a54] md:text-lg">
-          De votre présence en ligne à vos outils métier, nous construisons ce dont votre entreprise
+          De votre présence en ligne à vos outils métier, je construis ce dont votre entreprise
           a réellement besoin.
         </p>
         <div className="mt-7 flex flex-wrap items-center gap-[22px]">
           <ContactCtaButton />
-          <ArrowLink href="#method">Découvrir notre approche</ArrowLink>
+          <ArrowLink href="#method">Découvrir mon approche</ArrowLink>
         </div>
       </div>
       <div

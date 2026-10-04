@@ -51,8 +51,8 @@ export function AnalyticsConsent() {
         >
           <div className="mx-auto flex max-w-5xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <p className="text-sm text-[#3c4a54]">
-              Nous utilisons Google Analytics pour mesurer l&apos;audience du site. Ces cookies ne
-              sont déposés qu&apos;avec votre accord. Voir notre{" "}
+              Ce site utilise Google Analytics pour mesurer son audience. Ces cookies ne sont
+              déposés qu&apos;avec votre accord. Voir la{" "}
               <Link
                 href="/politique-confidentialite"
                 className="rounded-sm text-green underline underline-offset-2 outline-none hover:text-green-light focus-visible:ring-3 focus-visible:ring-ring/50"

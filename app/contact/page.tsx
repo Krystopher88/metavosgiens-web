@@ -17,10 +17,10 @@ export default function ContactPage() {
       <div className="text-center">
         <Eyebrow>Premier échange gratuit</Eyebrow>
         <h1 className="mt-4 font-heading text-[34px] leading-[1.05] font-extrabold tracking-[-0.045em] text-text sm:text-[40px]">
-          On commence simplement.
+          Commençons simplement.
         </h1>
         <p className="mx-auto mt-5 max-w-[560px] text-lg text-[#596870]">
-          Expliquez-nous votre situation avec vos mots. Vous n&apos;avez pas besoin d&apos;avoir un
+          Expliquez-moi votre situation avec vos mots. Vous n&apos;avez pas besoin d&apos;avoir un
           cahier des charges.
         </p>
         <p className="mt-4 flex items-center justify-center gap-2 text-lg text-[#596870]">
