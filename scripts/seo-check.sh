@@ -300,6 +300,29 @@ c18() {
   fetch "/mentions-legales" | main_text | grep -q '07 49 25 83 41'
 }
 
+c19() {
+  BASE="$BASE" python3 - <<'PY'
+import html, json, os, re, sys, urllib.request
+
+base = os.environ["BASE"]
+plural = re.compile(r"\b(nous|notre|nos)\b", re.I)
+inclusive_on = re.compile(r"\bon\b", re.I)
+for path in ["/", "/a-propos", "/contact"]:
+    page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
+    main = re.search(r"<main\b[^>]*>(.*?)</main>", page, re.S).group(1)
+    main = re.sub(r"<script\b.*?</script>", " ", main, flags=re.S)
+    text = html.unescape(re.sub(r"<[^>]*>", " ", main))
+    if plural.search(text) or inclusive_on.search(text):
+        sys.exit(1)
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S):
+        if plural.search(json.dumps(json.loads(block), ensure_ascii=False)):
+            sys.exit(1)
+    if path == "/a-propos":
+        if "Je m'appelle Christopher Bichon" not in text or "l'activité de Christopher Bichon" in text:
+            sys.exit(1)
+PY
+}
+
 check C01 "image du hero en chargement immédiat et priorité haute" c01
 check C02 "H1 de la home : texte exact, espace avant le saut de ligne" c02
 check C03 "Open Graph et Twitter propres à chaque page (og:url, og:image, titres distincts)" c03
@@ -318,5 +341,6 @@ check C15 "llms.txt : sans « numérique » ni « payant », avec Bleurville, le
 check C16 "aucun terme proscrit (numérique, digital, SaaS, API, workflow, framework, payant) dans le texte visible et les attributs" c16
 check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone Vosges, fondateur, aucun Instagram ni Facebook" c17
 check C18 "contact : adresse et lien vers /a-propos ; mentions légales : téléphone" c18
+check C19 "registre homogène à la première personne du singulier (aucun nous, notre, nos, on) sur /, /a-propos, /contact et dans le JSON-LD" c19
 
 exit "$FAILED"
