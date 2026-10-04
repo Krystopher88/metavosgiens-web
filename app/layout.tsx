@@ -88,6 +88,7 @@ const organizationJsonLd = {
       "@type": "WebSite",
       "@id": "https://metavosgiens.com/#website",
       name: SITE.name,
+      alternateName: `${SITE.name} by KRYST`,
       url: SITE.url,
       inLanguage: "fr-FR",
       publisher: {

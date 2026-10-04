@@ -281,6 +281,10 @@ if not org or not person:
     sys.exit(1)
 if org.get("name") != "MetaVosgiens" or org.get("alternateName") != "MetaVosgiens by KRYST":
     sys.exit(1)
+# Google lit le nom du site dans le WebSite de la home : le nom complet y est déclaré en nom alternatif.
+site = next((n for n in nodes if n.get("@type") == "WebSite"), None)
+if not site or site.get("name") != "MetaVosgiens" or site.get("alternateName") != "MetaVosgiens by KRYST":
+    sys.exit(1)
 if [a.get("name") for a in org.get("areaServed", [])] != ["Vosges"]:
     sys.exit(1)
 if person.get("url") != prod + "/a-propos":
