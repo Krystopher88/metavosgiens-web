@@ -237,10 +237,8 @@ c15() {
   printf '%s' "$txt" | grep -qi 'diagnostic' || return 1
   ! printf '%s' "$txt" | grep -q 'Meuse' || return 1
   [ "$(printf '%s' "$txt" | head -1)" = "# MetaVosgiens" ] || return 1
-  # Ce que llms.txt annonce comme payant doit être dit sur le site.
-  if printf '%s' "$txt" | grep -qi 'payant'; then
-    fetch "/" | main_text | grep -qi 'payant' || return 1
-  fi
+  # Décision de Christopher : aucune notion de « payant » dans la communication publique.
+  ! printf '%s' "$txt" | grep -qi 'payant'
 }
 
 c16() {
@@ -248,7 +246,7 @@ c16() {
 import os, re, sys, urllib.request
 
 base = os.environ["BASE"]
-banned = re.compile(r"numérique|digital|SaaS|workflow|middleware|framework|\bAPI\b|\bagents?\b|architecture", re.I)
+banned = re.compile(r"numérique|digital|SaaS|workflow|middleware|framework|\bAPI\b|\bagents?\b|architecture|\bpayants?\b", re.I)
 strict = re.compile(r"\bRAG\b")
 for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite"]:
     page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
@@ -316,8 +314,8 @@ check C11 "non-régression : robots.txt, sitemap déclaré, robots IA, llms.txt"
 check C12 "titles distincts (home ≤ 60 caractères) et descriptions ≤ 155 caractères" c12
 check C13 "la home montre « site internet » et « fiche Google » dans son texte visible" c13
 check C14 "le nom du fondateur est visible sur /a-propos" c14
-check C15 "llms.txt : sans « numérique », avec Bleurville, le fondateur et le diagnostic" c15
-check C16 "aucun terme proscrit (numérique, digital, SaaS, API, workflow, framework) dans le texte visible" c16
+check C15 "llms.txt : sans « numérique » ni « payant », avec Bleurville, le fondateur et le diagnostic" c15
+check C16 "aucun terme proscrit (numérique, digital, SaaS, API, workflow, framework, payant) dans le texte visible et les attributs" c16
 check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone Vosges, fondateur, aucun Instagram ni Facebook" c17
 check C18 "contact : adresse et lien vers /a-propos ; mentions légales : téléphone" c18
 
