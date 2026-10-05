@@ -110,6 +110,8 @@ Ne jamais fabriquer de métriques.
 ## Pages
 
 - /
+- /creation-site-internet
+- /automatisation
 - /a-propos
 - /contact
 - /mentions-legales

@@ -443,6 +443,28 @@ Constat vérifié : les 12 questions et leurs réponses ne sont montées qu'à l
 
 ---
 
+# Phase 2b — Requêtes métier, zone d'intervention et pages de service
+
+Décidée le 2026-10-05 avec Christopher (« je vais suivre tes recommandations »). Branche `seo/phase-2-contenu`. Journal : `docs/decisions/2026-10-05.md`. Contrôles C20 à C23 écrits avant le code, vus rouges puis verts.
+
+### Task 28: Mot « agence » et titre de la home — fait
+
+- [x] **Step 1: Check C20** — rouge. **Step 2:** titre `Agence web, automatisation et IA, Vosges`, description de la home, titre et description de `/a-propos`, phrase « plus qu'une agence web » (intro des portes), « agence vosgienne » (Proximité, À propos). **Step 3:** C20 vert.
+
+### Task 29: Zone d'intervention — fait
+
+- [x] **Step 1: Mesure** — API Géo + OSRM depuis Bleurville (résultats dans le journal). **Step 2: Check C21** — rouge. **Step 3:** `SERVICE_AREA` (`lib/content.ts`), JSON-LD `areaServed`, phrase de `/a-propos`, Bleurville retiré du texte de la home (reste adresse et une mention de `/a-propos`), `llms.txt`. **Step 4:** C17, C21 verts.
+
+### Task 30: Pages de service — fait
+
+- [x] **Step 1: Checks C22, C23** — rouges. **Step 2:** `lib/services.ts`, `components/service-page.tsx`, `app/creation-site-internet/page.tsx`, `app/automatisation/page.tsx`, sitemap à 7 URLs, liens (pied de page, sous les portes, capacités 01 et 04 de `/a-propos`), `llms.txt`. **Step 3:** C01 à C23 verts, `npm run lint` inchangé (24 problèmes, fichiers PostHog morts), captures 390, 768 et 1440 px, Lighthouse accessibilité 100.
+- [ ] **Step 4 (Christopher):** relire les textes de `lib/services.ts` et trancher : mention « rédigé avec un assistant » (Google, « How »), lien dans le menu du haut, pages à ouvrir ensuite (intelligence artificielle, outils métier) une fois un cas réel fourni. Réponses à fournir pour compléter les FAQ : peut-on modifier le site soi-même, à qui appartiennent le nom de domaine et l'hébergement, ce que le client doit fournir, ce qui se passe si l'automatisation s'arrête ou si tu n'es plus disponible.
+- [ ] **Step 5 (après déploiement):** Search Console, « Demander une indexation » pour `/`, `/a-propos`, `/creation-site-internet`, `/automatisation` ; relancer le relevé de la tâche 24.
+
+La tâche 26 est remplacée par la tâche 30 (page ouverte sans attendre les données, slug sans zone). L'étape 3 de la tâche 12 est remplacée par la tâche 29.
+
+---
+
 # Phase 3 — Signaux hors site (Christopher, en parallèle dès J0)
 
 Je prépare les textes ; les actions ont lieu dans tes comptes. Rien n'est inscrit nulle part sans ton accord. La fiche Google est le levier local le plus probable : à engager sans attendre le code.

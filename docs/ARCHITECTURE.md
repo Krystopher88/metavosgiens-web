@@ -14,6 +14,8 @@ Le site doit fonctionner sans base de données.
 ```text
 app/
   page.tsx
+  creation-site-internet/page.tsx
+  automatisation/page.tsx
   a-propos/page.tsx
   contact/page.tsx
   mentions-legales/page.tsx
@@ -31,9 +33,11 @@ components/
   local-section.tsx
   contact-cta.tsx
   site-footer.tsx
+  service-page.tsx
 
 lib/
   content.ts
+  services.ts
 ```
 
 Cette structure est une recommandation, pas une obligation. Garder l'architecture aussi simple que possible.
