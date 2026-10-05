@@ -145,9 +145,20 @@ export default function AProposPage() {
             Qui est derrière MetaVosgiens ?
           </h2>
           <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-            Je m&apos;appelle Christopher Bichon. MetaVosgiens est mon activité, à Bleurville
-            (88410), dans les Vosges. Je vous écoute, je conçois la solution, je la construis et
-            j&apos;assure le suivi.
+            Je m&apos;appelle Christopher Bichon. J&apos;ai fondé MetaVosgiens, à Bleurville, dans
+            les Vosges, pour aider les entreprises vosgiennes à être visibles, à gagner du temps et
+            à se doter d&apos;outils qui leur ressemblent.
+          </p>
+          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
+            Pendant quinze ans, j&apos;ai travaillé dans l&apos;hospitalier privé, jusqu&apos;à
+            devenir référent informatique d&apos;un groupe de cliniques sur cinq sites. J&apos;y ai
+            appris ce qui compte quand un outil doit tenir : la fiabilité, la confidentialité des
+            données, la continuité de service et l&apos;écoute de celles et ceux qui s&apos;en
+            servent.
+          </p>
+          <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
+            Ma façon de travailler tient en peu de mots : partir du problème plutôt que de la
+            technologie, comprendre avant de construire, et commencer par un échange humain.
           </p>
           <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
             Vous pouvez aussi me retrouver sur{" "}

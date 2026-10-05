@@ -246,8 +246,8 @@ c16() {
 import os, re, sys, urllib.request
 
 base = os.environ["BASE"]
-banned = re.compile(r"numérique|digital|SaaS|workflow|middleware|framework|\bAPI\b|\bagents?\b|architecture|\bpayants?\b", re.I)
-strict = re.compile(r"\bRAG\b")
+banned = re.compile(r"numérique|digital|SaaS|workflow|middleware|framework|\bAPI\b|\bagents?\b|architecture|\bpayants?\b|freelance|portfolio|\bCV\b|curriculum", re.I)
+strict = re.compile(r"\bRAG\b|KrystLab|KrystDev|KiaraOS|KrystOS|Symfony|\bPHP\b")
 for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite"]:
     page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
     attrs = " ".join(re.findall(r'(?:content|alt|aria-label|title)="([^"]*)"', page))
