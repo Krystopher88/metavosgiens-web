@@ -2,10 +2,10 @@
 
 > MetaVosgiens conçoit des solutions sur mesure pour aider les entreprises vosgiennes à être visibles, gagner du temps, développer leur activité et faire évoluer leur façon de travailler.
 
-MetaVosgiens by KRYST est l'activité de Christopher Bichon, entrepreneur installé à Bleurville (88410, Vosges, France). Un seul interlocuteur, du premier échange au suivi, qui se déplace chez ses clients.
+MetaVosgiens (aussi appelée MetaVosgiens by KRYST) est une agence vosgienne : l'activité de Christopher Bichon, entrepreneur installé à Bleurville (88410, Vosges, France). Un seul interlocuteur, du premier échange au suivi, qui se déplace chez ses clients selon la distance.
 
 - Pour qui : artisans, commerces, indépendants, professions libérales, petites PME, entreprises B2B et structures industrielles.
-- Où : Vosges.
+- Où : Vosges et départements voisins (Meurthe-et-Moselle, Haute-Marne, Haute-Saône).
 - Ce que fait MetaVosgiens : présence en ligne et visibilité sur Google, diagnostic, recherche de nouveaux clients, automatisation des tâches répétitives, intelligence artificielle quand elle apporte une vraie valeur, outils métier sur mesure, conception de projet jusqu'à un premier prototype, accompagnement dans la durée.
 - Comment : premier échange gratuit et sans engagement, sans cahier des charges. Ensuite, cadrage écrit de la suite (périmètre, délais, budget), validé avant tout démarrage.
 - Contact : contact@krystdev.com · 07 49 25 83 41 · formulaire sur https://metavosgiens.com/contact
@@ -13,7 +13,9 @@ MetaVosgiens by KRYST est l'activité de Christopher Bichon, entrepreneur instal
 ## Pages
 
 - [Accueil](https://metavosgiens.com/): les quatre portes d'entrée (être visible, gagner du temps, développer, faire évoluer), trois exemples de projets anonymisés, méthode, proximité.
-- [À propos](https://metavosgiens.com/a-propos): qui est derrière MetaVosgiens, pour quelles entreprises, déroulé détaillé d'une collaboration, ce que nous faisons concrètement.
+- [Création de site internet](https://metavosgiens.com/creation-site-internet): site vitrine clair et rapide, pensé pour être compris de Google, fiche Google, déroulé de la création, questions fréquentes.
+- [Automatisation](https://metavosgiens.com/automatisation): automatiser les tâches répétitives (saisies en double, relances, documents), place de l'intelligence artificielle, déroulé, questions fréquentes.
+- [À propos](https://metavosgiens.com/a-propos): qui est derrière MetaVosgiens, pour quelles entreprises, déroulé détaillé d'une collaboration, ce que MetaVosgiens fait concrètement.
 - [Contact](https://metavosgiens.com/contact): formulaire de premier contact (nom, entreprise, e-mail, téléphone, site facultatif, message libre).
 
 ## Optional

@@ -31,8 +31,9 @@ export function LocalSection() {
           <br className="hidden md:block" /> Et je viens chez vous.
         </h2>
         <p className="my-[18px] max-w-[590px] text-base text-[#3c4a54] md:text-lg">
-          Basé à Bleurville, je travaille avec les entreprises du département et je viens chez vous
-          pour comprendre votre activité sur le terrain. Je suis Christopher Bichon, votre seul
+          MetaVosgiens est une agence vosgienne : je travaille avec les entreprises des Vosges et
+          des départements voisins, et je viens chez vous, quand la distance le permet, pour
+          comprendre votre activité sur le terrain. Je suis Christopher Bichon, votre seul
           interlocuteur, du premier échange au suivi. Pas de catalogue de solutions : je pars de
           votre réalité.
         </p>

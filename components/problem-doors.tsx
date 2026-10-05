@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { ProblemOverlay } from "@/components/problem-overlay";
 import { ArrowIcon } from "@/components/arrow-icon";
+import { ArrowLink } from "@/components/arrow-link";
 import { Eyebrow } from "@/components/eyebrow";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
@@ -138,8 +139,9 @@ export function ProblemDoors() {
             <br className="hidden md:block" /> pour votre entreprise
           </h2>
         </div>
-        <p className="max-w-[330px] text-[#64727a]">
-          Chaque entreprise est unique, chaque solution l&apos;est aussi.
+        <p className="max-w-[330px] text-[#64727a] md:max-w-[380px]">
+          Site internet, automatisation, outils métier, intelligence artificielle : plus qu&apos;une
+          agence web, des solutions faites pour votre entreprise.
         </p>
       </div>
 
@@ -192,7 +194,12 @@ export function ProblemDoors() {
         </SheetContent>
       </Sheet>
 
-      <p className="mt-[30px] text-center text-[#607079]">
+      <div className="mt-[30px] flex flex-wrap justify-center gap-x-8 gap-y-3">
+        <ArrowLink href="/creation-site-internet">Voir la création de site internet</ArrowLink>
+        <ArrowLink href="/automatisation">Voir l&apos;automatisation des tâches</ArrowLink>
+      </div>
+
+      <p className="mt-[22px] text-center text-[#607079]">
         Vous ne savez pas encore ce dont vous avez besoin ?{" "}
         <a href="#contact" className="font-semibold text-green">
           Parlons-en.

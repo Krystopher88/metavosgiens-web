@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import { SITE } from "@/lib/content";
+import { SERVICE_AREA, SITE } from "@/lib/content";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AnalyticsConsent } from "@/components/analytics-consent";
@@ -20,12 +20,12 @@ const headingFont = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const defaultTitle = `Site internet et outils sur mesure, Vosges — ${SITE.name}`;
+const defaultTitle = `Agence web, automatisation et IA, Vosges — ${SITE.name}`;
 
 // SITE.description is the brand promise, kept for the JSON-LD; the meta description is
 // written around what visitors actually search for.
 const metaDescription =
-  "Création de site internet, visibilité sur Google, automatisation et logiciels sur mesure pour les entreprises des Vosges. Premier échange gratuit.";
+  "Agence vosgienne : création de site internet, automatisation, intelligence artificielle et outils métier sur mesure. Premier échange gratuit.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -79,7 +79,7 @@ const organizationJsonLd = {
         addressRegion: "Grand Est",
         addressCountry: "FR",
       },
-      areaServed: [{ "@type": "AdministrativeArea", name: "Vosges" }],
+      areaServed: SERVICE_AREA.map((name) => ({ "@type": "AdministrativeArea", name })),
       founder: {
         "@id": "https://metavosgiens.com/#person"
       }

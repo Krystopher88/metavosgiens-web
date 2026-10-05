@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { Phone } from "lucide-react";
-import { SITE, METHOD_STEPS } from "@/lib/content";
+import { SERVICE_AREA, SITE, METHOD_STEPS } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
+import { ArrowLink } from "@/components/arrow-link";
 import { Eyebrow } from "@/components/eyebrow";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { TopographicContours } from "@/components/topographic-contours";
@@ -9,9 +10,9 @@ import { MethodFlow } from "@/components/method-flow";
 import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 
 export const metadata = pageMetadata({
-  title: "Christopher Bichon, interlocuteur vosgien",
+  title: "L'agence vosgienne de Christopher Bichon",
   description:
-    "Basé à Bleurville, je suis votre interlocuteur unique pour votre site internet, vos tâches à automatiser et vos outils métier.",
+    "Une agence vosgienne, un seul interlocuteur : je m'occupe de votre site internet, de vos automatisations et de vos outils métier. Premier échange gratuit.",
   path: "/a-propos",
 });
 
@@ -36,13 +37,17 @@ type CapabilityItem = {
   number: string;
   title: string;
   body: string;
+  link?: { href: string; label: string };
 };
+
+const NEIGHBOURING_AREAS = new Intl.ListFormat("fr").format(SERVICE_AREA.slice(1));
 
 const CAPABILITIES: CapabilityItem[] = [
   {
     number: "01",
     title: "Présence en ligne",
     body: "Création de site internet ou de site vitrine, fiche Google, référencement local : être visible là où vos clients vous cherchent.",
+    link: { href: "/creation-site-internet", label: "Voir la création de site internet" },
   },
   {
     number: "02",
@@ -58,6 +63,7 @@ const CAPABILITIES: CapabilityItem[] = [
     number: "04",
     title: "Automatisation",
     body: "Automatiser les tâches répétitives pour vous faire gagner du temps au quotidien.",
+    link: { href: "/automatisation", label: "Voir l'automatisation des tâches" },
   },
   {
     number: "05",
@@ -93,9 +99,9 @@ export default function AProposPage() {
             Des solutions sur mesure pour les entreprises vosgiennes.
           </h1>
           <p className="mt-6 text-lg text-[#3c4a54]">
-            Site internet, gain de temps, nouveaux clients, logiciel adapté à votre métier :
-            je construis avec les entreprises vosgiennes la solution dont elles ont réellement
-            besoin, depuis Bleurville.
+            MetaVosgiens est une agence vosgienne : site internet, gain de temps, nouveaux clients,
+            logiciel adapté à votre métier, je construis avec les entreprises des Vosges et des
+            départements voisins la solution dont elles ont réellement besoin.
           </p>
         </div>
         <div className="relative hidden flex-col justify-center gap-5 overflow-hidden py-4 md:flex">
@@ -206,6 +212,11 @@ export default function AProposPage() {
                 {item.title}
               </h3>
               <p className="mt-1 max-w-[440px] text-[#5a6870]">{item.body}</p>
+              {item.link && (
+                <div className="mt-3">
+                  <ArrowLink href={item.link.href}>{item.link.label}</ArrowLink>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -233,8 +244,8 @@ export default function AProposPage() {
             Où est-ce que j&apos;interviens ?
           </h2>
           <p className="mt-3 text-base text-[#3c4a54] md:text-lg">
-            Dans les Vosges, depuis Bleurville. Je viens chez vous : un seul interlocuteur, du
-            premier échange au suivi.
+            Dans les Vosges et les départements voisins : {NEIGHBOURING_AREAS}. Je viens chez vous
+            quand la distance le permet : un seul interlocuteur, du premier échange au suivi.
           </p>
           <p className="mt-3 flex items-center gap-2 text-base text-[#3c4a54] md:text-lg">
             <Phone size={20} aria-hidden="true" />

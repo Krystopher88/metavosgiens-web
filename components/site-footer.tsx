@@ -13,6 +13,8 @@ import { Mail, Phone, MapPin } from "lucide-react";
 // /a-propos page, not a homepage anchor.
 const NAV_LINKS = [
   { label: "Accueil", href: "/#top" },
+  { label: "Création de site internet", href: "/creation-site-internet" },
+  { label: "Automatisation", href: "/automatisation" },
   { label: "À propos", href: "/a-propos" },
   { label: "Exemples", href: "/#proof" },
   { label: "Contact", href: "/#contact" },
