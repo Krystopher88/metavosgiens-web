@@ -34,13 +34,14 @@
 |---|---|---|
 | 10 Titles et descriptions | fait | — |
 | 11 Exemples visibles sous les portes | fait | — |
-| 12 Proximité | fait (zone « Vosges ») | liste de communes (F4) |
-| 13 À propos | en partie : intro, vocabulaire, titres en questions, bloc fondateur minimal | parcours, année, photo (F1 à F3), statut juridique |
-| 14 Cas clients | non fait | faits réels (F6) |
-| 15 Contact et mentions légales | fait | délai de réponse (F5) |
-| 16 `llms.txt` + paragraphe « diagnostic payant » de la Méthode | fait | e-mail et téléphone à mettre à jour à la main avec D7 |
-| 17 JSON-LD de l'entité | en partie : nom, nom alternatif, zone, `Person.url` | `sameAs` et `hasMap` (fiche Google, comptes à refaire) |
-| 18 E-mail de marque | non fait | boîte à créer (D7) |
+| 12 Proximité | fait (zone : Vosges et trois départements voisins, Bleurville retiré du texte commercial) | — |
+| 13 À propos | en partie : intro, vocabulaire, titres en questions, bloc fondateur (parcours utile au client, sans CV) | photo réelle (reportée), statut juridique |
+| 14 Cas clients | non fait | faits réels (F6) : aucun cas client à ce jour (2026-10-05) |
+| 15 Contact et mentions légales | fait : adresse, téléphone, délai de réponse « 24 à 48 heures » ; hébergeur confirmé par `krystlab.com/mentions-legales` (F5, F7) | « Directeur de la publication » à ajouter (proposé, non appliqué) |
+| 16 `llms.txt` + paragraphe « diagnostic payant » de la Méthode | fait (sans « payant ») | e-mail à mettre à jour à la main avec D7 |
+| 17 JSON-LD de l'entité | en partie : nom, nom alternatif, zone, `Person.url` | `sameAs` et `hasMap` (fiche Google, comptes à refaire, reportés) |
+| 18 E-mail de marque | reporté par Christopher (2026-10-05) | boîte à créer (D7) |
+| 28 à 31 Phase 2b (agence, zone, pages de service) | fait, voir plus bas | relecture des textes par Christopher |
 | Validation des textes par Christopher (D8) | **à faire sur captures** | accord avant fusion |
 
 ## État de départ (mesuré — base de comparaison)
@@ -458,8 +459,13 @@ Décidée le 2026-10-05 avec Christopher (« je vais suivre tes recommandations 
 ### Task 30: Pages de service — fait
 
 - [x] **Step 1: Checks C22, C23** — rouges. **Step 2:** `lib/services.ts`, `components/service-page.tsx`, `app/creation-site-internet/page.tsx`, `app/automatisation/page.tsx`, sitemap à 7 URLs, liens (pied de page, sous les portes, capacités 01 et 04 de `/a-propos`), `llms.txt`. **Step 3:** C01 à C23 verts, `npm run lint` inchangé (24 problèmes, fichiers PostHog morts), captures 390, 768 et 1440 px, Lighthouse accessibilité 100.
-- [ ] **Step 4 (Christopher):** relire les textes de `lib/services.ts` et trancher : mention « rédigé avec un assistant » (Google, « How »), lien dans le menu du haut, pages à ouvrir ensuite (intelligence artificielle, outils métier) une fois un cas réel fourni. Réponses à fournir pour compléter les FAQ : peut-on modifier le site soi-même, à qui appartiennent le nom de domaine et l'hébergement, ce que le client doit fournir, ce qui se passe si l'automatisation s'arrête ou si tu n'es plus disponible.
+- [ ] **Step 4 (Christopher):** relire les textes de `lib/services.ts` et trancher : mention « rédigé avec un assistant » (Google, « How »), lien dans le menu du haut, pages à ouvrir ensuite (intelligence artificielle, outils métier) une fois un cas réel fourni. FAQ complétées le 2026-10-05 avec les réponses de Christopher (modification du site, nom de domaine et hébergement, éléments à fournir, gestion des erreurs) ; la question « si tu n'es plus disponible » reste sans réponse.
 - [ ] **Step 5 (après déploiement):** Search Console, « Demander une indexation » pour `/`, `/a-propos`, `/creation-site-internet`, `/automatisation` ; relancer le relevé de la tâche 24.
+
+### Task 31: Pages intelligence artificielle et outils métier — fait
+
+- [x] **Step 1: Checks** C08 (9 URLs), C22 et C23 étendus aux quatre pages, C24 (délai de réponse et mentions légales) — rouges puis verts. **Step 2:** `AI_SERVICE` et `TOOLS_SERVICE` dans `lib/services.ts`, routes `/intelligence-artificielle` et `/outils-metier`, liens (pied de page, portes, capacités 05 et 06 de `/a-propos`, bloc IA de `/automatisation`), `llms.txt`. Décision de Christopher du 2026-10-05, prise malgré ma réserve (aucun cas client à y présenter) : l'exemple de `/outils-metier` renvoie au cas « Outil métier » de l'accueil, `/intelligence-artificielle` n'a pas d'exemple.
+- [ ] **Step 3 (Christopher):** dire si les cas 1 et 2 de l'accueil utilisent l'intelligence artificielle ; si oui, je peux les citer sur `/intelligence-artificielle`.
 
 La tâche 26 est remplacée par la tâche 30 (page ouverte sans attendre les données, slug sans zone). L'étape 3 de la tâche 12 est remplacée par la tâche 29.
 

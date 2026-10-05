@@ -16,6 +16,8 @@ app/
   page.tsx
   creation-site-internet/page.tsx
   automatisation/page.tsx
+  intelligence-artificielle/page.tsx
+  outils-metier/page.tsx
   a-propos/page.tsx
   contact/page.tsx
   mentions-legales/page.tsx

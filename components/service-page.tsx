@@ -49,7 +49,7 @@ export function ServicePage({ content }: ServicePageProps) {
       <section
         className={`relative grid grid-cols-1 gap-10 overflow-hidden bg-[#eef0ec] lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 ${SECTION_PADDING}`}
       >
-        <div className="hidden lg:block">
+        <div className="hidden lg:contents">
           <TopographicContours side="left" />
         </div>
         <h2 className={`relative leading-[1.1] text-text ${SECTION_TITLE}`}>
@@ -127,6 +127,11 @@ export function ServicePage({ content }: ServicePageProps) {
           <div className="max-w-[640px]">
             <h2 className={SECTION_HEADING}>{content.extra.title}</h2>
             <p className="mt-3 text-base text-[#3c4a54] md:text-lg">{content.extra.body}</p>
+            {content.extra.link && (
+              <div className="mt-4">
+                <ArrowLink href={content.extra.link.href}>{content.extra.link.label}</ArrowLink>
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -189,10 +194,14 @@ export function ServicePage({ content }: ServicePageProps) {
             <ContactCtaButton />
             <ArrowLink href="/a-propos">Qui je suis et comment je travaille</ArrowLink>
           </div>
-          <p className="mt-10 text-base text-[#3c4a54] md:text-lg">{content.related.text}</p>
-          <div className="mt-2">
-            <ArrowLink href={content.related.href}>{content.related.label}</ArrowLink>
-          </div>
+          {content.related.map((link) => (
+            <div key={link.href} className="mt-8">
+              <p className="text-base text-[#3c4a54] md:text-lg">{link.text}</p>
+              <div className="mt-2">
+                <ArrowLink href={link.href}>{link.label}</ArrowLink>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </main>

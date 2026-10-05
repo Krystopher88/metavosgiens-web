@@ -69,11 +69,13 @@ const CAPABILITIES: CapabilityItem[] = [
     number: "05",
     title: "Intelligence artificielle",
     body: "L'utiliser seulement quand elle vous fait vraiment gagner du temps ou améliorer la qualité de votre travail.",
+    link: { href: "/intelligence-artificielle", label: "Voir l'intelligence artificielle" },
   },
   {
     number: "06",
     title: "Outils métier",
     body: "Un logiciel sur mesure quand aucun logiciel du marché ne colle à votre façon de travailler.",
+    link: { href: "/outils-metier", label: "Voir les outils métier sur mesure" },
   },
   {
     number: "07",

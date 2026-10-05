@@ -47,7 +47,7 @@ Architecture statique-first.
 - Mentions légales
 - Politique de confidentialité
 
-La homepage contient les principales informations commerciales. Pages de service : uniquement `/creation-site-internet` et `/automatisation` (décision du 2026-10-05, voir `docs/decisions/2026-10-05.md`) ; d'autres pages seulement avec un contenu réel et sur demande. Jamais de page par commune.
+La homepage contient les principales informations commerciales. Pages de service : uniquement `/creation-site-internet`, `/automatisation`, `/intelligence-artificielle` et `/outils-metier` (décisions du 2026-10-05, voir `docs/decisions/2026-10-05.md`) ; d'autres pages seulement avec un contenu réel et sur demande. Jamais de page par commune.
 
 ## UX homepage
 

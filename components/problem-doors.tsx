@@ -197,6 +197,10 @@ export function ProblemDoors() {
       <div className="mt-[30px] flex flex-wrap justify-center gap-x-8 gap-y-3">
         <ArrowLink href="/creation-site-internet">Voir la création de site internet</ArrowLink>
         <ArrowLink href="/automatisation">Voir l&apos;automatisation des tâches</ArrowLink>
+        <ArrowLink href="/intelligence-artificielle">
+          Voir l&apos;intelligence artificielle
+        </ArrowLink>
+        <ArrowLink href="/outils-metier">Voir les outils métier sur mesure</ArrowLink>
       </div>
 
       <p className="mt-[22px] text-center text-[#607079]">

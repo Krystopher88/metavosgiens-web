@@ -15,6 +15,8 @@ const NAV_LINKS = [
   { label: "Accueil", href: "/#top" },
   { label: "Création de site internet", href: "/creation-site-internet" },
   { label: "Automatisation", href: "/automatisation" },
+  { label: "Intelligence artificielle", href: "/intelligence-artificielle" },
+  { label: "Outils métier", href: "/outils-metier" },
   { label: "À propos", href: "/a-propos" },
   { label: "Exemples", href: "/#proof" },
   { label: "Contact", href: "/#contact" },

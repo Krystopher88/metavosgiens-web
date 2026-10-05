@@ -35,6 +35,7 @@ export default function ContactPage() {
         <p className="mt-2 text-base text-[#596870]">
           {SITE.name}, 13 rue du Creux Challot, 88410 Bleurville.
         </p>
+        <p className="mt-2 text-base text-[#596870]">Je vous réponds sous 24 à 48 heures.</p>
         <p className="mt-6 text-base text-[#596870]">
           <Link
             href="/a-propos#methode"

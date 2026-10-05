@@ -112,6 +112,8 @@ Ne jamais fabriquer de métriques.
 - /
 - /creation-site-internet
 - /automatisation
+- /intelligence-artificielle
+- /outils-metier
 - /a-propos
 - /contact
 - /mentions-legales

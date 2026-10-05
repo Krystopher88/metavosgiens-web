@@ -8,13 +8,15 @@ MetaVosgiens (aussi appelée MetaVosgiens by KRYST) est une agence vosgienne : l
 - Où : Vosges et départements voisins (Meurthe-et-Moselle, Haute-Marne, Haute-Saône).
 - Ce que fait MetaVosgiens : présence en ligne et visibilité sur Google, diagnostic, recherche de nouveaux clients, automatisation des tâches répétitives, intelligence artificielle quand elle apporte une vraie valeur, outils métier sur mesure, conception de projet jusqu'à un premier prototype, accompagnement dans la durée.
 - Comment : premier échange gratuit et sans engagement, sans cahier des charges. Ensuite, cadrage écrit de la suite (périmètre, délais, budget), validé avant tout démarrage.
-- Contact : contact@krystdev.com · 07 49 25 83 41 · formulaire sur https://metavosgiens.com/contact
+- Contact : contact@krystdev.com · 07 49 25 83 41 · formulaire sur https://metavosgiens.com/contact · délai de réponse : 24 à 48 heures.
 
 ## Pages
 
 - [Accueil](https://metavosgiens.com/): les quatre portes d'entrée (être visible, gagner du temps, développer, faire évoluer), trois exemples de projets anonymisés, méthode, proximité.
 - [Création de site internet](https://metavosgiens.com/creation-site-internet): site vitrine clair et rapide, pensé pour être compris de Google, fiche Google, déroulé de la création, questions fréquentes.
-- [Automatisation](https://metavosgiens.com/automatisation): automatiser les tâches répétitives (saisies en double, relances, documents), place de l'intelligence artificielle, déroulé, questions fréquentes.
+- [Automatisation](https://metavosgiens.com/automatisation): automatiser les tâches répétitives (saisies en double, relances, documents), déroulé, questions fréquentes.
+- [Intelligence artificielle](https://metavosgiens.com/intelligence-artificielle): rédiger, résumer, trier, répondre ; ce que fait l'intelligence artificielle, comment elle est encadrée (humain aux commandes, données), questions fréquentes.
+- [Outils métier](https://metavosgiens.com/outils-metier): logiciel sur mesure quand aucun logiciel du marché ne convient, exemples d'outils, déroulé par étapes, questions fréquentes.
 - [À propos](https://metavosgiens.com/a-propos): qui est derrière MetaVosgiens, pour quelles entreprises, déroulé détaillé d'une collaboration, ce que MetaVosgiens fait concrètement.
 - [Contact](https://metavosgiens.com/contact): formulaire de premier contact (nom, entreprise, e-mail, téléphone, site facultatif, message libre).
 

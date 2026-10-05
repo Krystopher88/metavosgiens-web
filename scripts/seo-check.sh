@@ -3,7 +3,7 @@
 #
 # Usage : scripts/seo-check.sh [BASE_URL]      défaut : https://metavosgiens.com
 # C01 à C11 : correctifs techniques (phase 1) ; C12 à C19 : contenu et entité (phase 2) ;
-# C20 à C23 : mot « agence », zone d'intervention et pages de service (phase 2b).
+# C20 à C24 : mot « agence », zone d'intervention, pages de service, délai de réponse (phase 2b).
 # Sortie : une ligne PASS|FAIL par contrôle ; code de sortie 1 si au moins un FAIL.
 #
 # Serveur local de vérification (réplique du stage `runner` du Dockerfile) :
@@ -20,7 +20,7 @@ set -uo pipefail
 
 BASE="${1:-https://metavosgiens.com}"
 PROD="https://metavosgiens.com"
-SERVICE_PAGES=("/creation-site-internet" "/automatisation")
+SERVICE_PAGES=("/creation-site-internet" "/automatisation" "/intelligence-artificielle" "/outils-metier")
 PAGES=("" "/a-propos" "/contact" "/mentions-legales" "/politique-confidentialite" "${SERVICE_PAGES[@]}")
 FAILED=0
 
@@ -135,7 +135,7 @@ c07() {
 c08() {
   local xml
   xml="$(fetch "/sitemap.xml")"
-  [ "$(printf '%s' "$xml" | count '<loc>')" = "7" ] || return 1
+  [ "$(printf '%s' "$xml" | count '<loc>')" = "9" ] || return 1
   [ "$(printf '%s' "$xml" | count '<changefreq>')" = "0" ] || return 1
   [ "$(printf '%s' "$xml" | count '<priority>')" = "0" ] || return 1
   [ "$(printf '%s' "$xml" | count '<lastmod>')" = "0" ]
@@ -201,7 +201,7 @@ c12() {
 import html, os, re, sys, urllib.request
 
 base = os.environ["BASE"]
-paths = ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite", "/creation-site-internet", "/automatisation"]
+paths = ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite", "/creation-site-internet", "/automatisation", "/intelligence-artificielle", "/outils-metier"]
 titles = []
 for path in paths:
     page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
@@ -242,8 +242,11 @@ c15() {
   for dep in Meurthe-et-Moselle Haute-Marne Haute-Saône; do
     printf '%s' "$txt" | grep -q "$dep" || return 1
   done
-  printf '%s' "$txt" | grep -q "$PROD/creation-site-internet" || return 1
-  printf '%s' "$txt" | grep -q "$PROD/automatisation" || return 1
+  local service
+  for service in "${SERVICE_PAGES[@]}"; do
+    printf '%s' "$txt" | grep -q "$PROD$service" || return 1
+  done
+  printf '%s' "$txt" | grep -q '24 à 48 heures' || return 1
   ! printf '%s' "$txt" | grep -qiE '\b(nous|notre|nos)\b' || return 1
   [ "$(printf '%s' "$txt" | head -1)" = "# MetaVosgiens" ] || return 1
   # Décision de Christopher : aucune notion de « payant » dans la communication publique.
@@ -257,7 +260,7 @@ import os, re, sys, urllib.request
 base = os.environ["BASE"]
 banned = re.compile(r"numérique|digital|SaaS|workflow|middleware|framework|\bAPI\b|\bagents?\b|architecture|\bpayants?\b|freelance|portfolio|\bCV\b|curriculum", re.I)
 strict = re.compile(r"\bRAG\b|KrystLab|KrystDev|KiaraOS|KrystOS|Symfony|\bPHP\b")
-for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite", "/creation-site-internet", "/automatisation"]:
+for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite", "/creation-site-internet", "/automatisation", "/intelligence-artificielle", "/outils-metier"]:
     page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
     attrs = " ".join(re.findall(r'(?:content|alt|aria-label|title)="([^"]*)"', page))
     page = re.sub(r"<script\b.*?</script>|<style\b.*?</style>", " ", page, flags=re.S)
@@ -274,7 +277,7 @@ import json, os, re, sys, urllib.request
 base, prod = os.environ["BASE"], os.environ["PROD"]
 page = urllib.request.urlopen(base + "/", timeout=20).read().decode("utf-8")
 blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S)
-for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite", "/creation-site-internet", "/automatisation"]:
+for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite", "/creation-site-internet", "/automatisation", "/intelligence-artificielle", "/outils-metier"]:
     html_page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
     if re.search(r"instagram\.com|facebook\.com|fb\.com", html_page):
         sys.exit(1)
@@ -316,7 +319,7 @@ import html, json, os, re, sys, urllib.request
 base = os.environ["BASE"]
 plural = re.compile(r"\b(nous|notre|nos)\b", re.I)
 inclusive_on = re.compile(r"\bon\b", re.I)
-for path in ["/", "/a-propos", "/contact", "/creation-site-internet", "/automatisation"]:
+for path in ["/", "/a-propos", "/contact", "/creation-site-internet", "/automatisation", "/intelligence-artificielle", "/outils-metier"]:
     page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
     main = re.search(r"<main\b[^>]*>(.*?)</main>", page, re.S).group(1)
     main = re.sub(r"<script\b.*?</script>", " ", main, flags=re.S)
@@ -390,7 +393,7 @@ towns = re.compile(
     r"|Saint-Dié|Belfort|Lunéville|Metz|Gérardmer|Verdun|Bar-le-Duc|Darney|Saint-Dizier|Gray\b|Longwy"
     r"|Strasbourg|Colmar|Mulhouse|Dijon|Troyes|Reims|Luxeuil|Pont-à-Mousson|Commercy|Thionville"
 )
-for path in ["/", "/a-propos", "/contact", "/creation-site-internet", "/automatisation"]:
+for path in ["/", "/a-propos", "/contact", "/creation-site-internet", "/automatisation", "/intelligence-artificielle", "/outils-metier"]:
     text = main_text(path)
     if towns.search(text):
         sys.exit(1)
@@ -410,6 +413,8 @@ base = os.environ["BASE"]
 pages = {
     "/creation-site-internet": (r"site internet", "/automatisation"),
     "/automatisation": (r"utomatis", "/creation-site-internet"),
+    "/intelligence-artificielle": (r"intelligence artificielle", "/automatisation"),
+    "/outils-metier": (r"outils métier", "/automatisation"),
 }
 for path, (keyword, other) in pages.items():
     raw = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
@@ -439,6 +444,10 @@ for path, (keyword, other) in pages.items():
     allowed = re.sub(r"\b0[1-4]\b", " ", text.replace("07 49 25 83 41", " "))
     if re.search(r"€|euros?\b|%", text) or re.search(r"\d", allowed):
         sys.exit(1)
+    # Les nombres écrits en lettres devant une unité (« quarante-huit heures », « vingt ans »).
+    number_words = r"(?:deux|trois|quatre|cinq|six|sept|huit|neuf|dix|onze|douze|quinze|vingt|trente|quarante|cinquante|soixante|cent|mille)"
+    if re.search(rf"\b{number_words}\S*\s+(?:jours?|semaines?|mois|ans?|années?|heures?|minutes?|clients?|projets?)\b", text, re.I):
+        sys.exit(1)
 PY
 }
 
@@ -447,9 +456,23 @@ c23() {
   for path in "" "/a-propos"; do
     # Dans <main> : le pied de page porte déjà ces liens sur toutes les pages.
     main="$(fetch "${path:-/}" | perl -0777 -ne 'print $1 if /<main\b[^>]*>(.*?)<\/main>/s')"
-    printf '%s' "$main" | grep -q 'href="/creation-site-internet"' || return 1
-    printf '%s' "$main" | grep -q 'href="/automatisation"' || return 1
+    local service
+    for service in "${SERVICE_PAGES[@]}"; do
+      printf '%s' "$main" | grep -q "href=\"$service\"" || return 1
+    done
   done
+}
+
+c24() {
+  local contact legal
+  contact="$(fetch "/contact" | main_text)"
+  # Délai tenu par Christopher (2026-10-05) : 24 à 48 heures, affiché sur la page de contact.
+  printf '%s' "$contact" | grep -q '24 à 48 heures' || return 1
+  legal="$(fetch "/mentions-legales" | main_text)"
+  # Éditeur et hébergeur identiques aux mentions légales de l'autre site de Christopher.
+  printf '%s' "$legal" | grep -q 'IONOS SARL' || return 1
+  printf '%s' "$legal" | grep -q '7 Place de la Gare, BP 70109, 57200 Sarreguemines' || return 1
+  printf '%s' "$legal" | grep -q '933 529 794 00010'
 }
 
 check C01 "image du hero en chargement immédiat et priorité haute" c01
@@ -459,7 +482,7 @@ check C04 "canonical de chaque page sur son propre chemin" c04
 check C05 "404 : statut 404, un seul title, un seul robots noindex, aucun canonical" c05
 check C06 "en-têtes de sécurité présents, X-Powered-By absent" c06
 check C07 "/favicon.ico répond 200 en image" c07
-check C08 "sitemap : 7 URLs, sans changefreq, priority ni lastmod" c08
+check C08 "sitemap : 9 URLs, sans changefreq, priority ni lastmod" c08
 check C09 "téléphone cliquable (tel:) sur /, /a-propos, /contact, sans emoji" c09
 check C10 "JSON-LD valide et cohérent : ProfessionalService (logo, image, sans geo ni horaires), WebSite, Person (jobTitle)" c10
 check C11 "non-régression : robots.txt, sitemap déclaré, robots IA, llms.txt" c11
@@ -474,6 +497,7 @@ check C19 "registre homogène à la première personne du singulier (aucun nous,
 check C20 "mot « agence » : titre de la home, une seule fois « agence web » dans son texte, « agence vosgienne » sur la home et À propos" c20
 check C21 "zone : Bleurville absent de la home, départements voisins nommés une seule fois (À propos), aucune liste de communes, déplacement promis avec sa condition" c21
 check C22 "pages de service : H1 sur le sujet, contenu suffisant, FAQ, fondateur et lien À propos, maillage croisé, aucun chiffre inventé" c22
-check C23 "les deux pages de service sont liées dans le contenu de la home et de la page À propos (hors pied de page)" c23
+check C23 "les quatre pages de service sont liées dans le contenu de la home et de la page À propos (hors pied de page)" c23
+check C24 "contact : délai de réponse 24 à 48 heures ; mentions légales : éditeur et hébergeur conformes" c24
 
 exit "$FAILED"

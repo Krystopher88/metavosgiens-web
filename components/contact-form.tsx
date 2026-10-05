@@ -30,7 +30,7 @@ export function ContactForm() {
       <>
         <ContactSuccess />
         <p role="status" className="text-lg text-text">
-          Merci, votre message a bien été envoyé. Je reviens vers vous rapidement.
+          Merci, votre message a bien été envoyé. Je reviens vers vous sous 24 à 48 heures.
         </p>
       </>
     );
