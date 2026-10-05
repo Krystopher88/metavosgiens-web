@@ -3,6 +3,14 @@ type ServiceItem = {
   body: string;
 };
 
+// Full class names so Tailwind sees them in the source.
+type ImagePosition = "object-left" | "object-center" | "object-right";
+
+type ServiceImage = {
+  src: string;
+  position: ImagePosition;
+};
+
 export type ServicePageContent = {
   path: string;
   title: string;
@@ -10,6 +18,8 @@ export type ServicePageContent = {
   eyebrow: string;
   heading: string;
   lead: string;
+  heroImage: ServiceImage;
+  closingImage: ServiceImage;
   situations: { title: string; items: readonly string[] };
   offer: {
     title: string;
@@ -17,7 +27,7 @@ export type ServicePageContent = {
     items: readonly ServiceItem[];
     example?: { text: string; href: string; label: string };
   };
-  steps: { title: string; items: readonly ServiceItem[] };
+  steps: { title: string; intro: string; items: readonly ServiceItem[] };
   extra?: { title: string; body: string };
   faq: readonly { question: string; answer: string }[];
   related: { text: string; href: string; label: string };
@@ -26,6 +36,9 @@ export type ServicePageContent = {
 // Same answer on both pages: the price depends on the project, and no figure may be invented.
 const PRICE_ANSWER =
   "Après un premier échange gratuit, je vous remets un cadrage écrit avec le périmètre, les délais et le budget, que vous validez avant que je démarre.";
+
+const STEPS_INTRO =
+  "Le premier échange est gratuit et sans engagement. Rien ne démarre sans votre validation, et des points d'étape réguliers vous tiennent informé.";
 
 const TRAVEL_QUESTION = {
   question: "Vous déplacez-vous ?",
@@ -41,6 +54,8 @@ export const WEBSITE_SERVICE: ServicePageContent = {
   eyebrow: "Site internet",
   heading: "Création de site internet pour les entreprises vosgiennes.",
   lead: "Un site clair et rapide, qui explique ce que vous faites et donne envie de vous contacter. Je m'occupe de la conception jusqu'à la mise en ligne : vous gardez un seul interlocuteur.",
+  heroImage: { src: "/images/local-vosges.jpg", position: "object-center" },
+  closingImage: { src: "/images/hero-vosges.jpg", position: "object-left" },
   situations: {
     title: "Vous vous reconnaissez ?",
     items: [
@@ -83,6 +98,7 @@ export const WEBSITE_SERVICE: ServicePageContent = {
   },
   steps: {
     title: "Comment se passe la création de votre site",
+    intro: STEPS_INTRO,
     items: [
       {
         title: "Je comprends votre activité",
@@ -139,6 +155,8 @@ export const AUTOMATION_SERVICE: ServicePageContent = {
   eyebrow: "Automatisation",
   heading: "Automatisation des tâches répétitives pour les entreprises vosgiennes.",
   lead: "Les mêmes informations à ressaisir, des relances oubliées, des fichiers recopiés d'un outil à l'autre : je repère ce qui peut être automatisé et je le mets en place, pour que vous gardiez votre temps pour votre métier.",
+  heroImage: { src: "/images/hero-vosges.jpg", position: "object-right" },
+  closingImage: { src: "/images/about-proximite.jpg", position: "object-center" },
   situations: {
     title: "Vous vous reconnaissez ?",
     items: [
@@ -185,6 +203,7 @@ export const AUTOMATION_SERVICE: ServicePageContent = {
   },
   steps: {
     title: "Comment je procède",
+    intro: STEPS_INTRO,
     items: [
       {
         title: "Je regarde comment vous travaillez",

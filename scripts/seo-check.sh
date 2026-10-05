@@ -434,8 +434,10 @@ for path, (keyword, other) in pages.items():
     if f'href="{other}"' not in main or 'href="/#contact"' not in main:
         sys.exit(1)
     # Règle projet : aucun prix, délai, pourcentage ni nombre inventé. Seuls les numéros 01 à 04
-    # des étapes sont admis ; un chiffre réel et mesuré se relâchera ici, en connaissance de cause.
-    if re.search(r"€|euros?\b|%", text) or re.search(r"\d", re.sub(r"\b0[1-4]\b", " ", text)):
+    # des étapes et le numéro de téléphone sont admis ; un chiffre réel et mesuré se relâchera ici,
+    # en connaissance de cause.
+    allowed = re.sub(r"\b0[1-4]\b", " ", text.replace("07 49 25 83 41", " "))
+    if re.search(r"€|euros?\b|%", text) or re.search(r"\d", allowed):
         sys.exit(1)
 PY
 }
