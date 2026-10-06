@@ -26,7 +26,7 @@
 | 7 Consentement PostHog | fait le 2026-10-06 sur la branche `fix/posthog-consentement` (variante officielle, projet européen) | jeton du projet EU, DPA, « Discard client IP data », F11 (Christopher) ; ne pas déployer sans le nouveau jeton |
 | 8 Poids JS et LCP | mesuré, aucun changement (312 Kio gzip avant et après) | — |
 | Revue (générale et sécurité) | faite, D4 appliquée (retrait de `geo` et `openingHours`) | `d1f4def` |
-| 9 Déploiement | **en attente de l'accord de Christopher** | — |
+| 9 Déploiement | **fait le 2026-10-06** avec les phases 2, 2b et PostHog (`9c8f8df` sur le VPS) : 24 contrôles sur 24 en ligne | — |
 
 ## Avancement de la phase 2 (branche `seo/phase-2-contenu`, non fusionnée)
 
@@ -42,7 +42,7 @@
 | 17 JSON-LD de l'entité | en partie : nom, nom alternatif, zone, `Person.url` | `sameAs` et `hasMap` (fiche Google, comptes à refaire, reportés) |
 | 18 E-mail de marque | reporté par Christopher (2026-10-05) | boîte à créer (D7) |
 | 28 à 31 Phase 2b (agence, zone, pages de service) | fait, voir plus bas | relecture des textes par Christopher |
-| Validation des textes par Christopher (D8) | **à faire sur captures** | accord avant fusion |
+| Validation des textes par Christopher (D8) | pages relues en local, déployées le 2026-10-06 | relecture de `/automatisation`, `/intelligence-artificielle`, `/outils-metier` |
 
 ## État de départ (mesuré — base de comparaison)
 
@@ -503,7 +503,7 @@ Je prépare les textes ; les actions ont lieu dans tes comptes. Rien n'est inscr
 
 # Phase 4 — Mesure et revues
 
-### Task 24: Relevés à J+28, J+56, J+84 (J0 = déploiement de la tâche 9)
+### Task 24: Relevés à J+28, J+56, J+84 (J0 = déploiement de la tâche 9 = 2026-10-06 : 2026-11-03, 2026-12-01, 2026-12-29)
 
 À chaque relevé, même définition de période que la référence post-V1 (jamais l'ancienne application, avant le 2026-09-17).
 
