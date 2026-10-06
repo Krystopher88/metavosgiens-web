@@ -5,11 +5,11 @@ import type { NextConfig } from "next";
 // so there is no per-request nonce to put on the inline scripts.
 const contentSecurityPolicy = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://us-assets.i.posthog.com https://app.posthog.com",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://eu-assets.i.posthog.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com",
   "font-src 'self'",
-  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://app.posthog.com https://us.i.posthog.com https://us-assets.i.posthog.com",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://eu.i.posthog.com https://eu-assets.i.posthog.com",
   "worker-src 'self' blob:",
   "frame-src 'none'",
   "object-src 'none'",

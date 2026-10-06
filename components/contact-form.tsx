@@ -37,7 +37,7 @@ export function ContactForm() {
   }
 
   return (
-    <form action={formAction} noValidate className="flex flex-col gap-5 text-left">
+    <form action={formAction} noValidate className="ph-no-capture flex flex-col gap-5 text-left">
       <input
         type="text"
         name="company_url"

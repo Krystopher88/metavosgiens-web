@@ -4,7 +4,6 @@ import { SERVICE_AREA, SITE } from "@/lib/content";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AnalyticsConsent } from "@/components/analytics-consent";
-import { PostHogClientProvider } from "./providers/PostHogProvider";
 import "./globals.css";
 
 const bodyFont = Inter({
@@ -114,9 +113,6 @@ const organizationJsonLd = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr" className={`${bodyFont.variable} ${headingFont.variable}`}>
-      <head>
-        {/* PostHog : initialisation gérée par PostHogClientProvider */}
-      </head>
       <body id="top">
         <script
           type="application/ld+json"
@@ -124,12 +120,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <PostHogClientProvider>
-          <SiteHeader />
-          {children}
-          <SiteFooter />
-          <AnalyticsConsent />
-        </PostHogClientProvider>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+        <AnalyticsConsent />
       </body>
     </html>
   );
