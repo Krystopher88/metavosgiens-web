@@ -62,9 +62,9 @@ export default function PolitiqueConfidentialitePage() {
             Après votre accord, Google Analytics dépose des cookies, et PostHog enregistre des
             identifiants aléatoires (visiteur, session) dans le stockage de votre navigateur ;
             l&apos;enregistrement des sessions est désactivé. Comme pour toute connexion,
-            l&apos;adresse IP de votre appareil est transmise à ces services. Vous pouvez revenir
-            sur votre choix à tout moment en effaçant les données de navigation de ce site dans
-            votre navigateur.
+            l&apos;adresse IP de votre appareil est transmise à ces services ; PostHog ne la
+            conserve pas. Vous pouvez revenir sur votre choix à tout moment en effaçant les données
+            de navigation de ce site dans votre navigateur.
           </p>
         </section>
 
@@ -86,7 +86,8 @@ export default function PolitiqueConfidentialitePage() {
           </h2>
           <p className="mt-2">
             Les données transmises via le formulaire de contact sont conservées 24 mois maximum,
-            sauf si un échange commercial ou contractuel nécessite une durée différente.
+            sauf si un échange commercial ou contractuel nécessite une durée différente. Les données
+            de mesure d&apos;audience enregistrées par PostHog sont conservées un an.
           </p>
         </section>
 
