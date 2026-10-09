@@ -20,7 +20,7 @@ La phrase de la source « Sur le site, « nous » désigne l'agence » est suppr
 
 | Passage | Source | Remplacé par |
 |---|---|---|
-| Introduction | MetaVosgiens est une agence en ligne basée à Bleurville. Pour son lancement, elle crée dix sites vitrines et les héberge pendant un an, sans frais de création. | MetaVosgiens est une agence vosgienne, basée à Bleurville. Pour le lancement de l'agence, je crée dix sites vitrines et je les héberge pendant un an, sans frais de création. |
+| Introduction | MetaVosgiens est une agence en ligne basée à Bleurville. Pour son lancement, elle crée dix sites vitrines et les héberge pendant un an, sans frais de création. | MetaVosgiens est une agence vosgienne, basée à Bleurville. Pour le lancement de l'agence, je crée dix sites vitrines et je les héberge pendant six mois, sans frais de création (durée : voir point 12). |
 | Titre de liste | Ce que nous vous demandons en retour | Ce que je vous demande en retour |
 | Étape 2 | Nous vous contactons pour échanger sur votre activité et vos besoins. | Je vous contacte pour échanger sur votre activité et vos besoins. |
 | Étape 3 | Si votre projet est retenu, nous convenons ensemble des conditions par écrit. | Si votre projet est retenu, je fixe avec vous les conditions par écrit. |
@@ -163,6 +163,15 @@ Il remplace celui de la source. Le mot « personnellement » disparaît pour s'a
 8. **Mesure.** Une visite avec `?src=fb` laisse une ligne dans les journaux du serveur, sans adresse IP. Les robots d'aperçu sont repérés. Après acceptation du bandeau, les événements PostHog portent `src`.
 9. **Image de partage.** La balise du lien désigne une image PNG de 1200 par 630, et le titre est celui du point 10.
 10. **Qualité.** Les scores de performance et d'accessibilité de la page sont au moins ceux de `/contact`, mesurés dans les mêmes conditions (le PRD ne fixe aucun seuil chiffré). Navigation au clavier, focus visible, `prefers-reduced-motion`. Build de production et contrôle du code sans erreur. Les autres pages, le formulaire de contact compris, fonctionnent comme avant.
+
+### 12. Durée de l'hébergement offert : six mois
+
+**Décision (Christopher, 2026-10-09, après la revue visuelle de la page construite).** L'hébergement offert dure six mois, pas douze. Cette décision éditoriale remplace la durée de la source dans tous les textes de la page :
+- introduction et description (balise meta, aperçu de partage) : « pendant six mois » au lieu de « pendant un an » ;
+- liste « Ce que vous recevez » : « L'hébergement offert pendant 6 mois. » ;
+- FAQ : « Que se passe-t-il après les 6 mois ? » et « La création et l'hébergement pendant 6 mois sont offerts. Seul le nom de domaine reste à votre charge. ».
+
+Le contrôle O10 de `scripts/site-offert-check.sh` vérifie ces passages et l'absence de « 12 mois » et de « un an » sur la page. Hors dépôt : les mails et les posts de Kiara doivent annoncer la même durée, puisque la source exige des textes identiques entre la page et les mails.
 
 ## À vérifier pendant la réalisation
 
