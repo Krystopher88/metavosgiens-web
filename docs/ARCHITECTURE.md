@@ -88,7 +88,7 @@ Pas de BDD nécessaire.
 ## Page de campagne `/site-offert`
 
 Page d'atterrissage temporaire (test du 15 au 24/10/2026), décidée le 2026-10-09 (`docs/site-offert-expression-besoin.md`, `docs/decisions/2026-10-09.md`) :
-- hors navigation, `noindex`, absente du sitemap ; en-tête et pied de page allégés par `usePathname()` dans `site-header.tsx` et `site-footer.tsx` ; seul lien d'entrée : le pied de page des autres pages (`/site-offert?src=site`) ;
+- hors navigation, `noindex`, absente du sitemap ; en-tête et pied de page du site, sans le bouton « Parler de mon besoin » ni le lien « Site offert » sur cette page (`usePathname()` dans `site-header.tsx` et `site-footer.tsx`) ; seul lien d'entrée : le pied de page des autres pages (`/site-offert?src=site`) ;
 - formulaire de candidature : `components/offer-form.tsx` et `app/site-offert/actions.ts`, même envoi Brevo et même boîte de réception que le contact, limite d'envois en mémoire (`lib/rate-limit.ts`) ;
 - origine des visiteurs : paramètre `src` (valeurs autorisées dans `lib/offer.ts`), propriété de session PostHog après consentement (`components/analytics-consent.tsx`), compteur de visites sans consentement dans `proxy.ts` (une ligne JSON par affichage dans les journaux du conteneur) ;
 - `lib/offer-fields.ts` (champs, libellés, listes) est importé par le navigateur ; `lib/offer-schema.ts` (zod) reste côté serveur, sinon zod part dans le JavaScript de la page ;

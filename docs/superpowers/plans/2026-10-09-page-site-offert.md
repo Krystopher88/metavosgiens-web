@@ -247,6 +247,8 @@ Contrôles, chacun assorti de la tâche qui le fait passer au vert :
 
 ### Task 8: En-tête et pied de page de la page isolée, lien du pied de page
 
+> **Révisée le 2026-10-09 après la revue visuelle (option C, point 2 de la spec et journal de 15:08).** Sur `/site-offert`, l'en-tête et le pied de page sont ceux du site, sans le bouton « Parler de mon besoin » ni le lien « Site offert ». La description des Interfaces ci-dessous (en-tête réduit au logo, pied de page minimal) est l'état initial, abandonné.
+
 **Files:**
 - Modify: `components/site-header.tsx`, `components/site-footer.tsx`
 

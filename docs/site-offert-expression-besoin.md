@@ -35,15 +35,17 @@ La phrase de la source « Sur le site, « nous » désigne l'agence » est suppr
 
 **Conséquence hors dépôt.** La source demande que le texte de la page et celui des mails restent identiques. Les mails de prospection et les posts doivent donc passer au « je » eux aussi.
 
-### 2. Page isolée, navigation et indexation
+### 2. Page de campagne, navigation et indexation
 
-**Décision.** `/site-offert` est une page d'atterrissage autonome : on y arrive depuis un post ou un mail, pas depuis le parcours normal du site. Elle ne reprend donc pas la navigation complète.
+**Décision (révisée le 2026-10-09 après la revue visuelle, option C).** `/site-offert` est une page d'atterrissage : on y arrive depuis un post ou un mail. Elle garde l'en-tête et le pied de page du site, à deux exceptions près.
 
 Sur `/site-offert` :
-- L'en-tête se réduit au logo, qui mène à l'accueil (pour que le visiteur puisse vérifier que l'agence existe).
-- Aucun bouton « Parler de mon besoin », ni dans l'en-tête ni dans le pied de page. Le seul bouton d'action est « Je candidate ».
-- Le pied de page se réduit au nom METAVOSGIENS, à Bleurville et aux liens vers les mentions légales et la politique de confidentialité, comme le demande la source.
+- Aucun bouton « Parler de mon besoin », ni dans l'en-tête (menu sur téléphone compris) ni dans le pied de page : il mène au formulaire de contact de l'accueil, hors de la mesure du test, et ferait concurrence au bouton « Je candidate », qui reste le seul bouton d'action.
+- Le lien « Site offert » du pied de page n'apparaît pas, il pointerait vers la page elle-même.
+- Le reste est identique au site : menu (À propos, Exemples, Contact), navigation du pied de page, coordonnées, liens légaux. Le lien « Contact » du menu mène au formulaire de l'accueil, donc hors de la mesure : coût accepté en échange d'une page cohérente avec le site et rassurante pour le visiteur.
 - Le bandeau de consentement reste.
+
+Version initiale écartée : en-tête réduit au logo et pied de page minimal (option A). Écartée aussi : en-tête et pied de page strictement identiques au site, avec les deux boutons « Parler de mon besoin » (option B).
 
 Sur le reste du site :
 - Le pied de page global reçoit un lien discret « Site offert » vers `/site-offert?src=site`. Pas de bandeau sur l'accueil, pour ne pas modifier l'ordre imposé des sections. Le visiteur qui passe de l'offre au site peut ainsi revenir à l'offre.
@@ -51,7 +53,7 @@ Sur le reste du site :
 
 Indexation : `noindex`, et la page n'est pas dans `app/sitemap.ts`, le temps du test.
 
-**Réalisation retenue.** L'en-tête et le pied de page reconnaissent l'adresse `/site-offert` et s'allègent. Aucun fichier de page n'est déplacé. Si d'autres pages de campagne apparaissent, on pourra passer à des groupes de routes Next.js.
+**Réalisation retenue.** L'en-tête et le pied de page reconnaissent l'adresse `/site-offert` pour omettre le bouton et le lien. Aucun fichier de page n'est déplacé. Si d'autres pages de campagne apparaissent, on pourra passer à des groupes de routes Next.js.
 
 **À la fin du test (24/10).** Retirer le lien du pied de page. Le sort de la page elle-même est une décision de Christopher.
 
@@ -159,7 +161,7 @@ Il remplace celui de la source. Le mot « personnellement » disparaît pour s'a
 4. **Refus.** Un formulaire incomplet est refusé avec un message clair. Un robot qui remplit le champ piège est refusé sans mail. Un sixième envoi dans l'heure depuis la même adresse est refusé avec ce message : « Trop d'envois depuis votre connexion. Réessayez dans une heure ou écrivez-moi directement par email. »
 5. **Consentement.** La case est obligatoire. Le texte d'information et le lien vers la politique, qui s'ouvre dans un nouvel onglet, sont présents. La politique est mise à jour comme au point 7.
 6. **Contenu.** Aucun nom de client, aucune technologie, aucun « nous », aucun tiret cadratin sur la page.
-7. **Isolement.** La page est en `noindex` et absente de `sitemap.xml`. Elle n'a ni bouton « Parler de mon besoin », ni menu. Le lien « Site offert » apparaît dans le pied de page des autres pages et pas sur la page elle-même.
+7. **Isolement.** La page est en `noindex` et absente de `sitemap.xml`. Elle n'a aucun bouton « Parler de mon besoin » ; son en-tête et son pied de page sont ceux du site (menu, coordonnées, liens légaux). Le lien « Site offert » apparaît dans le pied de page des autres pages et pas sur la page elle-même.
 8. **Mesure.** Une visite avec `?src=fb` laisse une ligne dans les journaux du serveur, sans adresse IP. Les robots d'aperçu sont repérés. Après acceptation du bandeau, les événements PostHog portent `src`.
 9. **Image de partage.** La balise du lien désigne une image PNG de 1200 par 630, et le titre est celui du point 10.
 10. **Qualité.** Les scores de performance et d'accessibilité de la page sont au moins ceux de `/contact`, mesurés dans les mêmes conditions (le PRD ne fixe aucun seuil chiffré). Navigation au clavier, focus visible, `prefers-reduced-motion`. Build de production et contrôle du code sans erreur. Les autres pages, le formulaire de contact compris, fonctionnent comme avant.
