@@ -62,6 +62,9 @@ export function OfferForm() {
     );
   }
 
+  // The two <select> carry a `key` built from the echoed value: React applies a changed
+  // `defaultValue` to inputs but not to a <select> that is already mounted, so without it a
+  // refused submission would reset both lists.
   const common = (name: OfferField) => ({
     id: name,
     name,
@@ -107,6 +110,7 @@ export function OfferForm() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field name="organizationType" error={state.errors?.organizationType}>
           <select
+            key={`organizationType-${state.values?.organizationType ?? ""}`}
             {...common("organizationType")}
             defaultValue={state.values?.organizationType ?? ""}
             className={SELECT_CLASS}
@@ -162,6 +166,7 @@ export function OfferForm() {
 
       <Field name="existingWebsite" error={state.errors?.existingWebsite}>
         <select
+          key={`existingWebsite-${state.values?.existingWebsite ?? ""}`}
           {...common("existingWebsite")}
           defaultValue={state.values?.existingWebsite ?? ""}
           className={SELECT_CLASS}
