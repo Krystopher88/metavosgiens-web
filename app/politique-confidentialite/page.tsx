@@ -39,6 +39,13 @@ export default function PolitiqueConfidentialitePage() {
             des cookies ou des identifiants de mesure d&apos;audience peuvent également être
             enregistrés — voir la section « Cookies et mesure d&apos;audience » ci-dessous.
           </p>
+          <p className="mt-2">
+            Le formulaire de candidature de la page « Site offert » collecte en plus : nom de
+            l&apos;entreprise ou de l&apos;association, type de structure, commune, activité,
+            situation de votre site actuel et ce que le site devrait vous apporter (facultatif),
+            ainsi que l&apos;origine du lien par lequel vous êtes arrivé (réseau social ou mail) et
+            la date d&apos;envoi.
+          </p>
         </section>
 
         <section>
@@ -66,6 +73,11 @@ export default function PolitiqueConfidentialitePage() {
             conserve pas. Vous pouvez revenir sur votre choix à tout moment en effaçant les données
             de navigation de ce site dans votre navigateur.
           </p>
+          <p className="mt-2">
+            Le site compte aussi, sans cookie, sans adresse IP et sans identifiant, le nombre
+            d&apos;affichages de la page « Site offert » selon l&apos;origine du lien (réseau
+            social, mail). Ces comptes ne permettent d&apos;identifier personne.
+          </p>
         </section>
 
         <section>
@@ -73,10 +85,13 @@ export default function PolitiqueConfidentialitePage() {
             Finalité et base légale
           </h2>
           <p className="mt-2">
-            Les données du formulaire servent uniquement à répondre à votre demande de contact ;
+            Les données du formulaire de contact servent uniquement à répondre à votre demande ;
             leur traitement repose sur votre consentement, exprimé en envoyant le formulaire. Les
-            données de mesure d&apos;audience servent à améliorer le site ; leur traitement repose
-            sur votre consentement, exprimé en cliquant sur « Accepter » dans le bandeau.
+            données du formulaire de candidature servent uniquement à répondre à votre candidature ;
+            leur traitement repose sur votre consentement, exprimé en cochant la case et en
+            envoyant le formulaire. Les données de mesure d&apos;audience servent à améliorer le
+            site ; leur traitement repose sur votre consentement, exprimé en cliquant sur
+            « Accepter » dans le bandeau.
           </p>
         </section>
 
@@ -85,9 +100,10 @@ export default function PolitiqueConfidentialitePage() {
             Durée de conservation
           </h2>
           <p className="mt-2">
-            Les données transmises via le formulaire de contact sont conservées 24 mois maximum,
-            sauf si un échange commercial ou contractuel nécessite une durée différente. Les données
-            de mesure d&apos;audience enregistrées par PostHog sont conservées un an.
+            Les données transmises via le formulaire de contact ou le formulaire de candidature
+            sont conservées 24 mois maximum, sauf si un échange commercial ou contractuel nécessite
+            une durée différente. Les données de mesure d&apos;audience enregistrées par PostHog
+            sont conservées un an.
           </p>
         </section>
 
@@ -97,8 +113,8 @@ export default function PolitiqueConfidentialitePage() {
           </h2>
           <p className="mt-2">
             Vos données sont traitées par Bichon Christopher et transitent par des prestataires
-            techniques : IONOS (hébergement, France), Brevo (envoi de l&apos;email de contact,
-            société française) et, uniquement si vous y consentez, Google Ireland Limited (Google
+            techniques : IONOS (hébergement, France), Brevo (envoi de l&apos;email de contact ou de
+            candidature, société française) et, uniquement si vous y consentez, Google Ireland Limited (Google
             Analytics, mesure d&apos;audience) et PostHog (mesure d&apos;audience, données hébergées
             à Francfort, en Allemagne). Aucune donnée n&apos;est vendue ni louée à des tiers
             commerciaux.
@@ -123,7 +139,9 @@ export default function PolitiqueConfidentialitePage() {
           </h2>
           <p className="mt-2">
             Le site est servi en HTTPS et hébergé en France. Aucune donnée bancaire n&apos;est
-            collectée ou stockée par ce site.
+            collectée ou stockée par ce site. Pour limiter les envois abusifs du formulaire de
+            candidature, l&apos;adresse IP de votre appareil est utilisée en mémoire du serveur
+            pendant une heure au plus, sans être enregistrée.
           </p>
         </section>
       </div>
