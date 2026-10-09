@@ -49,6 +49,8 @@ Architecture statique-first.
 
 La homepage contient les principales informations commerciales. Pages de service : uniquement `/creation-site-internet`, `/automatisation`, `/intelligence-artificielle` et `/outils-metier` (décisions du 2026-10-05, voir `docs/decisions/2026-10-05.md`) ; d'autres pages seulement avec un contenu réel et sur demande. Jamais de page par commune.
 
+Page de campagne isolée : `/site-offert` (décisions du 2026-10-09, voir `docs/decisions/2026-10-09.md`). Hors navigation, `noindex`, absente du sitemap, liée seulement par un lien du pied de page des autres pages. Temporaire (test du 15 au 24/10/2026) : retirer ce lien à la fin du test.
+
 ## UX homepage
 
 Ordre obligatoire :
