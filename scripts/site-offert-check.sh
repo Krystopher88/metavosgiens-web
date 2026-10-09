@@ -22,7 +22,7 @@ FAILED=0
 
 EXPECTED_H1="Un site internet offert à 10 entreprises et associations des Vosges."
 EXPECTED_TITLE="Un site internet offert pour dix entreprises vosgiennes | MetaVosgiens"
-EXPECTED_DESCRIPTION="MetaVosgiens crée dix sites vitrines et les héberge pendant un an, sans frais de création. Dix places pour des entreprises et associations des Vosges."
+EXPECTED_DESCRIPTION="MetaVosgiens crée dix sites vitrines et les héberge pendant six mois, sans frais de création. Dix places pour des entreprises et associations des Vosges."
 
 fetch() { curl -s --max-time 20 "$BASE$1"; }
 status() { curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$BASE$1"; }
@@ -258,7 +258,9 @@ body = re.sub(r"<script\b.*?</script>", " ", main.group(1), flags=re.S)
 text = " ".join(html.unescape(re.sub(r"<[^>]*>", " ", body)).split())
 passages = [
     "MetaVosgiens est une agence vosgienne, basée à Bleurville.",
-    "Pour le lancement de l'agence, je crée dix sites vitrines et je les héberge pendant un an, sans frais de création.",
+    "Pour le lancement de l'agence, je crée dix sites vitrines et je les héberge pendant six mois, sans frais de création.",
+    "L'hébergement offert pendant 6 mois.",
+    "Que se passe-t-il après les 6 mois ?",
     "Ce que je vous demande en retour",
     "Je vous contacte pour échanger sur votre activité et vos besoins.",
     "Si votre projet est retenu, je fixe avec vous les conditions par écrit.",
@@ -267,6 +269,9 @@ passages = [
     "et je préfère faire dix sites soignés",
 ]
 if not all(p in text for p in passages):
+    sys.exit(1)
+# La durée de l'hébergement offert est de six mois : plus aucune trace de l'ancienne durée.
+if "12 mois" in text or "un an" in text:
     sys.exit(1)
 if len(re.findall(r"<summary\b", main.group(1))) != 6:
     sys.exit(1)

@@ -5,10 +5,10 @@ export const OFFER_CONTENT = {
   title: "Un site internet offert pour dix entreprises vosgiennes",
   fullTitle: "Un site internet offert pour dix entreprises vosgiennes | MetaVosgiens",
   description:
-    "MetaVosgiens crée dix sites vitrines et les héberge pendant un an, sans frais de création. Dix places pour des entreprises et associations des Vosges.",
+    "MetaVosgiens crée dix sites vitrines et les héberge pendant six mois, sans frais de création. Dix places pour des entreprises et associations des Vosges.",
   heading: "Un site internet offert à 10 entreprises et associations des Vosges.",
   intro:
-    "MetaVosgiens est une agence vosgienne, basée à Bleurville. Pour le lancement de l'agence, je crée dix sites vitrines et je les héberge pendant un an, sans frais de création. Dix places, pour des entreprises et des associations vosgiennes qui n'ont pas de site, ou dont le site ne leur sert plus.",
+    "MetaVosgiens est une agence vosgienne, basée à Bleurville. Pour le lancement de l'agence, je crée dix sites vitrines et je les héberge pendant six mois, sans frais de création. Dix places, pour des entreprises et des associations vosgiennes qui n'ont pas de site, ou dont le site ne leur sert plus.",
   cta: "Je candidate",
   receive: {
     title: "Ce que vous recevez",
@@ -16,7 +16,7 @@ export const OFFER_CONTENT = {
       "Un site vitrine de une à cinq pages, adapté au téléphone.",
       "Un formulaire de contact, pour que vos clients vous écrivent directement.",
       "Les mentions légales et la politique de confidentialité.",
-      "L'hébergement offert pendant 12 mois.",
+      "L'hébergement offert pendant 6 mois.",
       "Un nom de domaine à votre nom, donc le site vous appartient.",
     ],
   },
@@ -44,10 +44,10 @@ export const OFFER_CONTENT = {
       {
         question: "Est-ce vraiment gratuit ?",
         answer:
-          "La création et l'hébergement pendant 12 mois sont offerts. Seul le nom de domaine reste à votre charge.",
+          "La création et l'hébergement pendant 6 mois sont offerts. Seul le nom de domaine reste à votre charge.",
       },
       {
-        question: "Que se passe-t-il après les 12 mois ?",
+        question: "Que se passe-t-il après les 6 mois ?",
         answer:
           "Vous choisissez : poursuivre l'hébergement avec moi à un tarif annoncé à l'avance, ou transférer le site chez l'hébergeur de votre choix. Rien n'est reconduit sans votre accord.",
       },
