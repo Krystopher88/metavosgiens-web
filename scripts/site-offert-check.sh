@@ -298,6 +298,9 @@ o12() {
   curl -s -o /dev/null --max-time 20 -A "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)" "$BASE$PAGE?src=ig"
   curl -s -o /dev/null --max-time 20 -A "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/21A329 Instagram 300.0.0.29.110" "$BASE$PAGE?src=zzz"
   curl -s -o /dev/null --max-time 20 -H "Next-Router-Prefetch: 1" -A "Mozilla/5.0 (iPhone) Instagram 300.0.0.29.110" "$BASE$PAGE?src=tt"
+  # Envois du formulaire : appel de Server Action (en-tête Next-Action) et POST natif sans JavaScript.
+  curl -s -o /dev/null --max-time 20 -X POST -H "Next-Action: x" -H "Content-Type: text/plain" --data "[]" "$BASE$PAGE?src=fb"
+  curl -s -o /dev/null --max-time 20 -X POST --data "a=b" "$BASE$PAGE?src=fb"
   sleep 1
   new="$(tail -n +"$((before + 1))" "$LOG_FILE")"
   NEW_LINES="$new" python3 - <<'PY'
@@ -355,7 +358,7 @@ check O11 "politique de confidentialité : « Site offert », « 24 mois », « 
 check O13 "zod absent du JavaScript client de la page (schéma réservé au serveur)" o13
 
 if [ -n "$LOG_FILE" ]; then
-  check O12 "compteur : trois visites comptées (fb, ig robot, direct), préchargement ignoré, aucune IP" o12
+  check O12 "compteur : trois visites comptées (fb, ig robot, direct), préchargement et envois de formulaire ignorés, aucune IP" o12
 else
   echo "SKIP O12 compteur de visites (aucun fichier de journal donné)"
 fi
