@@ -299,16 +299,12 @@ o12() {
   curl -s -o /dev/null --max-time 20 -A "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/21A329 Instagram 300.0.0.29.110" "$BASE$PAGE?src=zzz"
   curl -s -o /dev/null --max-time 20 -H "Next-Router-Prefetch: 1" -A "Mozilla/5.0 (iPhone) Instagram 300.0.0.29.110" "$BASE$PAGE?src=tt"
   sleep 1
-  new="$(mktemp)"
-  tail -n +"$((before + 1))" "$LOG_FILE" > "$new"
+  new="$(tail -n +"$((before + 1))" "$LOG_FILE")"
   NEW_LINES="$new" python3 - <<'PY'
 import json, os, sys
 
-lines = []
-for raw in open(os.environ["NEW_LINES"], encoding="utf-8"):
-    raw = raw.strip()
-    if raw.startswith("{") and '"offer_visit"' in raw:
-        lines.append(raw)
+lines = [raw.strip() for raw in os.environ["NEW_LINES"].splitlines()]
+lines = [raw for raw in lines if raw.startswith("{") and '"offer_visit"' in raw]
 if len(lines) != 3:
     sys.exit(1)
 if any("127.0.0.1" in line for line in lines):
@@ -319,9 +315,6 @@ for visit, (src, bot) in zip(visits, expected):
     if list(visit.keys()) != ["event", "src", "bot", "at"] or visit["src"] != src or visit["bot"] is not bot:
         sys.exit(1)
 PY
-  local result=$?
-  rm -f "$new"
-  return "$result"
 }
 
 check O01 "page 200 et H1 : « Un site internet offert à 10 entreprises et associations des Vosges. »" o01
