@@ -34,8 +34,11 @@ export async function submitOffer(
   formData: FormData,
 ): Promise<OfferFormState> {
   // Honeypot: real visitors never see or fill this field. A bot that fills every field it
-  // finds trips it — pretend success so it doesn't learn to skip it.
+  // finds trips it — pretend success so it doesn't learn to skip it. The trip is logged (no
+  // personal data) so that a real applicant caught by an autofill can be spotted by comparing
+  // with the visit counts.
   if (formData.get("company_url")) {
+    console.warn(JSON.stringify({ event: "offer_honeypot", at: new Date().toISOString() }));
     return { status: "success" };
   }
 
