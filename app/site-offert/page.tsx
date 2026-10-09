@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Check, ChevronDown } from "lucide-react";
 import { ArrowIcon } from "@/components/arrow-icon";
 import { OfferForm } from "@/components/offer-form";
 import { TopographicContours } from "@/components/topographic-contours";
 import { Button } from "@/components/ui/button";
-import { SECTION_PADDING } from "@/lib/design";
+import { SECTION_PADDING, SECTION_TITLE } from "@/lib/design";
 import { OFFER_PATH } from "@/lib/offer";
 import { OFFER_CONTENT } from "@/lib/offer-content";
 import { pageMetadata } from "@/lib/seo";
@@ -29,15 +30,12 @@ export default function SiteOffertPage() {
 
   return (
     <main>
-      <section className={`relative overflow-hidden ${SECTION_PADDING}`}>
-        <div className="hidden md:contents">
-          <TopographicContours side="right" />
-        </div>
-        <div className="relative max-w-[760px]">
-          <h1 className="font-heading text-[38px] leading-[1.05] font-extrabold tracking-[-0.045em] text-text sm:text-[46px] md:text-[56px] md:tracking-[-0.055em]">
+      <section className="grid grid-cols-1 gap-8 px-5 py-10 md:min-h-[520px] md:grid-cols-[1fr_1.1fr] md:gap-10 md:px-7 md:pt-[42px] md:pb-5">
+        <div className="flex flex-col justify-center md:py-[40px] md:pb-16">
+          <h1 className="font-heading text-[38px] leading-[1.05] font-extrabold tracking-[-0.045em] text-text sm:text-[46px] md:text-[40px] md:tracking-[-0.055em] lg:text-[50px]">
             {headingStart} <span className="text-green">offert</span> {headingEnd}
           </h1>
-          <p className="mt-6 max-w-[640px] text-base text-[#3c4a54] md:text-lg">
+          <p className="mt-6 max-w-[560px] text-base text-[#3c4a54] md:text-lg">
             {OFFER_CONTENT.intro}
           </p>
           <div className="mt-8">
@@ -48,6 +46,22 @@ export default function SiteOffertPage() {
               </a>
             </Button>
           </div>
+        </div>
+        <div
+          aria-hidden="true"
+          className="relative min-h-[300px] overflow-hidden rounded-bl-[26px] md:min-h-[460px]"
+        >
+          <Image
+            src="/images/hero-vosges.jpg"
+            alt=""
+            fill
+            loading="eager"
+            fetchPriority="high"
+            sizes="(min-width: 768px) 55vw, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 [background:linear-gradient(160deg,rgba(23,50,77,0.05)_0%,rgba(23,50,77,0.15)_55%,rgba(23,50,77,0.55)_100%)]" />
+          <TopographicContours side="right" />
         </div>
       </section>
 
@@ -80,30 +94,35 @@ export default function SiteOffertPage() {
         </div>
       </section>
 
-      <section className={SECTION_PADDING}>
-        <h2 className={SECTION_HEADING}>{OFFER_CONTENT.steps.title}</h2>
-        <ol className="relative mt-8 flex max-w-[640px] flex-col gap-8">
-          <span
-            aria-hidden="true"
-            className="absolute top-2 bottom-2 left-[19px] w-px bg-[#cfd5d0]"
-          />
+      <section className={`bg-navy ${SECTION_PADDING}`}>
+        <h2 className={`leading-[1.1] text-white ${SECTION_TITLE}`}>{OFFER_CONTENT.steps.title}</h2>
+        <ol className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 md:mt-14 md:grid-cols-4">
           {OFFER_CONTENT.steps.items.map((item, index) => (
-            <li key={item} className="relative flex items-start gap-5">
+            <li key={item}>
               <span
                 aria-hidden="true"
-                className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full border-2 border-green bg-background text-sm font-bold text-green"
+                className="grid h-11 w-11 place-items-center rounded-full border-2 border-[#6fa87d] bg-navy text-sm font-bold text-[#6fa87d]"
               >
-                {index + 1}
+                {String(index + 1).padStart(2, "0")}
               </span>
-              <p className="pt-2 text-base text-[#3c4a54] md:text-lg">{item}</p>
+              <p className="mt-4 max-w-[260px] font-heading text-[18px] leading-[1.3] font-extrabold text-white">
+                {item}
+              </p>
             </li>
           ))}
         </ol>
       </section>
 
-      <section className={`bg-[#eef0ec] ${SECTION_PADDING}`}>
-        <h2 className={SECTION_HEADING}>{OFFER_CONTENT.faq.title}</h2>
-        <div className="mt-6 max-w-[760px]">
+      <section
+        className={`relative grid grid-cols-1 gap-10 overflow-hidden bg-[#eef0ec] md:grid-cols-[0.95fr_1.05fr] md:gap-20 ${SECTION_PADDING}`}
+      >
+        <div className="hidden lg:contents">
+          <TopographicContours side="left" />
+        </div>
+        <div className="relative md:sticky md:top-[110px] md:self-start">
+          <h2 className={`leading-[1.1] text-text ${SECTION_TITLE}`}>{OFFER_CONTENT.faq.title}</h2>
+        </div>
+        <div className="relative">
           {OFFER_CONTENT.faq.items.map((item) => (
             <details key={item.question} className="group border-t border-[#cfd5d0] last:border-b">
               <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-4 rounded-sm py-3 font-heading text-[18px] font-extrabold text-text outline-none focus-visible:ring-3 focus-visible:ring-ring/50 [&::-webkit-details-marker]:hidden">
@@ -120,8 +139,25 @@ export default function SiteOffertPage() {
         </div>
       </section>
 
-      <section id="candidature" className={`scroll-mt-16 ${SECTION_PADDING}`}>
-        <div className="mx-auto max-w-[640px]">
+      <section
+        id="candidature"
+        className={`grid scroll-mt-16 grid-cols-1 gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16 ${SECTION_PADDING}`}
+      >
+        <div
+          aria-hidden="true"
+          className="relative hidden overflow-hidden rounded-[18px] md:block"
+        >
+          <Image
+            src="/images/about-proximite.jpg"
+            alt=""
+            fill
+            sizes="(min-width: 768px) 40vw, 1px"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 [background:linear-gradient(165deg,rgba(23,50,77,0.05)_0%,rgba(23,50,77,0.3)_100%)]" />
+          <TopographicContours side="left" />
+        </div>
+        <div className="max-w-[640px]">
           <h2 className="font-heading text-[34px] font-extrabold tracking-[-0.045em] text-text sm:text-[40px]">
             {OFFER_CONTENT.formTitle}
           </h2>

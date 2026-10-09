@@ -354,6 +354,29 @@ for chunk in chunks:
 PY
 }
 
+# O14 : images du site réutilisées, décoratives : bandeau d'ouverture (priorité haute, comme les pages
+# de service) et image à côté du formulaire (chargement différé).
+o14() {
+  BASE="$BASE" PAGE="$PAGE" python3 - <<'PY'
+import os, re, sys, urllib.request
+
+try:
+    page = urllib.request.urlopen(os.environ["BASE"] + os.environ["PAGE"], timeout=20).read().decode("utf-8")
+except Exception:
+    sys.exit(1)
+images = re.findall(r"<img\b[^>]*>", page)
+hero = [tag for tag in images if "hero-vosges" in tag]
+form = [tag for tag in images if "about-proximite" in tag]
+if not hero or not form:
+    sys.exit(1)
+# React écrit `fetchPriority` : comparaison insensible à la casse, comme C01 de seo-check.sh.
+if 'alt=""' not in hero[0] or not re.search(r'fetchpriority="high"', hero[0], re.I) or 'loading="eager"' not in hero[0]:
+    sys.exit(1)
+if 'alt=""' not in form[0] or 'loading="lazy"' not in form[0]:
+    sys.exit(1)
+PY
+}
+
 check O01 "page 200 et H1 : « Un site internet offert à 10 entreprises et associations des Vosges. »" o01
 check O02 "title complet sans gabarit, og:title et twitter:title identiques, description de la source, canonical propre" o02
 check O03 "noindex et absente de sitemap.xml" o03
@@ -366,6 +389,7 @@ check O09 "og:image en /site-offert/opengraph-image : 200, image/png, 1200 par 6
 check O10 "passages remplacés par la voix « je » présents dans le main, six questions dans la FAQ" o10
 check O11 "politique de confidentialité : « Site offert », « 24 mois », « cochant la case »" o11
 check O13 "zod absent du JavaScript client de la page (schéma réservé au serveur)" o13
+check O14 "images du site : bandeau d'ouverture (priorité haute) et image du formulaire (différée), toutes décoratives" o14
 
 if [ -n "$LOG_FILE" ]; then
   check O12 "compteur : trois visites comptées (fb, ig robot, direct), préchargement et envois de formulaire ignorés, aucune IP" o12
