@@ -141,7 +141,7 @@ export default function PolitiqueConfidentialitePage() {
             Le site est servi en HTTPS et hébergé en France. Aucune donnée bancaire n&apos;est
             collectée ou stockée par ce site. Pour limiter les envois abusifs du formulaire de
             candidature, l&apos;adresse IP de votre appareil est utilisée en mémoire du serveur
-            pendant une heure au plus, sans être enregistrée.
+            pendant environ une heure, sans être enregistrée.
           </p>
         </section>
       </div>

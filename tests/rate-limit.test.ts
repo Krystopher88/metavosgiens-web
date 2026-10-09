@@ -40,6 +40,15 @@ test("oublie les clés expirées", () => {
   assert.equal(limiter.size(), 1);
 });
 
+test("purge les adresses expirées sans attendre un nouvel envoi", (t) => {
+  t.mock.timers.enable({ apis: ["setInterval"] });
+  const { clock, limiter } = limiterWithClock();
+  limiter.check("a");
+  clock.now += HOUR + 1;
+  t.mock.timers.tick(60_000);
+  assert.equal(limiter.size(), 0);
+});
+
 test("clientKey prend la dernière adresse de x-forwarded-for", () => {
   const headers = new Headers({ "x-forwarded-for": "203.0.113.9, 198.51.100.4" });
   assert.equal(clientKey(headers), "198.51.100.4");
