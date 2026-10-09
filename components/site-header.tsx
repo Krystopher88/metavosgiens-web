@@ -24,7 +24,9 @@ const LINK_CLASS =
   "rounded-sm text-text outline-none transition-colors hover:text-green focus-visible:ring-3 focus-visible:ring-ring/50";
 
 export function SiteHeader() {
-  const pathname = usePathname();
+  // The campaign page has its own call to action ("Je candidate"): the contact button, which
+  // leads to the home page form outside the test's measure, would compete with it.
+  const showContactCta = usePathname() !== OFFER_PATH;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuToggleRef = useRef<HTMLButtonElement | null>(null);
 
@@ -43,31 +45,17 @@ export function SiteHeader() {
     setIsMenuOpen(false);
   }
 
-  const logoLink = (
-    <Link
-      href="/#top"
-      onClick={(event) => handleInPageNavClick(event, "/#top")}
-      aria-label="MetaVosgiens, retour à l'accueil"
-      className="rounded-sm text-[20px] outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-    >
-      <Logo variant="onLight" />
-    </Link>
-  );
-
-  // The campaign page is a landing page reached from posts and emails: the logo only, no menu
-  // and no "Parler de mon besoin" button competing with its own call to action.
-  if (pathname === OFFER_PATH) {
-    return (
-      <header className="sticky top-0 z-30 bg-[rgba(247,246,242,0.92)] backdrop-blur-[14px]">
-        <div className="flex items-center px-5 py-[15px] md:px-7 md:py-[18px]">{logoLink}</div>
-      </header>
-    );
-  }
-
   return (
     <header className="sticky top-0 z-30 bg-[rgba(247,246,242,0.92)] backdrop-blur-[14px]">
       <div className="flex items-center justify-between px-5 py-[15px] md:px-7 md:py-[18px]">
-        {logoLink}
+        <Link
+          href="/#top"
+          onClick={(event) => handleInPageNavClick(event, "/#top")}
+          aria-label="MetaVosgiens, retour à l'accueil"
+          className="rounded-sm text-[20px] outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+        >
+          <Logo variant="onLight" />
+        </Link>
 
         <nav
           className="hidden items-center gap-7 text-sm md:flex"
@@ -83,7 +71,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <ContactCtaButton />
+          {showContactCta && <ContactCtaButton />}
         </nav>
 
         <button
@@ -133,7 +121,7 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <ContactCtaButton className="w-fit" onClick={closeMenu} />
+          {showContactCta && <ContactCtaButton className="w-fit" onClick={closeMenu} />}
         </div>
       )}
     </header>

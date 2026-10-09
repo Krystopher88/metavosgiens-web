@@ -132,13 +132,18 @@ if banned.search(text) or strict.search(text):
 PY
 }
 
-# O06 : isolement. Aucun « Parler de mon besoin », pas de navigation principale, liens légaux présents.
+# O06 : en-tête et pied de page du site (navigation, coordonnées, liens légaux), sans le bouton
+# « Parler de mon besoin » qui ferait concurrence au bouton « Je candidate ».
 o06() {
   local html
-  html="$(fetch "$PAGE")"
   [ "$(status "$PAGE")" = "200" ] || return 1
+  html="$(fetch "$PAGE")"
   ! printf '%s' "$html" | grep -q 'Parler de mon besoin' || return 1
-  ! printf '%s' "$html" | grep -q 'aria-label="Navigation principale"' || return 1
+  printf '%s' "$html" | grep -q 'aria-label="Navigation principale"' || return 1
+  printf '%s' "$html" | grep -q 'aria-label="Navigation du pied de page"' || return 1
+  printf '%s' "$html" | grep -q 'href="/a-propos"' || return 1
+  printf '%s' "$html" | grep -q 'href="mailto:contact@krystdev.com"' || return 1
+  printf '%s' "$html" | grep -q 'href="tel:+33749258341"' || return 1
   printf '%s' "$html" | grep -q 'href="/mentions-legales"' || return 1
   printf '%s' "$html" | grep -q 'href="/politique-confidentialite"' || return 1
   printf '%s' "$html" | grep -q 'Mentions légales' || return 1
@@ -354,7 +359,7 @@ check O02 "title complet sans gabarit, og:title et twitter:title identiques, des
 check O03 "noindex et absente de sitemap.xml" o03
 check O04 "aucun nous, notre, nos (page), aucun on inclusif (main), aucun tiret cadratin (texte et attributs)" o04
 check O05 "aucun terme proscrit ni nom de technologie dans le main (n8n, IA, intelligence artificielle)" o05
-check O06 "isolement : aucun « Parler de mon besoin », pas de navigation principale, liens légaux présents" o06
+check O06 "en-tête et pied de page du site (navigation, coordonnées, liens légaux), sans « Parler de mon besoin »" o06
 check O07 "lien du pied de page vers /site-offert?src=site sur /, /contact, /a-propos et pas sur /site-offert" o07
 check O08 "formulaire : champs, listes natives, case de consentement, piège, champ caché src=direct, bouton, lien de confidentialité en nouvel onglet" o08
 check O09 "og:image en /site-offert/opengraph-image : 200, image/png, 1200 par 630" o09
