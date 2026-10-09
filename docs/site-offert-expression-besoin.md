@@ -175,6 +175,16 @@ Il remplace celui de la source. Le mot « personnellement » disparaît pour s'a
 
 Le contrôle O10 de `scripts/site-offert-check.sh` vérifie ces passages et l'absence de « 12 mois » et de « un an » sur la page. Hors dépôt : les mails et les posts de Kiara doivent annoncer la même durée, puisque la source exige des textes identiques entre la page et les mails.
 
+### 13. Mise en page : images et sections
+
+**Décision (Christopher, 2026-10-09, revue visuelle de la page construite).** La page manquait d'images, et les sections « Comment ça se passe » et « Questions fréquentes » laissaient la moitié de la largeur vide. Mise en page retenue, calquée sur les pages de service du site :
+- **Bandeau d'ouverture** en deux colonnes : texte et bouton « Je candidate » à gauche, image `hero-vosges.jpg` du site à droite, avec les courbes de niveau (décorative, chargée en priorité). Sur téléphone, l'image passe sous le bouton.
+- **Comment ça se passe** : bande bleu profond, les quatre étapes réparties en quatre colonnes (une colonne sur téléphone). Les courbes de niveau y sont retirées : elles passaient sur le texte blanc.
+- **Questions fréquentes** : deux colonnes, titre à gauche, accordéon à droite.
+- **Formulaire** : image `about-proximite.jpg` du site à gauche sur tablette et ordinateur (non chargée sur téléphone), titre et formulaire à droite.
+
+Aucune image nouvelle : les photos déjà utilisées par le site sont réutilisées. Contrôle O14 de `scripts/site-offert-check.sh`. Mesure (mobile, processeur ralenti 4 fois, Fast 4G) : LCP 382 ms et CLS 0,00, contre 365 ms pour `/contact` (sans image) et 417 ms pour l'accueil (avec son image) ; accessibilité 100 et bonnes pratiques 100.
+
 ## À vérifier pendant la réalisation
 
 - Le compteur du serveur (`proxy.ts`) se déclenche sur cette page statique dans le conteneur de production (point 4).
