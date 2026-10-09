@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "@/components/logo";
 import { ContactCtaButton } from "@/components/contact-cta-button";
 import { SITE } from "@/lib/content";
 import { handleInPageNavClick } from "@/lib/nav-scroll";
+import { OFFER_PATH } from "@/lib/offer";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 // "/#..." (not "#..."): the footer renders on every page — a bare hash only
@@ -33,7 +35,45 @@ const LINK_CLASS =
 const LABEL_CLASS = "text-[11px] font-bold tracking-[0.1em] text-[#8e9ca4]";
 
 export function SiteFooter() {
+  const pathname = usePathname();
   const year = new Date().getFullYear();
+
+  const legalBar = (
+    <div className="mt-10 border-t border-white/[0.22] pt-6">
+      <div className="flex flex-col gap-4 text-xs text-[#8e9ca4] sm:flex-row sm:items-center sm:justify-between">
+        <p>
+          © {year} {SITE.name} by KRYST. Tous droits réservés.
+        </p>
+        <nav className="flex flex-wrap gap-5" aria-label="Navigation légale">
+          {LEGAL_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={(event) => handleInPageNavClick(event, link.href)}
+              className={LINK_CLASS}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </div>
+  );
+
+  // The campaign page keeps the name, the town and the legal links, without the site navigation
+  // or the "Parler de mon besoin" button.
+  if (pathname === OFFER_PATH) {
+    return (
+      <footer className="w-full bg-navy px-7 pt-[40px] pb-[30px] text-white">
+        <div className="text-[24px]">
+          <Logo variant="onDark" />
+        </div>
+        <div className="mt-[14px] text-[11px] tracking-[0.18em] text-[#8e9ca4]">BY KRYST</div>
+        <p className="mt-4 text-sm text-[#d5dddf]">Bleurville</p>
+        {legalBar}
+      </footer>
+    );
+  }
 
   return (
     <footer className="w-full bg-navy px-7 pt-[60px] pb-[30px] text-white">
@@ -64,6 +104,11 @@ export function SiteFooter() {
               {link.label}
             </Link>
           ))}
+          {/* prefetch={false}: a prefetched static page is not requested from the server on the real
+              click, so the visit would escape the server-side counter (proxy.ts). */}
+          <Link href={`${OFFER_PATH}?src=site`} prefetch={false} className={LINK_CLASS}>
+            Site offert
+          </Link>
         </nav>
 
         <div className="flex flex-col gap-3 text-sm text-[#d5dddf]">
@@ -95,25 +140,7 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="mt-10 border-t border-white/[0.22] pt-6">
-        <div className="flex flex-col gap-4 text-xs text-[#8e9ca4] sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {SITE.name} by KRYST. Tous droits réservés.
-          </p>
-          <nav className="flex flex-wrap gap-5" aria-label="Navigation légale">
-            {LEGAL_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={(event) => handleInPageNavClick(event, link.href)}
-                className={LINK_CLASS}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </div>
+      {legalBar}
     </footer>
   );
 }
