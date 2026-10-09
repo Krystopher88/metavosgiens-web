@@ -7,6 +7,7 @@ import { submitOffer } from "@/app/site-offert/actions";
 import type { OfferFormState } from "@/app/site-offert/actions";
 import { ArrowIcon } from "@/components/arrow-icon";
 import { OfferSrcField } from "@/components/offer-src-field";
+import { OfferSuccess } from "@/components/offer-success";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -56,9 +57,12 @@ export function OfferForm() {
 
   if (state.status === "success") {
     return (
-      <p role="status" className="text-lg text-text">
-        Merci, votre candidature a bien été envoyée. Je reviens vers vous sous 24 à 48 heures.
-      </p>
+      <>
+        <OfferSuccess src={state.src} />
+        <p role="status" className="text-lg text-text">
+          Merci, votre candidature a bien été envoyée. Je reviens vers vous sous 24 à 48 heures.
+        </p>
+      </>
     );
   }
 

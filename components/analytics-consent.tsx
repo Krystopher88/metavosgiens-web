@@ -6,6 +6,7 @@ import posthog from "posthog-js";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Button } from "@/components/ui/button";
 import { setAnalyticsConsent, useAnalyticsConsent } from "@/lib/analytics-consent";
+import { parseSrc } from "@/lib/offer";
 
 export function AnalyticsConsent() {
   const consent = useAnalyticsConsent();
@@ -16,6 +17,16 @@ export function AnalyticsConsent() {
   // returning visitor does not trigger a new $opt_in event on every page load.
   useEffect(() => {
     if (!posthog.__loaded || consent === null) return;
+
+    // Campaign origin of the visit (`?src=` on a link from a post or an email): kept for the
+    // session only, so every event of the visit, on any page, carries it. Registered before the
+    // opt-in below so that the `$opt_in` and landing `$pageview` events carry it too. A page
+    // opened without `src` leaves the value registered earlier untouched.
+    if (consent === "accepted") {
+      const src = parseSrc(window.location.search);
+      if (src) posthog.register_for_session({ src });
+    }
+
     const status = posthog.get_explicit_consent_status();
     if (consent === "accepted" && status !== "granted") posthog.opt_in_capturing();
     if (consent === "refused" && status !== "denied") posthog.opt_out_capturing();
