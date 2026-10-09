@@ -15,8 +15,8 @@ import {
   EXISTING_WEBSITE_OPTIONS,
   OFFER_FIELD_LABELS,
   ORGANIZATION_TYPES,
-} from "@/lib/offer-schema";
-import type { OfferField } from "@/lib/offer-schema";
+} from "@/lib/offer-fields";
+import type { OfferField } from "@/lib/offer-fields";
 
 const INITIAL_STATE: OfferFormState = { status: "idle" };
 

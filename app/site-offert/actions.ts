@@ -5,8 +5,9 @@ import { BrevoClient } from "@getbrevo/brevo";
 import { OFFER_RATE_LIMIT, normalizeSrc } from "@/lib/offer";
 import type { OfferSrc } from "@/lib/offer";
 import { buildOfferMail, escapeHtml } from "@/lib/offer-mail";
-import { OFFER_FIELD_LABELS, offerSchema } from "@/lib/offer-schema";
-import type { OfferField } from "@/lib/offer-schema";
+import { OFFER_FIELD_LABELS } from "@/lib/offer-fields";
+import type { OfferField } from "@/lib/offer-fields";
+import { offerSchema } from "@/lib/offer-schema";
 import { clientKey, createRateLimiter } from "@/lib/rate-limit";
 
 const VALIDATION_MESSAGE = "Merci de corriger les champs indiqués ci-dessous.";

@@ -1,7 +1,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { buildOfferMail, escapeHtml } from "../lib/offer-mail.ts";
-import { OFFER_FIELD_LABELS, type OfferInput } from "../lib/offer-schema.ts";
+import { OFFER_FIELD_LABELS } from "../lib/offer-fields.ts";
+import type { OfferInput } from "../lib/offer-schema.ts";
 
 const input: OfferInput = {
   name: "Marie Martin",

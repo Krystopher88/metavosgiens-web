@@ -1,10 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import {
-  EXISTING_WEBSITE_OPTIONS,
-  ORGANIZATION_TYPES,
-  offerSchema,
-} from "../lib/offer-schema.ts";
+import { EXISTING_WEBSITE_OPTIONS, ORGANIZATION_TYPES } from "../lib/offer-fields.ts";
+import { offerSchema } from "../lib/offer-schema.ts";
 
 const complete = {
   name: "Marie Martin",

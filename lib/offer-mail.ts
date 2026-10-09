@@ -2,8 +2,9 @@ import {
   EXISTING_WEBSITE_OPTIONS,
   OFFER_FIELD_LABELS,
   ORGANIZATION_TYPES,
-} from "./offer-schema.ts";
-import type { OfferField, OfferInput } from "./offer-schema.ts";
+} from "./offer-fields.ts";
+import type { OfferField } from "./offer-fields.ts";
+import type { OfferInput } from "./offer-schema.ts";
 
 const MAIL_FIELDS: Exclude<OfferField, "consent">[] = [
   "name",
