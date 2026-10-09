@@ -11,6 +11,7 @@ import { OfferSuccess } from "@/components/offer-success";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { SITE } from "@/lib/content";
 import {
   EXISTING_WEBSITE_OPTIONS,
   OFFER_FIELD_LABELS,
@@ -215,6 +216,16 @@ export function OfferForm() {
       {state.status === "error" && state.message && (
         <p role="alert" className="text-sm text-destructive">
           {state.message}
+          {/* The refusals that tell the visitor to write by email (send failure, rate limit) carry
+              no field errors: the address is not shown anywhere else on this isolated page. */}
+          {!state.errors && (
+            <>
+              {" "}
+              <a href={`mailto:${SITE.contactEmail}`} className={LINK_CLASS}>
+                {SITE.contactEmail}
+              </a>
+            </>
+          )}
         </p>
       )}
 
