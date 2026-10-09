@@ -317,6 +317,30 @@ for visit, (src, bot) in zip(visits, expected):
 PY
 }
 
+# O13 : le JavaScript envoyé au navigateur ne contient pas zod. Le schéma reste côté serveur : zod
+# alourdit la page et sonde `new Function`, ce que la CSP du site signale (best-practices Lighthouse).
+o13() {
+  BASE="$BASE" PAGE="$PAGE" python3 - <<'PY'
+import os, re, sys, urllib.request
+
+base = os.environ["BASE"]
+
+def get(path):
+    try:
+        return urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8", "replace")
+    except Exception:
+        sys.exit(1)
+
+chunks = sorted(set(re.findall(r'/_next/static/[^"\'\s]+?\.js', get(os.environ["PAGE"]))))
+if not chunks:
+    sys.exit(1)
+for chunk in chunks:
+    code = get(chunk)
+    if "invalid_type" in code and "too_small" in code:
+        sys.exit(1)
+PY
+}
+
 check O01 "page 200 et H1 : « Un site internet offert à 10 entreprises et associations des Vosges. »" o01
 check O02 "title complet sans gabarit, og:title et twitter:title identiques, description de la source, canonical propre" o02
 check O03 "noindex et absente de sitemap.xml" o03
@@ -328,6 +352,7 @@ check O08 "formulaire : champs, listes natives, case de consentement, piège, ch
 check O09 "og:image en /site-offert/opengraph-image : 200, image/png, 1200 par 630" o09
 check O10 "passages remplacés par la voix « je » présents dans le main, six questions dans la FAQ" o10
 check O11 "politique de confidentialité : « Site offert », « 24 mois », « cochant la case »" o11
+check O13 "zod absent du JavaScript client de la page (schéma réservé au serveur)" o13
 
 if [ -n "$LOG_FILE" ]; then
   check O12 "compteur : trois visites comptées (fb, ig robot, direct), préchargement ignoré, aucune IP" o12
