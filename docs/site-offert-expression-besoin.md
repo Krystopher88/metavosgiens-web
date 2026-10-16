@@ -185,6 +185,17 @@ Le contrôle O10 de `scripts/site-offert-check.sh` vérifie ces passages et l'ab
 
 Aucune image nouvelle : les photos déjà utilisées par le site sont réutilisées. Contrôle O14 de `scripts/site-offert-check.sh`. Mesure (mobile, processeur ralenti 4 fois, Fast 4G) : LCP 382 ms et CLS 0,00, contre 365 ms pour `/contact` (sans image) et 417 ms pour l'accueil (avec son image) ; accessibilité 100 et bonnes pratiques 100.
 
+### 14. Nombre de sites offerts : cinq, pas dix
+
+**Décision (Christopher, 2026-10-16, revue visuelle de la page).** L'offre porte sur cinq sites. Cette décision remplace « dix » et « 10 » dans les textes de la page, qui sont repris tels quels dans les points 1 et 10 ci-dessus :
+- titre de la page et de l'aperçu : « Un site internet offert pour cinq entreprises vosgiennes | MetaVosgiens » ;
+- description : « MetaVosgiens crée cinq sites vitrines [...] Cinq places pour des entreprises et associations des Vosges. » ;
+- H1 et image de partage : « Un site internet offert à 5 entreprises et associations des Vosges. » ;
+- introduction : « je crée cinq sites vitrines [...] Cinq places, pour des entreprises [...] » ;
+- FAQ : « Pourquoi cinq places seulement ? » et « je préfère faire cinq sites soignés ».
+
+Les contrôles O01, O02 et O10 vérifient ces textes. Hors dépôt : mails et posts de Kiara à aligner, et toute mention « dix » dans la communication.
+
 ## À vérifier pendant la réalisation
 
 - Le compteur du serveur (`proxy.ts`) se déclenche sur cette page statique dans le conteneur de production (point 4).
