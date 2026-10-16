@@ -36,6 +36,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
+  // Short address shown in the TikTok videos (the bio link is not clickable), so it carries
+  // the TikTok origin. Temporary (307): the campaign is time-limited.
+  async redirects() {
+    return [{ source: "/offert", destination: "/site-offert?src=tt", permanent: false }];
+  },
 };
 
 export default nextConfig;

@@ -3,6 +3,7 @@
 #
 # Usage : scripts/site-offert-check.sh [BASE_URL] [FICHIER_JOURNAL]     défaut : https://metavosgiens.com
 # O01 à O11 : page, métadonnées, isolement, formulaire, image de partage, confidentialité.
+# O17 : adresse courte /offert des vidéos TikTok.
 # O12 : compteur de visites ; lancé seulement si FICHIER_JOURNAL (sortie standard du serveur Next) est donné.
 # Sortie : une ligne PASS|FAIL par contrôle ; code de sortie 1 si au moins un FAIL.
 #
@@ -473,6 +474,21 @@ for path in ["/", "/contact", "/site-offert"]:
 PY
 }
 
+# O17 : l'adresse courte des vidéos TikTok, /offert (avec ou sans barre finale), redirige
+# temporairement vers la page avec l'origine TikTok, et n'est pas dans le sitemap.
+o17() {
+  local path code location final
+  for path in "/offert" "/offert/"; do
+    final="$(curl -s -L -o /dev/null --max-time 20 -w '%{http_code} %{url_effective}' "$BASE$path")"
+    [ "$final" = "200 $BASE$PAGE?src=tt" ] || return 1
+  done
+  code="$(status "/offert")"
+  [ "$code" = "307" ] || [ "$code" = "302" ] || return 1
+  location="$(curl -s -o /dev/null --max-time 20 -w '%{redirect_url}' "$BASE/offert")"
+  [ "$location" = "$BASE$PAGE?src=tt" ] || return 1
+  ! fetch "/sitemap.xml" | grep -q '/offert<'
+}
+
 check O01 "page 200 et H1 : « Un site internet offert à 5 entreprises et associations des Vosges. »" o01
 check O02 "title complet sans gabarit, og:title et twitter:title identiques, description de la source, canonical propre" o02
 check O03 "noindex et absente de sitemap.xml" o03
@@ -488,6 +504,7 @@ check O13 "zod absent du JavaScript client de la page (schéma réservé au serv
 check O14 "images du site : bandeau d'ouverture (priorité haute) et image du formulaire (différée), toutes décoratives" o14
 check O15 "en-tête : menu « Services » avec les quatre pages de service sur toutes les pages, pied de page inchangé" o15
 check O16 "pied de page : liens vers Facebook, Instagram, TikTok et LinkedIn, dans un nouvel onglet, adresses publiques" o16
+check O17 "/offert et /offert/ : redirection temporaire vers /site-offert?src=tt, absente de sitemap.xml" o17
 
 if [ -n "$LOG_FILE" ]; then
   check O12 "compteur : trois visites comptées (fb, ig robot, direct), préchargement et envois de formulaire ignorés, aucune IP" o12
