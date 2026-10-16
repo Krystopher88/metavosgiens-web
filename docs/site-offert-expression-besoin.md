@@ -209,6 +209,15 @@ Les contrôles O01, O02 et O10 vérifient ces textes. Hors dépôt : mails et po
 
 Aucun jargon (« SEO », « responsive ») et aucune promesse de résultat. Contrôle O10. Non tranché : ce que le candidat fournit en dehors des photos (textes, logo).
 
+### 17. Contenus fournis par le candidat, FAQ
+
+**Décision (Christopher, 2026-10-16).**
+- Nouvelle contrepartie, en tête de « Ce que je vous demande en retour » : « Vos contenus : textes, photos et logo, remis après un rendez-vous avec moi. Je les retravaille pour votre site. » Le contenu éditorial est défini lors d'un rendez-vous avec le candidat, puis retravaillé par Christopher pour le référencement (non annoncé sur la page).
+- La question « Pourquoi cinq places seulement ? » est supprimée de la FAQ, qui compte cinq questions.
+- La charge de travail par site n'est pas un critère pour Christopher.
+
+Contrôle O10 (cinq résumés, nouveau passage, question et « sites soignés » absents). Ce point complète le point 16.
+
 ## À vérifier pendant la réalisation
 
 - Le compteur du serveur (`proxy.ts`) se déclenche sur cette page statique dans le conteneur de production (point 4).
