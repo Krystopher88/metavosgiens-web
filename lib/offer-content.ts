@@ -42,6 +42,7 @@ export const OFFER_CONTENT = {
   inReturn: {
     title: "Ce que je vous demande en retour",
     items: [
+      "Vos contenus : textes, photos et logo, remis après un rendez-vous avec moi. Je les retravaille pour votre site.",
       "Un lien « réalisé par MetaVosgiens » en bas du site.",
       "L'autorisation de vous citer comme exemple.",
       "Un court avis après la mise en ligne.",
@@ -73,11 +74,6 @@ export const OFFER_CONTENT = {
       {
         question: "Qui peut candidater ?",
         answer: "Les entreprises, artisans, commerçants, hébergeurs et associations des Vosges.",
-      },
-      {
-        question: "Pourquoi cinq places seulement ?",
-        answer:
-          "C'est une opération de lancement. Le temps de travail est limité, et je préfère faire cinq sites soignés.",
       },
       {
         question: "Mon site existe déjà, puis-je candidater ?",

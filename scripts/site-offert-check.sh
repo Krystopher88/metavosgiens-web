@@ -247,7 +247,7 @@ PY
 }
 
 # O10 : les passages de la source remplacés par la voix « je » (point 1 de la spec) sont dans le <main>,
-# et la FAQ compte six questions.
+# et la FAQ compte cinq questions.
 o10() {
   BASE="$BASE" PAGE="$PAGE" python3 - <<'PY'
 import html, os, re, sys, urllib.request
@@ -279,7 +279,7 @@ passages = [
     "Si votre projet est retenu, je fixe avec vous les conditions par écrit.",
     "Je construis votre site, et uniquement après votre accord écrit.",
     "poursuivre l'hébergement avec moi à un tarif annoncé à l'avance",
-    "et je préfère faire cinq sites soignés",
+    "Vos contenus : textes, photos et logo, remis après un rendez-vous avec moi. Je les retravaille pour votre site.",
 ]
 if not all(p in text for p in passages):
     sys.exit(1)
@@ -287,12 +287,12 @@ if not all(p in text for p in passages):
 if "12 mois" in text or "un an" in text:
     sys.exit(1)
 # Contenu de « Ce que vous recevez » (revu le 2026-10-16) : plus d'anciennes formulations.
-for banned in ("une à cinq pages", "référencement local de base", "à partir de votre commune"):
+for banned in ("une à cinq pages", "référencement local de base", "à partir de votre commune", "Pourquoi cinq places", "sites soignés"):
     if banned in text:
         sys.exit(1)
 if len(re.findall(r"<h3\b", main.group(1))) != 3:
     sys.exit(1)
-if len(re.findall(r"<summary\b", main.group(1))) != 6:
+if len(re.findall(r"<summary\b", main.group(1))) != 5:
     sys.exit(1)
 PY
 }
@@ -400,7 +400,7 @@ check O06 "en-tête et pied de page du site (navigation, coordonnées, liens lé
 check O07 "lien du pied de page vers /site-offert?src=site sur /, /contact, /a-propos et pas sur /site-offert" o07
 check O08 "formulaire : champs, listes natives, case de consentement, piège, champ caché src=direct, bouton, lien de confidentialité en nouvel onglet" o08
 check O09 "og:image en /site-offert/opengraph-image : 200, image/png, 1200 par 630" o09
-check O10 "passages remplacés par la voix « je » présents dans le main, six questions dans la FAQ" o10
+check O10 "passages remplacés par la voix « je » présents dans le main, cinq questions dans la FAQ" o10
 check O11 "politique de confidentialité : « Site offert », « 24 mois », « cochant la case »" o11
 check O13 "zod absent du JavaScript client de la page (schéma réservé au serveur)" o13
 check O14 "images du site : bandeau d'ouverture (priorité haute) et image du formulaire (différée), toutes décoratives" o14
