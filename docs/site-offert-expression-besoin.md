@@ -218,6 +218,10 @@ Aucun jargon (« SEO », « responsive ») et aucune promesse de résultat. Cont
 
 Contrôle O10 (cinq résumés, nouveau passage, question et « sites soignés » absents). Ce point complète le point 16.
 
+### 18. Menu « Services » dans l'en-tête du site
+
+**Décision (Christopher, 2026-10-16, option B).** L'en-tête de tout le site (donc aussi `/site-offert`) reçoit un menu « Services » avec les quatre pages de service, comme le pied de page : sous-menu sur ordinateur, groupe « Services » dans le menu du téléphone. Hors du périmètre initial de la page de campagne, mais c'est le même composant d'en-tête. Contrôle O15.
+
 ## À vérifier pendant la réalisation
 
 - Le compteur du serveur (`proxy.ts`) se déclenche sur cette page statique dans le conteneur de production (point 4).
