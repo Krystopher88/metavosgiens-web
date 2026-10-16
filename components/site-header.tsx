@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/logo";
 import { ContactCtaButton } from "@/components/contact-cta-button";
@@ -20,6 +21,16 @@ const NAV_LINKS = [
   { label: "Contact", href: "/#contact" },
 ] as const;
 
+// The four service pages are also listed in the footer. In the header they sit in a "Services"
+// disclosure menu on desktop, and as a group in the mobile menu; the links stay in the HTML while
+// the menu is closed.
+const SERVICE_LINKS = [
+  { label: "Création de site internet", href: "/creation-site-internet" },
+  { label: "Automatisation", href: "/automatisation" },
+  { label: "Intelligence artificielle", href: "/intelligence-artificielle" },
+  { label: "Outils métier", href: "/outils-metier" },
+] as const;
+
 const LINK_CLASS =
   "rounded-sm text-text outline-none transition-colors hover:text-green focus-visible:ring-3 focus-visible:ring-ring/50";
 
@@ -29,6 +40,29 @@ export function SiteHeader() {
   const showContactCta = usePathname() !== OFFER_PATH;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuToggleRef = useRef<HTMLButtonElement | null>(null);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement | null>(null);
+  const servicesToggleRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!isServicesOpen) return;
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      setIsServicesOpen(false);
+      servicesToggleRef.current?.focus();
+    }
+    function closeWhenOutside(event: Event) {
+      if (!servicesRef.current?.contains(event.target as Node)) setIsServicesOpen(false);
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", closeWhenOutside);
+    document.addEventListener("focusin", closeWhenOutside);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", closeWhenOutside);
+      document.removeEventListener("focusin", closeWhenOutside);
+    };
+  }, [isServicesOpen]);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -61,6 +95,42 @@ export function SiteHeader() {
           className="hidden items-center gap-7 text-sm md:flex"
           aria-label="Navigation principale"
         >
+          <div ref={servicesRef} className="relative">
+            <button
+              ref={servicesToggleRef}
+              type="button"
+              aria-expanded={isServicesOpen}
+              aria-controls="services-menu"
+              onClick={() => setIsServicesOpen((open) => !open)}
+              className={`${LINK_CLASS} flex items-center gap-1`}
+            >
+              Services
+              <ChevronDown
+                size={16}
+                aria-hidden="true"
+                className={`text-green transition-transform motion-reduce:transition-none ${
+                  isServicesOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <ul
+              id="services-menu"
+              hidden={!isServicesOpen}
+              className="absolute top-full left-0 z-40 mt-3 flex w-64 flex-col gap-1 rounded-xl border border-[#dde2dd] bg-background p-2 shadow-lg"
+            >
+              {SERVICE_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setIsServicesOpen(false)}
+                    className={`${LINK_CLASS} block px-3 py-2 hover:bg-surface`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -108,6 +178,19 @@ export function SiteHeader() {
           id="mobile-menu"
           className="flex flex-col gap-[18px] border-b border-[#dde2dd] bg-[rgba(247,246,242,0.98)] px-5 pt-2 pb-[26px] md:hidden"
         >
+          <div className="flex flex-col gap-3">
+            <p className="text-[11px] font-bold tracking-[0.1em] text-[#5f6d67]">Services</p>
+            {SERVICE_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={closeMenu}
+                className={`${LINK_CLASS} pl-3`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}

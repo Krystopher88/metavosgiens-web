@@ -391,6 +391,29 @@ if 'alt=""' not in form[0] or 'loading="lazy"' not in form[0]:
 PY
 }
 
+# O15 : le menu de l'en-tête (toutes les pages) propose les quatre pages de service, dans le HTML
+# même quand le sous-menu est fermé, et les liens du pied de page restent en place.
+o15() {
+  BASE="$BASE" python3 - <<'PY'
+import os, re, sys, urllib.request
+
+hrefs = ["/creation-site-internet", "/automatisation", "/intelligence-artificielle", "/outils-metier"]
+for path in ["/", "/contact", "/a-propos", "/site-offert"]:
+    try:
+        page = urllib.request.urlopen(os.environ["BASE"] + path, timeout=20).read().decode("utf-8")
+    except Exception:
+        sys.exit(1)
+    header = re.search(r"<header\b.*?</header>", page, re.S)
+    if not header or not all('href="%s"' % h in header.group(0) for h in hrefs):
+        sys.exit(1)
+    if "Services" not in header.group(0):
+        sys.exit(1)
+    footer = re.search(r"<footer\b.*?</footer>", page, re.S)
+    if not footer or not all('href="%s"' % h in footer.group(0) for h in hrefs):
+        sys.exit(1)
+PY
+}
+
 check O01 "page 200 et H1 : « Un site internet offert à 5 entreprises et associations des Vosges. »" o01
 check O02 "title complet sans gabarit, og:title et twitter:title identiques, description de la source, canonical propre" o02
 check O03 "noindex et absente de sitemap.xml" o03
@@ -404,6 +427,7 @@ check O10 "passages remplacés par la voix « je » présents dans le main, cinq
 check O11 "politique de confidentialité : « Site offert », « 24 mois », « cochant la case »" o11
 check O13 "zod absent du JavaScript client de la page (schéma réservé au serveur)" o13
 check O14 "images du site : bandeau d'ouverture (priorité haute) et image du formulaire (différée), toutes décoratives" o14
+check O15 "en-tête : menu « Services » avec les quatre pages de service sur toutes les pages, pied de page inchangé" o15
 
 if [ -n "$LOG_FILE" ]; then
   check O12 "compteur : trois visites comptées (fb, ig robot, direct), préchargement et envois de formulaire ignorés, aucune IP" o12
