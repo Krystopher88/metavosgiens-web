@@ -276,6 +276,7 @@ import json, os, re, sys, urllib.request
 
 base, prod = os.environ["BASE"], os.environ["PROD"]
 SOCIAL_ACCOUNTS = [
+    "https://www.linkedin.com/company/metavosgiens/",
     "https://www.facebook.com/profile.php?id=61583668362525",
     "https://www.instagram.com/metavosgiens/",
     "https://www.tiktok.com/@metavosgiens",
@@ -505,7 +506,7 @@ check C13 "la home montre « site internet » et « fiche Google » dans son tex
 check C14 "le nom du fondateur est visible sur /a-propos" c14
 check C15 "llms.txt : sans « numérique », « payant » ni « nous », avec Bleurville, le fondateur, la zone et les pages de service" c15
 check C16 "aucun terme proscrit (numérique, digital, SaaS, API, workflow, framework, payant) dans le texte visible et les attributs" c16
-check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone d'intervention, fondateur, sameAs de l'agence = Facebook, Instagram, TikTok, aucune autre mention d'Instagram ni de Facebook" c17
+check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone d'intervention, fondateur, sameAs de l'agence = LinkedIn entreprise, Facebook, Instagram, TikTok, aucune autre mention d'Instagram ni de Facebook" c17
 check C18 "contact : adresse et lien vers /a-propos ; mentions légales : téléphone" c18
 check C19 "registre homogène à la première personne du singulier (aucun nous, notre, nos, on) sur /, /a-propos, /contact, pages de service et dans le JSON-LD" c19
 check C20 "mot « agence » : titre de la home, une seule fois « agence web » dans son texte, « agence vosgienne » sur la home et À propos" c20

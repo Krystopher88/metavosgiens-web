@@ -8,7 +8,9 @@ export const SITE = {
   contactPhoneHref: "+33749258341",
   contactLinkedIn: "https://www.linkedin.com/in/christopher-bichon-b95a3916a/",
   // Public addresses of the agency's accounts (Facebook: page id only, without the "viewas"
-  // preview parameter, which carries a person's identifier).
+  // preview parameter, which carries a person's identifier). contactLinkedIn above is the
+  // founder's own profile, used where the text speaks of him.
+  contactLinkedInCompany: "https://www.linkedin.com/company/metavosgiens/",
   contactFacebook: "https://www.facebook.com/profile.php?id=61583668362525",
   contactInstagram: "https://www.instagram.com/metavosgiens/",
   contactTikTok: "https://www.tiktok.com/@metavosgiens",

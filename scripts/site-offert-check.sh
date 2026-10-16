@@ -423,6 +423,7 @@ import os, re, sys, urllib.request
 from html.parser import HTMLParser
 
 expected = {
+    "https://www.linkedin.com/company/metavosgiens/": "LinkedIn",
     "https://www.facebook.com/profile.php?id=61583668362525": "Facebook",
     "https://www.instagram.com/metavosgiens/": "Instagram",
     "https://www.tiktok.com/@metavosgiens": "TikTok",
