@@ -17,7 +17,7 @@ export const OFFER_CONTENT = {
       "Un formulaire de contact, pour que vos clients vous écrivent directement.",
       "Les mentions légales et la politique de confidentialité.",
       "L'hébergement offert pendant 6 mois.",
-      "Un nom de domaine à votre nom, donc le site vous appartient.",
+      "Un site dont vous êtes propriétaire, avec un nom de domaine à votre nom.",
     ],
   },
   inReturn: {
@@ -66,7 +66,7 @@ export const OFFER_CONTENT = {
       },
       {
         question: "Le site m'appartient-il ?",
-        answer: "Le nom de domaine est enregistré à votre nom.",
+        answer: "Oui. Vous êtes propriétaire de votre site, et le nom de domaine est enregistré à votre nom.",
       },
     ],
   },

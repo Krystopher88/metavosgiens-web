@@ -265,6 +265,8 @@ passages = [
     "MetaVosgiens est une agence vosgienne, basée à Bleurville.",
     "Pour le lancement de l'agence, je crée cinq sites vitrines et je les héberge pendant six mois, sans frais de création.",
     "L'hébergement offert pendant 6 mois.",
+    "Un site dont vous êtes propriétaire, avec un nom de domaine à votre nom.",
+    "Oui. Vous êtes propriétaire de votre site, et le nom de domaine est enregistré à votre nom.",
     "Que se passe-t-il après les 6 mois ?",
     "Ce que je vous demande en retour",
     "Je vous contacte pour échanger sur votre activité et vos besoins.",
