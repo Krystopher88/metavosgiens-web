@@ -12,12 +12,31 @@ export const OFFER_CONTENT = {
   cta: "Je candidate",
   receive: {
     title: "Ce que vous recevez",
-    items: [
-      "Un site vitrine de une à cinq pages, adapté au téléphone.",
-      "Un formulaire de contact, pour que vos clients vous écrivent directement.",
-      "Les mentions légales et la politique de confidentialité.",
-      "L'hébergement offert pendant 6 mois.",
-      "Un site dont vous êtes propriétaire, avec un nom de domaine à votre nom.",
+    groups: [
+      {
+        title: "Votre site",
+        items: [
+          "Un site vitrine de six pages : accueil, prestations, à propos, contact, mentions légales et politique de confidentialité.",
+          "Un formulaire de contact, pour que vos clients vous écrivent directement.",
+          "Une galerie photos de vos réalisations, composée de vos photos.",
+          "Un site qui s'affiche bien sur téléphone, tablette et ordinateur.",
+        ],
+      },
+      {
+        title: "Pour être trouvé",
+        items: [
+          "Un référencement local, pour que votre site ressorte.",
+          "Votre fiche Google, créée ou mise à jour.",
+          "Les liens vers vos réseaux sociaux.",
+        ],
+      },
+      {
+        title: "Pour vous",
+        items: [
+          "L'hébergement offert pendant 6 mois.",
+          "Un site dont vous êtes propriétaire, avec un nom de domaine à votre nom.",
+        ],
+      },
     ],
   },
   inReturn: {

@@ -266,6 +266,12 @@ passages = [
     "Pour le lancement de l'agence, je crée cinq sites vitrines et je les héberge pendant six mois, sans frais de création.",
     "L'hébergement offert pendant 6 mois.",
     "Un site dont vous êtes propriétaire, avec un nom de domaine à votre nom.",
+    "Un site vitrine de six pages : accueil, prestations, à propos, contact, mentions légales et politique de confidentialité.",
+    "Une galerie photos de vos réalisations, composée de vos photos.",
+    "Un site qui s'affiche bien sur téléphone, tablette et ordinateur.",
+    "Un référencement local, pour que votre site ressorte.",
+    "Votre fiche Google, créée ou mise à jour.",
+    "Les liens vers vos réseaux sociaux.",
     "Oui. Vous êtes propriétaire de votre site, et le nom de domaine est enregistré à votre nom.",
     "Que se passe-t-il après les 6 mois ?",
     "Ce que je vous demande en retour",
@@ -279,6 +285,12 @@ if not all(p in text for p in passages):
     sys.exit(1)
 # La durée de l'hébergement offert est de six mois : plus aucune trace de l'ancienne durée.
 if "12 mois" in text or "un an" in text:
+    sys.exit(1)
+# Contenu de « Ce que vous recevez » (revu le 2026-10-16) : plus d'anciennes formulations.
+for banned in ("une à cinq pages", "référencement local de base", "à partir de votre commune"):
+    if banned in text:
+        sys.exit(1)
+if len(re.findall(r"<h3\b", main.group(1))) != 3:
     sys.exit(1)
 if len(re.findall(r"<summary\b", main.group(1))) != 6:
     sys.exit(1)

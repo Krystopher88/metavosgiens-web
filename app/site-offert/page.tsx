@@ -68,19 +68,29 @@ export default function SiteOffertPage() {
       <section className={`grid grid-cols-1 gap-12 bg-[#eef0ec] md:grid-cols-2 md:gap-16 ${SECTION_PADDING}`}>
         <div>
           <h2 className={SECTION_HEADING}>{OFFER_CONTENT.receive.title}</h2>
-          <ul className="mt-6 flex flex-col gap-4">
-            {OFFER_CONTENT.receive.items.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-base text-[#3c4a54] md:text-lg">
-                <Check
-                  size={22}
-                  aria-hidden="true"
-                  className="mt-0.5 shrink-0 text-green"
-                  strokeWidth={2.4}
-                />
-                <span>{item}</span>
-              </li>
+          <div className="mt-6 flex flex-col gap-8">
+            {OFFER_CONTENT.receive.groups.map((group) => (
+              <div key={group.title}>
+                <h3 className="font-heading text-[17px] font-extrabold text-text">{group.title}</h3>
+                <ul className="mt-3 flex flex-col gap-3">
+                  {group.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 text-base text-[#3c4a54] md:text-lg"
+                    >
+                      <Check
+                        size={22}
+                        aria-hidden="true"
+                        className="mt-0.5 shrink-0 text-green"
+                        strokeWidth={2.4}
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
         <div>
           <h2 className={SECTION_HEADING}>{OFFER_CONTENT.inReturn.title}</h2>
