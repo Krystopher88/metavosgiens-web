@@ -79,7 +79,13 @@ const organizationJsonLd = {
         addressCountry: "FR",
       },
       areaServed: SERVICE_AREA.map((name) => ({ "@type": "AdministrativeArea", name })),
-      sameAs: [SITE.contactLinkedInCompany, SITE.contactFacebook, SITE.contactInstagram, SITE.contactTikTok],
+      sameAs: [
+        SITE.contactLinkedInCompany,
+        SITE.contactFacebook,
+        SITE.contactInstagram,
+        SITE.contactTikTok,
+        SITE.googleBusinessProfile,
+      ],
       founder: {
         "@id": "https://metavosgiens.com/#person"
       }

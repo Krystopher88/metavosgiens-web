@@ -14,6 +14,9 @@ export const SITE = {
   contactFacebook: "https://www.facebook.com/profile.php?id=61583668362525",
   contactInstagram: "https://www.instagram.com/metavosgiens/",
   contactTikTok: "https://www.tiktok.com/@metavosgiens",
+  // Share link of the agency's Google business profile (address hidden: its Maps page has no real
+  // position, so the JSON-LD links it in sameAs but declares no hasMap).
+  googleBusinessProfile: "https://maps.app.goo.gl/BpN9RhzAXTLFmUZF6",
   url: "https://metavosgiens.com",
 } as const;
 

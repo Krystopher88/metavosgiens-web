@@ -281,6 +281,7 @@ SOCIAL_ACCOUNTS = [
     "https://www.instagram.com/metavosgiens/",
     "https://www.tiktok.com/@metavosgiens",
 ]
+GOOGLE_PROFILE = "https://maps.app.goo.gl/BpN9RhzAXTLFmUZF6"
 page = urllib.request.urlopen(base + "/", timeout=20).read().decode("utf-8")
 blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S)
 for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite", "/creation-site-internet", "/automatisation", "/intelligence-artificielle", "/outils-metier"]:
@@ -313,8 +314,11 @@ if person.get("url") != prod + "/a-propos":
     sys.exit(1)
 if not any("linkedin.com/in/" in u for u in person.get("sameAs", [])):
     sys.exit(1)
-# Comptes de l'agence rattachés à l'entité (décision de Christopher, 2026-10-16) ; le LinkedIn personnel reste sur le fondateur.
-if org.get("sameAs") != SOCIAL_ACCOUNTS:
+# Comptes de l'agence et fiche Google rattachés à l'entité (décisions de Christopher, 2026-10-16) ; le LinkedIn personnel
+# reste sur le fondateur. Pas de hasMap : l'adresse de la fiche est masquée, sa page Maps n'a pas de position réelle.
+if org.get("sameAs") != SOCIAL_ACCOUNTS + [GOOGLE_PROFILE]:
+    sys.exit(1)
+if "hasMap" in org:
     sys.exit(1)
 PY
 }
@@ -506,7 +510,7 @@ check C13 "la home montre « site internet » et « fiche Google » dans son tex
 check C14 "le nom du fondateur est visible sur /a-propos" c14
 check C15 "llms.txt : sans « numérique », « payant » ni « nous », avec Bleurville, le fondateur, la zone et les pages de service" c15
 check C16 "aucun terme proscrit (numérique, digital, SaaS, API, workflow, framework, payant) dans le texte visible et les attributs" c16
-check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone d'intervention, fondateur, sameAs de l'agence = LinkedIn entreprise, Facebook, Instagram, TikTok, aucune autre mention d'Instagram ni de Facebook" c17
+check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone d'intervention, fondateur, sameAs de l'agence = LinkedIn entreprise, Facebook, Instagram, TikTok, fiche Google, aucune autre mention d'Instagram ni de Facebook" c17
 check C18 "contact : adresse et lien vers /a-propos ; mentions légales : téléphone" c18
 check C19 "registre homogène à la première personne du singulier (aucun nous, notre, nos, on) sur /, /a-propos, /contact, pages de service et dans le JSON-LD" c19
 check C20 "mot « agence » : titre de la home, une seule fois « agence web » dans son texte, « agence vosgienne » sur la home et À propos" c20
