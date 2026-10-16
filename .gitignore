@@ -40,3 +40,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# marketing workspace: sent as a folder to Kiara, with its own CLAUDE.md for the marketing agent
+/marketing/

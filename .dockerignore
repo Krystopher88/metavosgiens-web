@@ -6,3 +6,4 @@ docs
 .env*.local
 .superpowers
 tsconfig.tsbuildinfo
+marketing
