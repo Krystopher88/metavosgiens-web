@@ -2,13 +2,13 @@
 // in the voice of the site ("je", never "nous"), with the replacements of point 1 of
 // docs/site-offert-expression-besoin.md. The form texts live in components/offer-form.tsx.
 export const OFFER_CONTENT = {
-  title: "Un site internet offert pour dix entreprises vosgiennes",
-  fullTitle: "Un site internet offert pour dix entreprises vosgiennes | MetaVosgiens",
+  title: "Un site internet offert pour cinq entreprises vosgiennes",
+  fullTitle: "Un site internet offert pour cinq entreprises vosgiennes | MetaVosgiens",
   description:
-    "MetaVosgiens crée dix sites vitrines et les héberge pendant six mois, sans frais de création. Dix places pour des entreprises et associations des Vosges.",
-  heading: "Un site internet offert à 10 entreprises et associations des Vosges.",
+    "MetaVosgiens crée cinq sites vitrines et les héberge pendant six mois, sans frais de création. Cinq places pour des entreprises et associations des Vosges.",
+  heading: "Un site internet offert à 5 entreprises et associations des Vosges.",
   intro:
-    "MetaVosgiens est une agence vosgienne, basée à Bleurville. Pour le lancement de l'agence, je crée dix sites vitrines et je les héberge pendant six mois, sans frais de création. Dix places, pour des entreprises et des associations vosgiennes qui n'ont pas de site, ou dont le site ne leur sert plus.",
+    "MetaVosgiens est une agence vosgienne, basée à Bleurville. Pour le lancement de l'agence, je crée cinq sites vitrines et je les héberge pendant six mois, sans frais de création. Cinq places, pour des entreprises et des associations vosgiennes qui n'ont pas de site, ou dont le site ne leur sert plus.",
   cta: "Je candidate",
   receive: {
     title: "Ce que vous recevez",
@@ -56,9 +56,9 @@ export const OFFER_CONTENT = {
         answer: "Les entreprises, artisans, commerçants, hébergeurs et associations des Vosges.",
       },
       {
-        question: "Pourquoi dix places seulement ?",
+        question: "Pourquoi cinq places seulement ?",
         answer:
-          "C'est une opération de lancement. Le temps de travail est limité, et je préfère faire dix sites soignés.",
+          "C'est une opération de lancement. Le temps de travail est limité, et je préfère faire cinq sites soignés.",
       },
       {
         question: "Mon site existe déjà, puis-je candidater ?",

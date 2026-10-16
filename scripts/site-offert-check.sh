@@ -20,9 +20,9 @@ PROD="https://metavosgiens.com"
 PAGE="/site-offert"
 FAILED=0
 
-EXPECTED_H1="Un site internet offert à 10 entreprises et associations des Vosges."
-EXPECTED_TITLE="Un site internet offert pour dix entreprises vosgiennes | MetaVosgiens"
-EXPECTED_DESCRIPTION="MetaVosgiens crée dix sites vitrines et les héberge pendant six mois, sans frais de création. Dix places pour des entreprises et associations des Vosges."
+EXPECTED_H1="Un site internet offert à 5 entreprises et associations des Vosges."
+EXPECTED_TITLE="Un site internet offert pour cinq entreprises vosgiennes | MetaVosgiens"
+EXPECTED_DESCRIPTION="MetaVosgiens crée cinq sites vitrines et les héberge pendant six mois, sans frais de création. Cinq places pour des entreprises et associations des Vosges."
 
 fetch() { curl -s --max-time 20 "$BASE$1"; }
 status() { curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$BASE$1"; }
@@ -263,7 +263,7 @@ body = re.sub(r"<script\b.*?</script>", " ", main.group(1), flags=re.S)
 text = " ".join(html.unescape(re.sub(r"<[^>]*>", " ", body)).split())
 passages = [
     "MetaVosgiens est une agence vosgienne, basée à Bleurville.",
-    "Pour le lancement de l'agence, je crée dix sites vitrines et je les héberge pendant six mois, sans frais de création.",
+    "Pour le lancement de l'agence, je crée cinq sites vitrines et je les héberge pendant six mois, sans frais de création.",
     "L'hébergement offert pendant 6 mois.",
     "Que se passe-t-il après les 6 mois ?",
     "Ce que je vous demande en retour",
@@ -271,7 +271,7 @@ passages = [
     "Si votre projet est retenu, je fixe avec vous les conditions par écrit.",
     "Je construis votre site, et uniquement après votre accord écrit.",
     "poursuivre l'hébergement avec moi à un tarif annoncé à l'avance",
-    "et je préfère faire dix sites soignés",
+    "et je préfère faire cinq sites soignés",
 ]
 if not all(p in text for p in passages):
     sys.exit(1)
@@ -377,7 +377,7 @@ if 'alt=""' not in form[0] or 'loading="lazy"' not in form[0]:
 PY
 }
 
-check O01 "page 200 et H1 : « Un site internet offert à 10 entreprises et associations des Vosges. »" o01
+check O01 "page 200 et H1 : « Un site internet offert à 5 entreprises et associations des Vosges. »" o01
 check O02 "title complet sans gabarit, og:title et twitter:title identiques, description de la source, canonical propre" o02
 check O03 "noindex et absente de sitemap.xml" o03
 check O04 "aucun nous, notre, nos (page), aucun on inclusif (main), aucun tiret cadratin (texte et attributs)" o04
