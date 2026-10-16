@@ -196,6 +196,10 @@ Aucune image nouvelle : les photos déjà utilisées par le site sont réutilis�
 
 Les contrôles O01, O02 et O10 vérifient ces textes. Hors dépôt : mails et posts de Kiara à aligner, et toute mention « dix » dans la communication.
 
+### 15. Propriété du site
+
+**Décision (Christopher, 2026-10-16).** La page dit explicitement que le candidat est propriétaire de son site : « Un site dont vous êtes propriétaire, avec un nom de domaine à votre nom. » dans « Ce que vous recevez », et, en FAQ, « Oui. Vous êtes propriétaire de votre site, et le nom de domaine est enregistré à votre nom. ». Cela remplace « donc le site vous appartient » et la réponse qui ne parlait que du domaine. Contrôle O10. Les conditions écrites de l'étape 3 devront reprendre cet engagement.
+
 ## À vérifier pendant la réalisation
 
 - Le compteur du serveur (`proxy.ts`) se déclenche sur cette page statique dans le conteneur de production (point 4).
