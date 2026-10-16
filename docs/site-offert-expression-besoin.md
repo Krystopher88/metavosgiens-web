@@ -222,6 +222,10 @@ Contrôle O10 (cinq résumés, nouveau passage, question et « sites soignés »
 
 **Décision (Christopher, 2026-10-16, option B).** L'en-tête de tout le site (donc aussi `/site-offert`) reçoit un menu « Services » avec les quatre pages de service, comme le pied de page : sous-menu sur ordinateur, groupe « Services » dans le menu du téléphone. Hors du périmètre initial de la page de campagne, mais c'est le même composant d'en-tête. Contrôle O15.
 
+### 19. Réseaux sociaux de l'agence dans le pied de page
+
+**Décision (Christopher, 2026-10-16).** Le pied de page de tout le site (donc aussi `/site-offert`) liste les comptes de l'agence : LinkedIn (déjà présent), Facebook, Instagram et TikTok, dans la colonne « Contact », chacun avec son pictogramme et un lien qui s'ouvre dans un nouvel onglet (`rel="noopener noreferrer"`). Instagram : `https://www.instagram.com/metavosgiens/`, TikTok : `https://www.tiktok.com/@metavosgiens`. Facebook : `https://www.facebook.com/profile.php?id=61583668362525`, sans le paramètre `viewas=…` de l'adresse transmise (paramètre d'aperçu de profil qui contient l'identifiant d'une personne). Cette adresse nettoyée est à confirmer par Christopher en fenêtre privée. Le contrôle SEO C17 (« aucun Instagram ni Facebook ») admet désormais ces deux adresses exactes dans le HTML ; le JSON-LD (`sameAs`) reste sans Instagram ni Facebook, tant que Christopher n'a pas décidé de les y ajouter. Contrôle O16.
+
 ## À vérifier pendant la réalisation
 
 - Le compteur du serveur (`proxy.ts`) se déclenche sur cette page statique dans le conteneur de production (point 4).
