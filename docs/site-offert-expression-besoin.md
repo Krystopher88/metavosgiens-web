@@ -200,6 +200,15 @@ Les contrôles O01, O02 et O10 vérifient ces textes. Hors dépôt : mails et po
 
 **Décision (Christopher, 2026-10-16).** La page dit explicitement que le candidat est propriétaire de son site : « Un site dont vous êtes propriétaire, avec un nom de domaine à votre nom. » dans « Ce que vous recevez », et, en FAQ, « Oui. Vous êtes propriétaire de votre site, et le nom de domaine est enregistré à votre nom. ». Cela remplace « donc le site vous appartient » et la réponse qui ne parlait que du domaine. Contrôle O10. Les conditions écrites de l'étape 3 devront reprendre cet engagement.
 
+### 16. Contenu de « Ce que vous recevez »
+
+**Décision (Christopher, 2026-10-16, après discussion).** La liste devient trois groupes, qui remplacent la liste de cinq lignes de la source (et « de une à cinq pages ») :
+- **Votre site :** un site vitrine de six pages (accueil, prestations, à propos, contact, mentions légales, politique de confidentialité) ; un formulaire de contact ; une galerie photos « composée de vos photos » ; un site qui s'affiche bien sur téléphone, tablette et ordinateur.
+- **Pour être trouvé :** « Un référencement local, pour que votre site ressorte. » ; « Votre fiche Google, créée ou mise à jour. » ; « Les liens vers vos réseaux sociaux. » (simples liens, pas de flux intégré).
+- **Pour vous :** l'hébergement offert pendant 6 mois ; un site dont le candidat est propriétaire, avec un nom de domaine à son nom (point 15).
+
+Aucun jargon (« SEO », « responsive ») et aucune promesse de résultat. Contrôle O10. Non tranché : ce que le candidat fournit en dehors des photos (textes, logo).
+
 ## À vérifier pendant la réalisation
 
 - Le compteur du serveur (`proxy.ts`) se déclenche sur cette page statique dans le conteneur de production (point 4).
