@@ -279,8 +279,15 @@ page = urllib.request.urlopen(base + "/", timeout=20).read().decode("utf-8")
 blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S)
 for path in ["/", "/a-propos", "/contact", "/mentions-legales", "/politique-confidentialite", "/creation-site-internet", "/automatisation", "/intelligence-artificielle", "/outils-metier"]:
     html_page = urllib.request.urlopen(base + path, timeout=20).read().decode("utf-8")
-    if re.search(r"instagram\.com|facebook\.com|fb\.com", html_page):
+    # Depuis le 2026-10-16, le pied de page renvoie vers les comptes de l'agence (décision de Christopher) :
+    # ces deux adresses exactes sont admises ; toute autre mention de ces réseaux reste interdite, et le
+    # JSON-LD n'en contient aucune (le champ sameAs ne change pas).
+    stripped = html_page.replace("https://www.facebook.com/profile.php?id=61583668362525", "").replace("https://www.instagram.com/metavosgiens/", "")
+    if re.search(r"instagram\.com|facebook\.com|fb\.com", stripped):
         sys.exit(1)
+    for jsonld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', html_page, re.S):
+        if re.search(r"instagram\.com|facebook\.com|fb\.com", jsonld):
+            sys.exit(1)
 nodes = []
 for block in blocks:
     data = json.loads(block)
@@ -491,7 +498,7 @@ check C13 "la home montre « site internet » et « fiche Google » dans son tex
 check C14 "le nom du fondateur est visible sur /a-propos" c14
 check C15 "llms.txt : sans « numérique », « payant » ni « nous », avec Bleurville, le fondateur, la zone et les pages de service" c15
 check C16 "aucun terme proscrit (numérique, digital, SaaS, API, workflow, framework, payant) dans le texte visible et les attributs" c16
-check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone d'intervention, fondateur, aucun Instagram ni Facebook" c17
+check C17 "JSON-LD de l'entité : nom public, nom alternatif, zone d'intervention, fondateur, aucun Instagram ni Facebook dans le JSON-LD ni hors des deux liens du pied de page" c17
 check C18 "contact : adresse et lien vers /a-propos ; mentions légales : téléphone" c18
 check C19 "registre homogène à la première personne du singulier (aucun nous, notre, nos, on) sur /, /a-propos, /contact, pages de service et dans le JSON-LD" c19
 check C20 "mot « agence » : titre de la home, une seule fois « agence web » dans son texte, « agence vosgienne » sur la home et À propos" c20

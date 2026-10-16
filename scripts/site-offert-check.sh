@@ -414,6 +414,64 @@ for path in ["/", "/contact", "/a-propos", "/site-offert"]:
 PY
 }
 
+# O16 : le pied de page (toutes les pages) renvoie vers les quatre réseaux de l'agence, dans un nouvel
+# onglet, avec les adresses publiques (pas l'adresse « viewas » d'un aperçu de profil Facebook, qui
+# contient l'identifiant d'une personne).
+o16() {
+  BASE="$BASE" python3 - <<'PY'
+import os, re, sys, urllib.request
+from html.parser import HTMLParser
+
+expected = {
+    "https://www.facebook.com/profile.php?id=61583668362525": "Facebook",
+    "https://www.instagram.com/metavosgiens/": "Instagram",
+    "https://www.tiktok.com/@metavosgiens": "TikTok",
+}
+
+class Anchors(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+        self._current = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self._current = [dict(attrs), ""]
+
+    def handle_data(self, data):
+        if self._current is not None:
+            self._current[1] += data
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self._current is not None:
+            self.links.append((self._current[0], " ".join(self._current[1].split())))
+            self._current = None
+
+for path in ["/", "/contact", "/site-offert"]:
+    try:
+        page = urllib.request.urlopen(os.environ["BASE"] + path, timeout=20).read().decode("utf-8")
+    except Exception:
+        sys.exit(1)
+    if "viewas" in page:
+        sys.exit(1)
+    footer = re.search(r"<footer\b.*?</footer>", page, re.S)
+    if not footer:
+        sys.exit(1)
+    parser = Anchors()
+    parser.feed(footer.group(0))
+    found = {attrs.get("href"): (attrs, text) for attrs, text in parser.links}
+    for href, label in expected.items():
+        if href not in found:
+            sys.exit(1)
+        attrs, text = found[href]
+        if text != label or attrs.get("target") != "_blank" or "noopener" not in (attrs.get("rel") or ""):
+            sys.exit(1)
+    linkedin = [a for a, t in parser.links if "linkedin.com" in (a.get("href") or "")]
+    if len(linkedin) != 1:
+        sys.exit(1)
+PY
+}
+
 check O01 "page 200 et H1 : « Un site internet offert à 5 entreprises et associations des Vosges. »" o01
 check O02 "title complet sans gabarit, og:title et twitter:title identiques, description de la source, canonical propre" o02
 check O03 "noindex et absente de sitemap.xml" o03
@@ -428,6 +486,7 @@ check O11 "politique de confidentialité : « Site offert », « 24 mois », « 
 check O13 "zod absent du JavaScript client de la page (schéma réservé au serveur)" o13
 check O14 "images du site : bandeau d'ouverture (priorité haute) et image du formulaire (différée), toutes décoratives" o14
 check O15 "en-tête : menu « Services » avec les quatre pages de service sur toutes les pages, pied de page inchangé" o15
+check O16 "pied de page : liens vers Facebook, Instagram, TikTok et LinkedIn, dans un nouvel onglet, adresses publiques" o16
 
 if [ -n "$LOG_FILE" ]; then
   check O12 "compteur : trois visites comptées (fb, ig robot, direct), préchargement et envois de formulaire ignorés, aucune IP" o12
