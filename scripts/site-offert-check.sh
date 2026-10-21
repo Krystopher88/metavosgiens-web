@@ -143,7 +143,7 @@ o06() {
   printf '%s' "$html" | grep -q 'aria-label="Navigation principale"' || return 1
   printf '%s' "$html" | grep -q 'aria-label="Navigation du pied de page"' || return 1
   printf '%s' "$html" | grep -q 'href="/a-propos"' || return 1
-  printf '%s' "$html" | grep -q 'href="mailto:contact@krystdev.com"' || return 1
+  printf '%s' "$html" | grep -q 'href="mailto:contact@metavosgiens.com"' || return 1
   printf '%s' "$html" | grep -q 'href="tel:+33749258341"' || return 1
   printf '%s' "$html" | grep -q 'href="/mentions-legales"' || return 1
   printf '%s' "$html" | grep -q 'href="/politique-confidentialite"' || return 1
