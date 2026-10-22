@@ -36,10 +36,16 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
-  // Short address shown in the TikTok videos (the bio link is not clickable), so it carries
-  // the TikTok origin. Temporary (307): the campaign is time-limited.
+  // Short addresses shown in the campaign posts, one per network so each keeps its own origin:
+  // /offert for TikTok (the bio link is not clickable), then Facebook, LinkedIn and Instagram.
+  // Temporary (307): the campaign is time-limited.
   async redirects() {
-    return [{ source: "/offert", destination: "/site-offert?src=tt", permanent: false }];
+    return [
+      { source: "/offert", destination: "/site-offert?src=tt", permanent: false },
+      { source: "/offert-fb", destination: "/site-offert?src=fb", permanent: false },
+      { source: "/offert-li", destination: "/site-offert?src=li", permanent: false },
+      { source: "/offert-ig", destination: "/site-offert?src=ig", permanent: false },
+    ];
   },
 };
 
