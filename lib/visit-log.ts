@@ -19,6 +19,7 @@ export function isPreviewBot(userAgent: string | null): boolean {
 }
 
 type Visit = {
+  event: "offer_visit" | "home_visit";
   src: string;
   userAgent: string | null;
   at: Date;
@@ -26,9 +27,9 @@ type Visit = {
 
 // One JSON line per page view, written to the server's standard output. No IP address, no
 // identifier, no cookie: only the campaign origin, whether it looks like a robot, and the time.
-export function formatVisitLine({ src, userAgent, at }: Visit): string {
+export function formatVisitLine({ event, src, userAgent, at }: Visit): string {
   return JSON.stringify({
-    event: "offer_visit",
+    event,
     src,
     bot: isPreviewBot(userAgent),
     at: at.toISOString(),

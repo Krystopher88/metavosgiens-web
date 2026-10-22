@@ -75,8 +75,9 @@ export default function PolitiqueConfidentialitePage() {
           </p>
           <p className="mt-2">
             Le site compte aussi, sans cookie, sans adresse IP et sans identifiant, le nombre
-            d&apos;affichages de la page « Site offert » selon l&apos;origine du lien (réseau
-            social, mail). Ces comptes ne permettent d&apos;identifier personne.
+            d&apos;affichages de la page « Site offert » et celui de la page d&apos;accueil ouverte
+            par un lien ou un QR code qui porte une origine, selon cette origine (réseau social,
+            mail, document imprimé). Ces comptes ne permettent d&apos;identifier personne.
           </p>
         </section>
 

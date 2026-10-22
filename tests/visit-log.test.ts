@@ -41,6 +41,7 @@ test("ne prend pas un navigateur de bureau pour un robot", () => {
 
 test("la ligne n'a que les quatre clés prévues et aucune adresse IP", () => {
   const line = formatVisitLine({
+    event: "offer_visit",
     src: "fb",
     userAgent: INSTAGRAM_BROWSER,
     at: new Date("2026-10-15T10:30:00Z"),
@@ -54,4 +55,21 @@ test("la ligne n'a que les quatre clés prévues et aucune adresse IP", () => {
     at: "2026-10-15T10:30:00.000Z",
   });
   assert.equal(/\d+\.\d+\.\d+\.\d+/.test(line), false);
+});
+
+test("la ligne de l'accueil porte son propre événement, pour ne pas se mêler à celles de l'offre", () => {
+  const visit = JSON.parse(
+    formatVisitLine({
+      event: "home_visit",
+      src: "papier",
+      userAgent: INSTAGRAM_BROWSER,
+      at: new Date("2026-10-23T10:30:00Z"),
+    }),
+  );
+  assert.deepEqual(visit, {
+    event: "home_visit",
+    src: "papier",
+    bot: false,
+    at: "2026-10-23T10:30:00.000Z",
+  });
 });

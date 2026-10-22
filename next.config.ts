@@ -39,12 +39,15 @@ const nextConfig: NextConfig = {
   // Short addresses shown in the campaign posts, one per network so each keeps its own origin:
   // /offert for TikTok (the bio link is not clickable), then Facebook, LinkedIn and Instagram.
   // Temporary (307): the campaign is time-limited.
+  // /bonjour is printed on business cards and flyers (QR code) and lands on the home page, so it
+  // must outlive the campaign: it is the one short address that is not removed at its end.
   async redirects() {
     return [
       { source: "/offert", destination: "/site-offert?src=tt", permanent: false },
       { source: "/offert-fb", destination: "/site-offert?src=fb", permanent: false },
       { source: "/offert-li", destination: "/site-offert?src=li", permanent: false },
       { source: "/offert-ig", destination: "/site-offert?src=ig", permanent: false },
+      { source: "/bonjour", destination: "/?src=papier", permanent: false },
     ];
   },
 };

@@ -11,6 +11,7 @@ export const OFFER_SRC_VALUES = [
   "mail-asso",
   "mail-ent",
   "pub",
+  "papier",
   "site",
   "direct",
   "test",

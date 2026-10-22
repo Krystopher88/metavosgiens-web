@@ -3,8 +3,10 @@
 #
 # Usage : scripts/site-offert-check.sh [BASE_URL] [FICHIER_JOURNAL]     défaut : https://metavosgiens.com
 # O01 à O11 : page, métadonnées, isolement, formulaire, image de partage, confidentialité.
-# O17 : adresses courtes des posts (/offert pour TikTok, /offert-fb, /offert-li, /offert-ig).
-# O12 : compteur de visites ; lancé seulement si FICHIER_JOURNAL (sortie standard du serveur Next) est donné.
+# O17 : adresses courtes (/offert pour TikTok, /offert-fb, /offert-li, /offert-ig, /bonjour pour le papier).
+# O18 : /bonjour mène à l'accueil dont la balise canonical reste « / » malgré le paramètre src.
+# O12, O19 : compteurs de visites (page de l'offre, accueil avec src) ; lancés seulement si FICHIER_JOURNAL
+# (sortie standard du serveur Next) est donné.
 # Sortie : une ligne PASS|FAIL par contrôle ; code de sortie 1 si au moins un FAIL.
 #
 # Serveur local de vérification : voir l'en-tête de scripts/seo-check.sh (serveur standalone sur le
@@ -345,6 +347,30 @@ for visit, (src, bot) in zip(visits, expected):
 PY
 }
 
+# O19 : l'accueil n'est compté que lorsque l'adresse porte un src, une ligne par affichage, sans IP,
+# avec son propre événement ; le préchargement et l'accueil sans src ne comptent pas, et la page de
+# l'offre ne reçoit rien.
+o19() {
+  local before new
+  before="$(wc -l < "$LOG_FILE")"
+  curl -s -o /dev/null --max-time 20 -A "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/21A329 Instagram 300.0.0.29.110" "$BASE/?src=papier"
+  curl -s -o /dev/null --max-time 20 -A "Mozilla/5.0 (iPhone) Instagram 300.0.0.29.110" "$BASE/"
+  curl -s -o /dev/null --max-time 20 -H "Next-Router-Prefetch: 1" -A "Mozilla/5.0 (iPhone) Instagram 300.0.0.29.110" "$BASE/?src=papier"
+  sleep 1
+  new="$(tail -n +"$((before + 1))" "$LOG_FILE")"
+  NEW_LINES="$new" python3 - <<'PY'
+import json, os, sys
+
+lines = [raw.strip() for raw in os.environ["NEW_LINES"].splitlines()]
+lines = [raw for raw in lines if raw.startswith("{") and ('"home_visit"' in raw or '"offer_visit"' in raw)]
+if len(lines) != 1 or "127.0.0.1" in lines[0]:
+    sys.exit(1)
+visit = json.loads(lines[0])
+if list(visit.keys()) != ["event", "src", "bot", "at"] or visit["event"] != "home_visit" or visit["src"] != "papier" or visit["bot"] is not False:
+    sys.exit(1)
+PY
+}
+
 # O13 : le JavaScript envoyé au navigateur ne contient pas zod. Le schéma reste côté serveur : zod
 # alourdit la page et sonde `new Function`, ce que la CSP du site signale (best-practices Lighthouse).
 o13() {
@@ -474,23 +500,29 @@ for path in ["/", "/contact", "/site-offert"]:
 PY
 }
 
-# O17 : les adresses courtes des posts (/offert pour TikTok, /offert-fb, /offert-li, /offert-ig), avec
-# ou sans barre finale, redirigent temporairement vers la page avec l'origine du réseau, et ne sont
-# pas dans le sitemap.
+# O17 : les adresses courtes (/offert pour TikTok, /offert-fb, /offert-li, /offert-ig, /bonjour pour les
+# cartes et flyers), avec ou sans barre finale, redirigent temporairement vers leur destination avec
+# l'origine, et ne sont pas dans le sitemap.
 o17() {
-  local entry path src code location final
-  for entry in "/offert:tt" "/offert-fb:fb" "/offert-li:li" "/offert-ig:ig"; do
-    path="${entry%%:*}"
-    src="${entry##*:}"
+  local entry path target code location final
+  for entry in "/offert|$PAGE?src=tt" "/offert-fb|$PAGE?src=fb" "/offert-li|$PAGE?src=li" "/offert-ig|$PAGE?src=ig" "/bonjour|/?src=papier"; do
+    path="${entry%%|*}"
+    target="$BASE${entry##*|}"
     for final in "$path" "$path/"; do
-      [ "$(curl -s -L -o /dev/null --max-time 20 -w '%{http_code} %{url_effective}' "$BASE$final")" = "200 $BASE$PAGE?src=$src" ] || return 1
+      [ "$(curl -s -L -o /dev/null --max-time 20 -w '%{http_code} %{url_effective}' "$BASE$final")" = "200 $target" ] || return 1
     done
     code="$(status "$path")"
     [ "$code" = "307" ] || [ "$code" = "302" ] || return 1
     location="$(curl -s -o /dev/null --max-time 20 -w '%{redirect_url}' "$BASE$path")"
-    [ "$location" = "$BASE$PAGE?src=$src" ] || return 1
+    [ "$location" = "$target" ] || return 1
     ! fetch "/sitemap.xml" | grep -q "$path<" || return 1
   done
+}
+
+# O18 : l'accueil ouvert par /bonjour garde la balise canonical de l'accueil, sans paramètre : la
+# page avec ?src=papier ne devient pas une page concurrente dans Google.
+o18() {
+  [ "$(fetch "/?src=papier" | canonical)" = "$(fetch "/" | canonical)" ] || return 1
 }
 
 check O01 "page 200 et H1 : « Un site internet offert à 5 entreprises et associations des Vosges. »" o01
@@ -508,12 +540,15 @@ check O13 "zod absent du JavaScript client de la page (schéma réservé au serv
 check O14 "images du site : bandeau d'ouverture (priorité haute) et image du formulaire (différée), toutes décoratives" o14
 check O15 "en-tête : menu « Services » avec les quatre pages de service sur toutes les pages, pied de page inchangé" o15
 check O16 "pied de page : liens vers Facebook, Instagram, TikTok et LinkedIn, dans un nouvel onglet, adresses publiques" o16
-check O17 "/offert, /offert-fb, /offert-li, /offert-ig (avec ou sans barre finale) : redirection temporaire vers /site-offert avec src=tt, fb, li, ig, absentes de sitemap.xml" o17
+check O17 "/offert, /offert-fb, /offert-li, /offert-ig, /bonjour (avec ou sans barre finale) : redirection temporaire vers /site-offert (src=tt, fb, li, ig) ou l'accueil (src=papier), absentes de sitemap.xml" o17
+check O18 "/?src=papier : canonical de l'accueil sans paramètre" o18
 
 if [ -n "$LOG_FILE" ]; then
   check O12 "compteur : trois visites comptées (fb, ig robot, direct), préchargement et envois de formulaire ignorés, aucune IP" o12
+  check O19 "compteur de l'accueil : une visite home_visit src=papier, accueil sans src et préchargement ignorés, aucune IP" o19
 else
   echo "SKIP O12 compteur de visites (aucun fichier de journal donné)"
+  echo "SKIP O19 compteur de l'accueil (aucun fichier de journal donné)"
 fi
 
 exit "$FAILED"
