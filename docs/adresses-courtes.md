@@ -2,7 +2,7 @@
 
 Document de référence des adresses courtes du site : ce qu'elles font, où elles sont définies, comment leurs visites sont comptées et comment en ajouter ou en retirer une. À mettre à jour à chaque nouvelle adresse courte.
 
-Dernière mise à jour : 2026-10-22 (ajout de `/bonjour`, pas encore en production).
+Dernière mise à jour : 2026-10-22 (ajout de `/bonjour`).
 
 ## À quoi elles servent
 
@@ -29,7 +29,7 @@ Une seule adresse pour les deux supports (décision de Christopher du 2026-10-22
 
 | Adresse courte | Redirige vers | Origine comptée | En ligne depuis |
 |---|---|---|---|
-| `https://metavosgiens.com/bonjour` | `/?src=papier` | Papier (cartes et flyers) | Pas encore en production : codée le 2026-10-22, en attente de l'accord sur le texte de la politique de confidentialité |
+| `https://metavosgiens.com/bonjour` | `/?src=papier` | Papier (cartes et flyers) | 2026-10-22 |
 
 Contrairement aux adresses de la campagne, `/bonjour` **ne doit pas être retirée à la fin de la campagne** : le QR code imprimé continue de circuler. C'est pourquoi sa redirection reste temporaire (307) : on peut changer la destination plus tard sans toucher au QR.
 
